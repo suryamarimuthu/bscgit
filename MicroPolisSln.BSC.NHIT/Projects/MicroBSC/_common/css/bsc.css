@@ -1,0 +1,855 @@
+﻿
+@font-face {font-family:"ttche";src:url(/_common/font/TTche.eot);}
+@font-face {font-family:"wizz";src:url(/_common/font/miniwini_ttobak.eot)}
+
+ /* 기본 텍스트 */
+ BODY
+{ font-family:"Gulim"; color:#000000; font-size: 9pt; text-decoration: none;
+scrollbar-face-color: whitesmoke;
+scrollbar-shadow-color: #ffffff;
+scrollbar-highlight-color: #ffffff;
+scrollbar-3dlight-color: #BCBCBC;
+scrollbar-darkshadow-color: #BCBCBC;
+scrollbar-arrow-color: #BCBCBC; 
+
+    left-margin:5px;top-margin:5px;
+}
+
+LABEL
+{
+    height:19px;
+}
+
+IFRAME
+{ font-family:"Gulim"; color:#000000; font-size: 9pt; text-decoration: none;
+scrollbar-face-color: whitesmoke;
+scrollbar-shadow-color: #ffffff;
+scrollbar-highlight-color: #ffffff;
+scrollbar-3dlight-color: #BCBCBC;
+scrollbar-darkshadow-color: #BCBCBC;
+scrollbar-arrow-color: #BCBCBC; 
+
+    left-margin:5px;top-margin:5px;
+}
+
+TABLE
+{
+    font-family:"돋움","Arial"; font-size: 12px; color:#4B4B4B; line-height:140%;
+	top: 0px;
+	left: 0px;
+}
+TR
+{font-family:"돋움","Arial"; font-size: 12px;color:#4B4B4B; line-height:140% }
+TH
+{font-family:"돋움","Arial"; font-size: 12px; color:#4B4B4B; line-height:140%; font-weight:normal; }
+TD
+{font-family:"돋움","Arial"; font-size: 12px; color:#4B4B4B; line-height:140% }
+
+
+A:link {COLOR: #333232; TEXT-DECORATION: none}
+A:visited {COLOR: #333232; TEXT-DECORATION:none}
+A:hover {COLOR: #144ED1; TEXT-DECORATION: none}
+img {border:0;}
+
+ 
+/* 좌측 메뉴1 */
+.left_menu {
+	height: 20px;
+	font-family: "돋움";
+	font-size: 12px;
+	text-decoration: none;
+	color:#3D3D3D;}
+.left_menu a:link {color:#3D3D3D; text-decoration: none}
+.left_menu a:visited {color:#3D3D3D; text-decoration: none } 
+.left_menu a:hover{ font-size:9pt; text-decoration: underline; color:#0575C3; }
+
+/* 좌측 메뉴2 */
+.left_menu2 {
+	height: 20px;
+	font-family: "돋움";
+	font-size: 12px;
+	text-decoration: none;
+	color:#3D3D3D;}
+.left_menu2 a:link {color:#3D3D3D; text-decoration: none}
+.left_menu2 a:visited {color:#3D3D3D; text-decoration: none } 
+.left_menu2 a:hover{ font-size:9pt; text-decoration: underline; color:#0575C3; }
+
+/* 파란색 볼드  */
+.blue_bold {font-weight:bold; color:#356ABA; letter-spacing:-1px}
+.blue_bold  a:link {font-weight:bold; color:#356ABA; text-decoration: none letter-spacing:-1px}
+.blue_bold  a:visited {font-weight:bold; color:#356ABA; text-decoration: none  letter-spacing:-1px}
+.blue_bold  a:hover{font-weight:bold; font-size:9pt; text-decoration: underline; color:#061BEC; letter-spacing:-1px}
+
+
+/* 작은기본폰트_black */
+.stext {letter-spacing:-1px;font-family: "돋움"; font-size:11px; color:#4B4B4B; padding-left:6px;}
+.stext a:link {font-family: "돋움"; color:#4B4B4B; text-decoration: none}
+.stext a:visited {font-family: "돋움"; color:#4B4B4B; text-decoration: none}
+.stext a:hover{font-family: "돋움";  font-size:11px; text-decoration: underline; color:#0054A6;}
+
+/* 작은기본폰트_white */
+.stext_w {font-size:11px; color:#ffffff;  letter-spacing:-1px}
+.stext_w a:link {color:#ffffff; text-decoration: none}
+.stext_w a:visited {color:#ffffff; text-decoration: none}
+.stext_w a:hover{ font-size:11px; text-decoration: underline; color:#ffffff; letter-spacing:-1px}
+
+/* 작은기본폰트_yellow */
+.stext_y {font-size:11px; color:#FEF380;  letter-spacing:-1px}
+.stext_y a:link {color:#FEF380; text-decoration: none}
+.stext_y a:visited {color:#FEF380; text-decoration: none}
+.stext_y a:hover{ font-size:11px; text-decoration: underline; color:#FEF380; letter-spacing:-1px}
+
+
+/* 작은기본폰트_orange */
+.stext_o {font-weight:bold; font-size:11px; color:#E04B22;  letter-spacing:-1px}
+.stext_o a:link {font-weight:bold; color:#E04B22; text-decoration: none}
+.stext_o a:visited {font-weight:bold; color:#E04B22; text-decoration: none}
+.stext_o a:hover{ font-weight:bold; font-size:11px; text-decoration: underline; color:#FEF380; letter-spacing:-1px}
+
+/* 작은기본폰트_orange */
+.stext_oo {font-weight:bold; font-size:11px; color:#E04B22;  letter-spacing:-1px}
+.stext_oo a:link {font-weight:bold; color:#E04B22; text-decoration: none}
+.stext_oo a:visited {font-weight:bold; color:#E04B22; text-decoration: none}
+.stext_oo a:hover{ font-weight:bold; font-size:11px; text-decoration: underline; color:#FEF380; letter-spacing:-1px}
+
+
+/* 기본 볼드 화이트 */
+.basic_bold_w {font-weight:bold; color:#ffffff;}
+.basic_bold_w  {font-weight:bold; color:#ffffff;}
+.basic_bold_w  a:link {font-weight:bold; color:#ffffff; text-decoration: none}
+.basic_bold_w  a:visited {font-weight:bold; color:#ffffff; text-decoration: none } 
+.basic_bold_w   a:hover{font-weight:bold; font-size:9pt; text-decoration: underline; color:#FBEC4B; }
+
+/* 테이블 */
+.table_01{background-color:#FFFFFF;color:#000000;border:1 solid #cdcdcd;}
+.table_02 {background-color:#E4EEDA; color:#5C7E3E; font-weight:bold;}
+.table_03 {background-color:#D0E4F5; color:#053966;}
+
+/* 기존테이블색상변경 */
+.tableOutBorder {background-color:#E9EBEB;padding:3px;}
+   
+.tableBorder_old {border-left:solid 1 #E5E5E5;border-top:solid 1 #E5E5E5;background-color:#FCFEFE; }
+.tableBorder { border-collapse:collapse; border-style:solid; border-width:1px; border-color:#9BB1D8;}
+
+.tdBorder {padding-left: 7px; background-color:#ffffff;border-right:solid 1 #C7C7C7;border-bottom:solid 1 #C7C7C7;}
+.tdBorder2 {padding-left: 7px; font-weight: bold;  background-color:#ffffff;border-right:solid 1 #C7C7C7;border-bottom:solid 1 #C7C7C7;}
+
+.tableTopTitle		{padding-left: 1px;padding-right: 1px;font-family:돋움체;font-weight: bold; font-size:12px; background-color:#4976B9; color:white;	padding-top:1;border-right:solid 1 #E5E5E5;border-bottom:solid 1 #E5E5E5;}
+
+
+.tableTitle			
+{
+    padding-left: 7px;
+    padding-right: 1px;
+    font-family:돋움체;
+    font-weight:normal;
+    font-size:12px; 
+    background-color:#94BAC9; 
+    color:white;
+    padding-top:1;
+    border-right:solid 1 #E5E5E5;
+    border-bottom:solid 1 #E5E5E5;
+}
+
+
+.tableTitle2		{padding-left: 7px;padding-right: 1px;font-family:돋움체;font-weight:normal;font-size:12px; background-color:#94BAC9; color:white;padding-top:1;border-right:solid 1 #E5E5E5;border-bottom:solid 1 #E5E5E5;}
+.tableTitle_green	{padding-left: 1px;padding-right: 1px;font-family:돋움체;font-weight: bold; font-size:12px; background-color:#6DB575; color:#E6FEC3;padding-top:1;border-right:solid 1 #D2D2D2;border-bottom:solid 1 #C0BFBF;}
+.tableContent		{padding-left: 5px;height:19px;font-family:돋움체; font-size:12px;background-color:#FCFEFE;border-right:solid 1 #E5E5E5;border-bottom:solid 1 #E5E5E5;}
+.tableDel			{padding-left: 5px;height:19px;font-family:돋움체; font-size:12px;background-color:#FCFEFE;border-right:solid 1 #C0BFBF;}
+.tableLeftSpace {padding-left:12px;}
+.textReadOnly { background-color:#E1E1E1;}
+.subTitle           {padding-left: 5px;height:19px;font-family:돋움체; font-size:12px;color:#408BEF;font-weight:bold;} 
+ /* 전략맵  */
+.map_title {background-color:#E5E0CC; font-size:12px; font-weight:normal; color:#3D3D3D;border-right:solid 1 #C7C7C7;border-bottom:solid 1 #C7C7C7;}
+.map_content {background-color:#F7F5EB; font-size:11px; font-weight:normal; color:#3D3D3D;border-right:solid 1 #C7C7C7;border-bottom:solid 1 #C7C7C7;}
+
+.subTable {border-left:solid 1 #D2D2D2;border-top:solid 1 #D2D2D2;}
+.subtableTitle {font-family:tahoma,돋움체,wizz,ttche,tahoma,Verdana, Helvetica; font-size:9pt;background-color:#EDEDED; color:#494949; padding-top:1;border-right:solid 1 #D2D2D2;border-bottom:solid 1 #D2D2D2;}
+.subtableContent{font-family:tahoma,돋움체,wizz,tahoma;font-size:8pt;border-right:solid 1 #D2D2D2;border-bottom:solid 1 #D2D2D2;}
+
+.subsubTable {border-left:solid 1 #C1C1C1;border-top:solid 1 #C1C1C1;}
+.subsubtableTitle {font-family:ttche,돋움체,wizz,ttche,tahoma,Verdana, Helvetica; font-size:9pt;background-color:#F3F5FC; color:#494949; padding-top:1;border-right:solid 1 #C1C1C1;border-bottom:solid 1 #C1C1C1;}
+.subsubtableContent{font-family:ttche,돋움체,wizz,tahoma;font-size:9pt;border-right:solid 1 #C1C1C1;border-bottom:solid 1 #C1C1C1;}
+
+
+/* input,radio */   
+/*input 	{font-family:tahoma,돋움체,ttche;font-size:12px;color:#212121;border:expression( (this.type=='checkbox'||this.type=='radio'||this.type=='image') ? '':'solid 1 #ededed');}*/
+input 	{font-family:tahoma,돋움체,ttche;font-size:12px;color:#212121;border:expression( (this.type=='checkbox'||this.type=='radio'||this.type=='image') ? '':'solid 1 #ededed');}
+textarea{font-family:tahoma,돋움체,ttche;font-size:12px;color:#000000;border:solid 1 #ededed;}
+.select	{font-family:tahoma,돋움체,ttche;font-size:12px;cursor: hand;BEHAVIOR: url('/_common/css/selectBox.htc'); }
+.imgbtn {border:solid 0;}
+button	{font-family:tahoma,돋움체,ttche;font-size:12px;color:#212121;border:solid 1 #BBBBBB;}
+
+.NotBoader {color:white;border:0;}
+
+.textarea2 {
+	BACKGROUND-COLOR: #ffffff; 
+	BORDER-RIGHT: #BBBBBB 0px solid; PADDING-RIGHT:3px; 
+	BORDER-TOP: #BBBBBB 0px solid; PADDING-LEFT:2px; 
+	BORDER-LEFT: #BBBBBB 0px solid; PADDING-TOP: 0px; 
+	BORDER-BOTTOM: #BBBBBB 0px solid; 
+	}
+
+/*  볼드  */
+.s_bold {font-size:12px; font-weight:bold; color:#595959; letter-spacing:-1px}
+.s_bold  a:link {font-size:11px; font-weight:bold; color:#4B4B4B; text-decoration: none letter-spacing:-1px}
+.s_bold  a:visited {font-size:11px; font-weight:bold; color:#4B4B4B; text-decoration: none  letter-spacing:-1px}
+.s_bold  a:hover{font-size:11px; font-weight:bold; font-size:9pt; text-decoration: underline; color:#061BEC; letter-spacing:-1px} 
+
+/*  normal  */
+.s_normal {font-size:11px; font-weight:normal; color:#595959; letter-spacing:-1px}
+.s_normal  a:link {font-size:11px; font-weight:normal; color:#4B4B4B; text-decoration: none letter-spacing:-1px}
+.s_normal  a:visited {font-size:11px; font-weight:normal; color:#4B4B4B; text-decoration: none  letter-spacing:-1px}
+.s_normal  a:hover{font-size:11px; font-weight:normal; font-size:9pt; text-decoration: underline; color:#061BEC; letter-spacing:-1px} 
+
+
+/* 좌측 메뉴3  추가할부분*/
+.left_menu3 {
+	height: 22px;
+	font-family: "돋움";
+	font-size: 12px;
+	text-decoration: none;
+	color:#000000;
+	padding-top:4px;
+	padding-left: 12px;}
+.left_menu3 a:link {color:#00000; text-decoration: none}
+.left_menu3 a:visited {color:#000000; text-decoration: none } 
+.left_menu3 a:hover{ font-size:9pt; text-decoration: none; color:#FF8400; }
+
+/* 테두리1*/
+.box01 {  font-family:"Gulim"; font-size: 12px; color:#00000; border: #BFBFBF;  border-style: solid; border-top-width: 1; border-right-width: 1; border-bottom-width: 1; border-left-width: 1}
+/* 타이틀 */
+.title_m01 {font-size: 12px; font-weight:bold; color:#0083B6; padding-left:70px; padding-top:2;}
+/* 손익계산서txt */
+.son_01 {font-size: 12px; color:#006FB6; font-weight:bold; font-weight:bold; color:#005380; border-style:none; BACKGROUND-COLOR: #FFFFFF; width:117;}
+.son_02 {font-size: 12px; color:#005380; color:#005380; BACKGROUND-COLOR: #F3F0DD; width:50;}
+.son_03 {font-size: 12px; color:#005380; color:#005380; BACKGROUND-COLOR: #E1EACE; width:50;}
+
+.button {cursor:hand;font-family:"돋움";font-weight:normal;font-size:9pt;color:#ffffff;PADDING:3 0 0 0; border-style:none; border-width:0;height:23;width:65px; text-align:center; background-image:url(/images/btn/b_bg01.gif);}
+
+.ellipsis  
+{
+    table-layout:fixed;
+    overflow:hidden; 
+    text-overflow:ellipsis; 
+} 
+
+.Empty03 {height:3;}
+.Empty05 {height:5;}
+.Empty08 {height:8;}
+.Empty10 {height:10;}
+.Empty20 {height:20;}
+
+
+/* This is the transparent box */
+#transbox {
+margin: 0 0px;
+background-color: #fff;
+border: 0px solid black;
+filter:alpha(opacity=10);
+opacity: 0.5;
+-moz-opacity:0.5;
+}
+
+/* This is the container which set text to solid color.
+position: relative used for IE */ 
+#transbox div 
+{
+padding: 0px;
+font-weight: bold;
+color: #ffffff;
+filter:alpha(opacity=100);
+opacity: 1;
+-moz-opacity:1;
+position: relative;
+}
+
+/* 2011-08-17 수정 : 신규로 그리드에 대한 스타일 추가 */
+.GridGroupByBox
+{
+	background-color: #F5F5F5;
+	border-color: window;	
+}
+
+.GridGroupByRow
+{
+	background-color: #E7E7E7;
+	border-top-color: #C7C7C7;
+	border-left-color: #C7C7C7;
+	border-bottom-color: #C7C7C7;
+	border-right-color: #C7C7C7;
+	color: #696969;
+}
+
+.GridFooter
+{
+	background-color: #D3D3D3;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #FFFFFF;
+}
+
+.GridHeader
+{
+	background-color: #94BAC9;
+	border-style: solid;
+	border-width: 1px;
+	border-top-color: #C7C7C7;
+	border-left-color: #EEEEEE;
+	border-bottom-color: #E5E5E5; 
+	border-right-color: #E5E5E5;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.GridRow
+{
+	background-color: #FCFEFE;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #000000;
+	padding-top: 2px;
+	padding-left: 2px;
+	padding-bottom: 2px;
+	padding-right: 2px;
+	font-weight: normal;
+	text-align: center;
+	overflow: hidden;
+}
+
+.GridRowRight
+{
+	text-align: right;
+}
+
+.GridRowLeft
+{
+	text-align: left;
+}
+
+.GridFrame
+{
+	background-color: Window;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #E9EBEB;
+	font-size: 9pt;
+	width: 100%;
+	height: 100%;
+}
+
+.GridPager
+{
+	 background-color: #D3D3D3;
+	 border-style: solid;
+	 border-width: 1px;
+	 border-color: #FFFFFF;
+}
+
+.GridAddNewBox
+{
+	background-color: #FFFFFF;
+	border-style: solid;
+	border-width: 1px;
+	border-top-color: #FFFFFF;
+	border-left-color: #FFFFFF;
+	border-bottom-color: #A9A9A9;
+	border-right-color: #A9A9A9;
+}
+
+.GridSelectedRowStyle
+{
+	background-color: #E2ECF4;
+}
+
+
+
+
+
+
+
+
+/***************************** 여기서 부터 스타일시트 다시 ****************************/
+
+.cssDivLayout
+{
+    border : solid 1px #BACFEC;  /*#f4f4f4*/
+    padding: 2px;
+    display: block;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+}
+
+
+.cssTreeLayout
+{
+    border : solid 1px  #BACFEC ;  /*#f4f4f4*/
+}
+
+
+.cssPopBtnLine
+{
+    text-align:right;
+    height:30px;
+    padding-right: 5px;
+}
+
+.cssPopBottomLine
+{
+    background-color : Gray;
+    height:5px;
+}
+
+
+.cssTblLayout 
+{
+    width:100%;
+    height:1000px;
+    padding:0px;
+    margin:1px;
+    border : 0px;
+}
+
+.cssTblBorder 
+{
+    border-left:solid 1 #E5E5E5;
+    border-top:solid 1 #E5E5E5;
+    background-color:#FCFEFE; 
+    width:100%;
+    height:100%;
+    padding:0px;
+    margin:1px;
+}
+
+
+.cssTblTitleSingle_old
+{
+    padding-right: 1px;
+    font-family:돋움체;
+    font-weight:bold;
+    font-size:12px; 
+    background-color:#D4EBF9; /*94BAC9*/
+    color:white;
+    padding-top:1;
+    border-right:solid 1 #E5E5E5;
+    border-bottom:solid 1 #E5E5E5;
+    
+    padding-left: 3px;
+    text-align:left;
+    width : 10%;
+}
+
+
+.cssTblContentSingle_old
+{
+    padding-left: 5px;
+    height:19px;
+    font-family:돋움체; 
+    font-size:12px;
+    background-color:#FCFEFE;
+    border-right:solid 1 #E5E5E5;  
+    border-bottom:solid 1 #E5E5E5;
+    
+    width : 90%;
+}
+
+
+
+.cssTblTitleSingle	
+{
+    padding:3px;
+    
+    font-family:돋움체;
+    font-size:11px; 
+    font-weight:bold;
+    color:#749FE4;
+    
+    background-color:#D4EBF9;
+    
+    border-right:solid 1 #9BB1D8;
+    border-bottom:solid 1 #9BB1D8;
+    
+    text-align:left;
+    width : 25%;
+}
+
+
+.cssTblContentSingle
+{
+    font-family:돋움체; 
+    font-size:11px;
+    color:#656565;
+    
+    padding:3px;
+    
+    border-right:solid 1 #9BB1D8;  
+    border-bottom:solid 1 #9BB1D8;
+    
+    width : 75%;
+}
+
+
+.cssTblTitle_old
+{
+    padding-right: 1px;
+    font-family: Dotum; 
+	font-size: 11px; 
+	font-weight: bold; 
+    background-color:#5a78af; /*94BAC9*/
+    color:white;
+    
+    border-right:solid 1 #E5E5E5;
+    border-bottom:solid 1 #E5E5E5;
+    
+    padding-left: 3px;
+    text-align:left;
+    width : 15%;
+}
+
+
+.cssTblContent_old
+{
+    padding-left: 5px;
+    height:19px;
+    font-family:돋움체; 
+    font-size:12px;
+    background-color:#FCFEFE;
+    border-right:solid 1 #d2d2ff;  /*E5E5E5*/
+    border-bottom:solid 1 #d2d2ff; /*E5E5E5*/
+    
+    width : 35%;
+}
+
+
+.cssTblTitle
+{ 
+    padding:3px;
+    
+    text-align: left;
+    
+    font-family: Dotum; 
+	font-size: 11px; 
+	font-weight: bold; 
+    color:#749FE4;
+    
+    background-color:#D4EBF9;
+    
+    border-right-style:solid;
+    border-right-width:1px;
+    border-right-color:#9BB1D8; 
+    
+    border-bottom-style:solid;
+    border-bottom-width:1px;
+    border-bottom-color:#9BB1D8; 
+    
+    width : 15%;
+}
+
+
+.cssTblContent
+{
+    padding:3px;
+    text-align: left;
+    
+    font-family: Dotum; 
+    font-size:12px;
+    color:#656565;
+    
+    background-color:#FCFEFE;
+    
+    border-right-style:solid;
+    border-right-width:1px;
+    border-right-color:#9BB1D8; 
+    
+    border-bottom-style:solid;
+    border-bottom-width:1px;
+    border-bottom-color:#9BB1D8; 
+    
+    width : 35%;
+}
+
+.cssTblTitle1
+{ 
+    padding:3px;
+    
+    text-align: left;
+    
+    font-family: Dotum; 
+	font-size: 11px; 
+	font-weight: bold; 
+    color:#749FE4;
+    
+    background-color:#D4EBF9;
+    
+    border-right-style:solid;
+    border-right-width:1px;
+    border-right-color:#9BB1D8; 
+    
+    border-bottom-style:solid;
+    border-bottom-width:1px;
+    border-bottom-color:#9BB1D8; 
+    
+}
+
+
+.cssTblContent1
+{
+    padding:3px;
+    text-align: left;
+    
+    font-family: Dotum; 
+    font-size:12px;
+    color:#656565;
+    
+    background-color:#FCFEFE;
+    
+    border-right-style:solid;
+    border-right-width:1px;
+    border-right-color:#9BB1D8; 
+    
+    border-bottom-style:solid;
+    border-bottom-width:1px;
+    border-bottom-color:#9BB1D8; 
+   
+}
+
+
+.cssLeftMenu
+{
+     font-family:Dotum;
+     font-size:11px; 
+     letter-spacing:-1px;
+     color:#97A0AD;
+     /*font-weight:bold; */
+}
+
+
+.cssLeftMenu_Selected
+{
+    font-family:Dotum;
+    font-size:11px;
+    /*font-weight:bold; */
+    color:#5689F6; 
+    /*background-color:#F1F1F1;*/
+    letter-spacing:-1px;
+}
+
+
+
+.cssPopTblBottomSpace
+{
+    height:12px;
+}
+
+
+.cssPopContent
+{
+    height:100%;
+    padding-left:10px; padding-right:10px;
+}
+
+
+.cssPopTitleArea
+{
+    vertical-align:middle; 
+    padding-left:20px; 
+    padding-bottom:12px;
+}
+
+
+.cssPopTitleTxt
+{
+    font-family:dotum; 
+    font-size:16px; 
+    font-weight:bold; 
+    color:#004880;
+}
+
+
+
+/* 울트라 그리드 (순서바뀌면 안됨)*/
+
+
+.GridRowStyle_old
+{ 
+	vertical-align: middle; 
+	border-right: solid 1px #B1C1DB; 
+	border-bottom: solid 1px #B1C1DB; 
+	text-align: left; 
+	color: #333333; 
+	background-color: #FFFFFF; 
+	padding-left: 3px; 
+	padding-right: 3px; 
+	overflow: hidden; 	
+}
+
+.GridRowStyle 
+{ 
+	vertical-align: middle; 
+	border-right: solid 1px #BCC994; 
+	border-bottom: solid 1px #BCC994; 
+	text-align: left; 
+	color: #333333; 
+	background-color: #FFFFFF; 
+	padding-left: 3px; 
+	padding-right: 3px; 
+	overflow: hidden; 	
+}
+
+
+.GridRowAlternateStyle_old
+{ 
+	background-color: #EDF0F5; 
+	
+	border-right: solid 1px #B1C1DB; 
+	border-bottom: solid 1px #B1C1DB; 
+	text-align: left; 
+	color: #333333; 
+	
+	padding-left: 3px; 
+	padding-right: 3px; 
+	overflow: hidden; 
+	vertical-align: middle; 
+}
+
+
+.GridRowAlternateStyle 
+{ 
+	background-color: #F9F9F9; 
+	
+	border-right: solid 1px #BCC994; 
+	border-bottom: solid 1px #BCC994; 
+	text-align: left; 
+	color: #333333; 
+	
+	padding-left: 3px; 
+	padding-right: 3px; 
+	overflow: hidden; 
+	vertical-align: middle; 
+}
+
+
+
+.GridSelectedRowStyle 
+{ 
+	border-color: #C1CED4; 
+	background-color: #EBF2E8;
+}
+
+.GridHeaderStyle_old
+{ 
+	background-color: #5a78af;   /*94BAC9*/
+	border: solid 1px #B1C1DB;
+	border-left: 1px ; 
+	border-top: 0px;
+	color: #ffffff; 	         /*#CDE5F1*/
+	font-family: Dotum; 
+	font-size: 11px; 
+	font-weight: bold; 
+	height: 23px; 
+	overflow: hidden; 
+	padding-left: 3px; 
+	padding-right: 3px; 
+	text-align: center; 
+	vertical-align: middle;
+}
+
+
+.GridHeaderStyle 
+{ 
+	/*background-color:#E9EFD5; */
+	background-color:#94BAC9;
+	font-family:Dotum; 
+	font-size:12px; 
+	font-weight:bold; 
+	/*color:#4EB30D;*/
+	color:White;
+	/*
+    border-style:solid;
+    border-width:1px; 
+    border-color:#BCC994;
+	*/
+	height: 23px; 
+	overflow: hidden; 
+	padding-left: 3px; 
+	padding-right: 3px; 
+	text-align: center; 
+	vertical-align: middle;
+}
+
+
+
+.GridRowSelectorStyle 
+{ 
+	vertical-align: middle; 
+	border: solid 0px #C1CED4; 
+	text-align: center; 
+	color: #333333; 
+	width : 10px;
+	background-color: #FFFFFF; 	
+}
+
+
+.GridFrameStyle_old
+{ 	
+	border: solid 1px #BACFEC; 
+	background-color: #FFFFFF; 
+	width: 100%; 
+	height: 100%;
+}
+
+
+
+.GridFrameStyle 
+{ 	
+    border-collapse:collapse;
+	border: solid 1px #BCC994;
+	background-color: #FFFFFF; 
+	width: 100%; 
+	height: 100%;
+}
+
+
+
+.GridGroupBoxStyle 
+{ 
+	border: solid 1px Window; 
+	/*text-align: center; 
+	color: #333333; */
+	background-color: whitesmoke; 	
+}
+
+
+
+.cssTabStyleOn
+{ 
+	font-family : dotum;
+    font-size : 11px;
+    font-weight : bold;
+    color : #0381d8;
+
+}
+
+
+.cssTabStyleOff
+{ 
+	font-family : dotum;
+    font-size : 11px;
+    font-weight:normal;
+    color : #1879ae;
+
+}
+
+.GridRowStyle_02
+{ 
+	vertical-align: middle;  
+	text-align: center;
+	color: #C1CED4; 
+	background-color: #FFFFFF; 
+	padding-left: 3px; 
+	padding-right: 3px; 
+	overflow: hidden; 	
+}

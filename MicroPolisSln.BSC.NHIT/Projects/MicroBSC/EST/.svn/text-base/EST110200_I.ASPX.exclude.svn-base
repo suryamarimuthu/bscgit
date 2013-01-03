@@ -1,0 +1,434 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="EST110200_I.ASPX.cs" Inherits="EST_EST110200_I" %>
+<%--<%@ Register Src="../_common/lib/MenuControl_Bottom.ascx" TagName="MenuControl_Bottom" TagPrefix="MenuControl" %>--%>
+<%@ Register assembly="Infragistics2.WebUI.UltraWebChart.v7.1, Version=7.1.20071.40, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" namespace="Infragistics.UltraChart.Resources.Appearance" tagprefix="igchartprop" %>
+<%@ Register assembly="Infragistics2.WebUI.UltraWebChart.v7.1, Version=7.1.20071.40, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" namespace="Infragistics.UltraChart.Data" tagprefix="igchartdata" %>
+<%--<%@ Register TagPrefix="MenuControl" TagName="MenuControl" Src="~/_common/lib/MenuControl.ascx" %>--%>
+<%Response.WriteFile("../_common/html/CommonTop.htm");%>
+<script type="text/javascript">
+
+    function SearchEstID()
+    {
+	    gfOpenWindow( "EST_EST.aspx?COMP_ID=<%=COMP_ID%>"
+	                            + "&CTRL_VALUE_NAME="	+ "hdfSearchEstID"
+                                + "&CTRL_TEXT_NAME="	+ "txtSearchEstName"
+                                + "&CHECKBOX_YN="	    + "N"
+                                + "&CTRL_VALUE_VALUE="  + ""
+                               , 430
+                               , 400
+                               , false
+                               , false
+                               , "popup_est_est_id" );
+	    return false;
+    }
+    
+    function Search() 
+    {
+        if(document.getElementById('hdfSearchEstID').value == "") 
+        {
+            alert('평가를 선택하세요.');
+            return false;
+        }
+        
+        return true;
+    }
+    
+    function ShowEstDeptID()
+	{
+		gfOpenWindow( "EST_DEPT.aspx?COMP_ID=<%=COMP_ID%>"
+                                + "&ESTTERM_REF_ID=<%= ESTTERM_REF_ID.ToString() %>"
+								+ "&CTRL_VALUE_NAME="	+ "hdfEstDept"
+								+ "&CTRL_TEXT_NAME="	+ "txtEstDept"
+								+ "&CHECKBOX_YN="	    + "Y"
+								+ "&CTRL_VALUE_VALUE="  + document.getElementById('hdfEstDept').value
+								+ "&POSTBACK_YN="       + "Y"
+                                + "&POSTBACK_CTRL_NAME="+ "lbnReload"
+							   , 430
+							   , 400
+							   , false
+							   , false
+							   , "popup_est_dept" );
+		return false;
+	}
+    
+</script>
+<form id="form1" runat="server">
+    <div>
+<%--<MenuControl:MenuControl ID="MenuControl1" runat="server" />--%>
+<asp:placeholder runat="server" ID="phdLayout"></asp:placeholder>
+<!--- MAIN START --->
+<TABLE cellpadding=0 cellspacing=0 border=0 width="99%" height="100%">
+	<tr>
+		<td height="20">
+		    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+		        <tr>
+		            <td>
+		                <img src="../images/title/se_ti01.gif" align="absmiddle">
+                        <asp:dropdownlist id="ddlEstTermRefID" runat="server" autopostback="True" onselectedindexchanged="ddlEstTermRefID_SelectedIndexChanged" class="box01"></asp:dropdownlist>
+                        <asp:dropdownlist id="ddlEstTermSubID" runat="server" autopostback="True" class="box01" onselectedindexchanged="ddlEstTermSubID_SelectedIndexChanged"></asp:dropdownlist>
+                        <asp:dropdownlist id="ddlEstTermStepID" runat="server" autopostback="True" class="box01" onselectedindexchanged="ddlEstTermStepID_SelectedIndexChanged" Visible="False"></asp:dropdownlist>
+                    </td>
+                    <td align="right" id="tdBiasDept" runat="server" visible="false">
+                        &nbsp;
+						<asp:textbox id="txtEstDept" runat="server" maxlength="100" width="119px"></asp:textbox> 
+						<a href="#null" onClick="ShowEstDeptID();"><IMG src="../images/btn/b_147.gif" align="absMiddle" border="0" /></a> 
+						<asp:hiddenfield id="hdfEstDept" runat="server"></asp:hiddenfield>
+                    </td>
+                    <td align="right">
+                        <asp:ImageButton ID="ibnLowHigh" runat="server" ImageUrl="../images/btn/tap_b02.gif" OnClick="ibnLowHigh_Click"/>
+                        <asp:ImageButton ID="ibnRadar" runat="server" ImageUrl="../images/btn/tap_b01.gif" OnClick="ibnRadar_Click"/>        
+                        <asp:label id="lblCompTitle" runat="server"></asp:label>
+                        <asp:dropdownlist id="ddlCompID" runat="server" class="box01" autopostback="True" onselectedindexchanged="ddlCompID_SelectedIndexChanged"></asp:dropdownlist>&nbsp;
+                        <asp:textbox id="txtSearchEstName" runat="server" bordercolor="Silver" borderwidth="1px" width="120px"></asp:textbox>
+                        <a href="#null" onclick="SearchEstID();">
+                            <img align="absMiddle" border="0" src="../images/btn/b_143.gif" id="imgEstButton" runat="server" /></a>
+                        <asp:imagebutton id="ibnSearch" runat="server" height="19px" imagealign="AbsMiddle" imageurl="~/images/btn/b_033.gif" onclick="ibnSearch_Click"></asp:imagebutton>
+                        &nbsp;
+                    </td>
+		        </tr>
+		    </table>
+        </td>
+    </tr>
+    <%--<tr>
+        <td height="20">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <td>
+                    &nbsp;&nbsp;&nbsp;
+                    
+                </td>
+                <td align="right">
+                    
+                    &nbsp;
+                </td>
+            </table>
+        </td>
+    </tr>--%>
+    <tr>
+        <td align="center">
+            <%--<DCWC:Chart ID="Chart1" runat="server" ImageUrl="../TempImages/ChartPic_#SEQ(300,3)" Palette="Dundas">
+                <ChartAreas>
+                    <dcwc:ChartArea Name="Default" BorderColor="64, 64, 64, 64" BackGradientEndColor="White" BackColor="White" ShadowColor="Transparent">
+                        <Area3DStyle XAngle="15" YAngle="10" WallWidth="5" />
+                        <position y="15" height="78" width="88" x="5"></Position>
+                        <axisy linecolor="64, 64, 64, 64" LabelsAutoFit="False">
+	                        <labelstyle font="Trebuchet MS, 8.25pt, style=Bold"></LabelStyle>
+	                        <majorgrid linecolor="64, 64, 64, 64"></MajorGrid>
+	                        <majortickmark size="0.6"></MajorTickMark>
+                        </AxisY>
+                        <axisx linecolor="64, 64, 64, 64" LabelsAutoFit="False" Interval="1">
+	                        <labelstyle font="Gulim, 12px"></LabelStyle>
+	                        <majorgrid linecolor="64, 64, 64, 64"></MajorGrid>
+	                        </AxisX>
+                    </dcwc:ChartArea>
+                </ChartAreas>
+                <Legends>
+                   <DCWC:Legend Name="Default">
+                   </DCWC:Legend>
+               </Legends>
+            </DCWC:Chart>
+            <DCWC:Chart ID="Chart2" runat="server" ImageUrl="../TempImages/ChartPic_#SEQ(300,3)" Palette="Dundas" Height="5px" Width="5px">
+                <ChartAreas>
+                    <dcwc:ChartArea Name="Default" BorderColor="64, 64, 64, 64" BackGradientEndColor="White" BackColor="White" ShadowColor="Transparent">
+                        <Area3DStyle XAngle="15" YAngle="10" WallWidth="5" />
+                        <position y="15" height="78" width="88" x="5"></Position>
+                        <axisy linecolor="64, 64, 64, 64" LabelsAutoFit="False">
+	                        <labelstyle font="Trebuchet MS, 8.25pt, style=Bold"></LabelStyle>
+	                        <majorgrid linecolor="64, 64, 64, 64"></MajorGrid>
+	                        <majortickmark size="0.6"></MajorTickMark>
+                        </AxisY>
+                        <axisx linecolor="64, 64, 64, 64" LabelsAutoFit="False" Interval="1">
+	                        <labelstyle font="Gulim, 12px"></LabelStyle>
+	                        <majorgrid linecolor="64, 64, 64, 64"></MajorGrid>
+	                        </AxisX>
+                    </dcwc:ChartArea>
+                </ChartAreas>
+                <Legends>
+                   <DCWC:Legend Name="Default">
+                   </DCWC:Legend>
+               </Legends>
+            </DCWC:Chart>--%>
+            
+            
+            <br />
+            <igchart:UltraChart id="UltraChart1" runat="server" ChartType="SplineChart" 
+                Version="7.1" BackgroundImageFileName="" BorderColor="Black" 
+                BorderWidth="1px" 
+                EmptyChartText="Data Not Available. Please call UltraChart.Data.DataBind() after setting valid Data.DataSource" 
+                Height="380px" Width="800px">
+                    <Border CornerRadius="0" DrawStyle="Solid" Raised="False" Color="Black" Thickness="1"></Border>
+                    <TitleRight Font="Microsoft Sans Serif, 7.8pt" Visible="False" Text="" FontSizeBestFit="False" Orientation="VerticalRightFacing" WrapText="False" Extent="26" FontColor="Black" HorizontalAlign="Near" VerticalAlign="Center" Location="Right">
+                        <Margins Bottom="5" Left="5" Top="5" Right="5"></Margins>
+                    </TitleRight>
+                    <Data DataMember="" SwapRowsAndColumns="False" UseMinMax="False" UseRowLabelsColumn="False" MinValue="-1.7976931348623157E+308" RowLabelsColumn="-1" ZeroAligned="False" MaxValue="1.7976931348623157E+308">
+                        <EmptyStyle Text="Empty" EnableLineStyle="False" ShowInLegend="False" EnablePE="False" EnablePoint="False">
+                            <PointPE FillGradientStyle="None" FillOpacity="255" FillStopOpacity="255" ElementType="SolidFill" Fill="Transparent" Hatch="None" Texture="LightGrain" ImageFitStyle="StretchedFit" FillStopColor="Transparent" StrokeOpacity="255" ImagePath="" Stroke="Black" StrokeWidth="1" ImageWrapMode="Tile" TextureApplication="Normal"></PointPE>
+                            <PointStyle CharacterFont="Microsoft Sans Serif, 7.8pt"></PointStyle>
+                            <LineStyle MidPointAnchors="False" EndStyle="NoAnchor" DrawStyle="Dash" StartStyle="NoAnchor"></LineStyle>
+                            <PE FillGradientStyle="None" FillOpacity="255" FillStopOpacity="255" ElementType="SolidFill" Fill="Transparent" Hatch="None" Texture="LightGrain" ImageFitStyle="StretchedFit" FillStopColor="Transparent" StrokeOpacity="255" ImagePath="" Stroke="Black" StrokeWidth="1" ImageWrapMode="Tile" TextureApplication="Normal"></PE>
+                        </EmptyStyle>
+                    </Data>
+                    <TitleLeft Font="Microsoft Sans Serif, 7.8pt" Visible="False" Text="" FontSizeBestFit="False" Orientation="VerticalLeftFacing" WrapText="False" Extent="26" FontColor="Black" HorizontalAlign="Near" VerticalAlign="Center" Location="Left">
+                        <Margins Bottom="5" Left="5" Top="5" Right="5"></Margins>
+                    </TitleLeft>
+                    <%--<ColorModel ColorBegin="DarkGoldenrod" ColorEnd="Navy" AlphaLevel="150" ModelStyle="CustomSkin" Grayscale="False" Scaling="None">
+                        <Skin ApplyRowWise="False">
+                            <PEs>
+                                <igchartprop:PaintElement FillGradientStyle="Horizontal" FillOpacity="255" FillStopOpacity="255" ElementType="Gradient" Fill="108, 162, 36" Hatch="None" Texture="LightGrain" ImageFitStyle="StretchedFit" FillStopColor="148, 244, 17" StrokeOpacity="255" ImagePath="" Stroke="Black" StrokeWidth="1" ImageWrapMode="Tile" TextureApplication="Normal"></igchartprop:PaintElement>
+                                <igchartprop:PaintElement FillGradientStyle="Horizontal" FillOpacity="255" FillStopOpacity="255" ElementType="Gradient" Fill="7, 108, 176" Hatch="None" Texture="LightGrain" ImageFitStyle="StretchedFit" FillStopColor="53, 200, 255" StrokeOpacity="255" ImagePath="" Stroke="Black" StrokeWidth="1" ImageWrapMode="Tile" TextureApplication="Normal"></igchartprop:PaintElement>
+                                <igchartprop:PaintElement FillGradientStyle="Horizontal" FillOpacity="255" FillStopOpacity="255" ElementType="Gradient" Fill="230, 190, 2" Hatch="None" Texture="LightGrain" ImageFitStyle="StretchedFit" FillStopColor="255, 255, 81" StrokeOpacity="255" ImagePath="" Stroke="Black" StrokeWidth="1" ImageWrapMode="Tile" TextureApplication="Normal"></igchartprop:PaintElement>
+                                <igchartprop:PaintElement FillGradientStyle="Horizontal" FillOpacity="255" FillStopOpacity="255" ElementType="Gradient" Fill="215, 0, 5" Hatch="None" Texture="LightGrain" ImageFitStyle="StretchedFit" FillStopColor="254, 117, 16" StrokeOpacity="255" ImagePath="" Stroke="Black" StrokeWidth="1" ImageWrapMode="Tile" TextureApplication="Normal"></igchartprop:PaintElement>
+                                <igchartprop:PaintElement FillGradientStyle="Horizontal" FillOpacity="255" FillStopOpacity="255" ElementType="Gradient" Fill="252, 122, 10" Hatch="None" Texture="LightGrain" ImageFitStyle="StretchedFit" FillStopColor="255, 108, 66" StrokeOpacity="255" ImagePath="" Stroke="Black" StrokeWidth="1" ImageWrapMode="Tile" TextureApplication="Normal"></igchartprop:PaintElement>
+                            </PEs>
+                        </Skin>
+                    </ColorModel>--%>
+                    <Axis BackColor="Cornsilk">
+                        <Y LineEndCapStyle="NoAnchor" LineDrawStyle="Solid" Visible="True" 
+                            LineColor="Black" RangeType="Automatic" TickmarkInterval="40" LineThickness="1" 
+                            Extent="30" LogBase="10" TickmarkStyle="Smart" TickmarkPercentage="10" 
+                            NumericAxisType="Linear">
+                            <StripLines Interval="2" Visible="False">
+                                <PE FillGradientStyle="None" FillOpacity="255" FillStopOpacity="255" ElementType="SolidFill" Fill="Transparent" Hatch="None" Texture="LightGrain" ImageFitStyle="StretchedFit" FillStopColor="Transparent" StrokeOpacity="255" ImagePath="" Stroke="Black" StrokeWidth="1" ImageWrapMode="Tile" TextureApplication="Normal"></PE>
+                            </StripLines>
+                            <ScrollScale Scale="1" Scroll="0" Height="10" Width="15" Visible="False"></ScrollScale>
+                            <Labels ItemFormatString="&lt;DATA_VALUE:00.##&gt;" VerticalAlign="Center" 
+                                WrapText="False" FontSizeBestFit="False" SeriesFormatString="" ClipText="True" 
+                                Font="Verdana, 7pt" Flip="False" ItemFormat="DataValue" FontColor="DimGray" 
+                                Orientation="Horizontal" Visible="True" OrientationAngle="0" 
+                                HorizontalAlign="Far">
+                                <SeriesLabels Font="Verdana, 7pt" Visible="True" HorizontalAlign="Far" 
+                                    FontSizeBestFit="False" ClipText="True" FormatString="" 
+                                    Orientation="Horizontal" WrapText="False" Flip="False" FontColor="DimGray" 
+                                    VerticalAlign="Center" OrientationAngle="0">
+                                    <Layout Behavior="Auto">
+                                    </Layout>
+                                </SeriesLabels>
+                                <Layout Behavior="Auto">
+                                </Layout>
+                            </Labels>
+                            <MajorGridLines AlphaLevel="255" DrawStyle="Dot" Color="Gainsboro" Visible="True" Thickness="1"></MajorGridLines>
+                            <MinorGridLines AlphaLevel="255" DrawStyle="Dot" Color="LightGray" Visible="False" Thickness="1"></MinorGridLines>
+                            <TimeAxisStyle TimeAxisStyle="Continuous"></TimeAxisStyle>
+                            <Margin>
+                                <Far MarginType="Percentage" Value="0"></Far>
+                                <Near MarginType="Percentage" Value="0"></Near>
+                            </Margin>
+                        </Y>
+                        <Y2 LineEndCapStyle="NoAnchor" LineDrawStyle="Solid" Visible="True" 
+                            RangeMin="0" LineColor="Black" RangeType="Automatic" TickmarkInterval="40" 
+                            LineThickness="1" Extent="30" LogBase="10" RangeMax="0" TickmarkStyle="Smart" 
+                            TickmarkPercentage="10" NumericAxisType="Linear">
+                            <StripLines Interval="2" Visible="False">
+                                <PE FillGradientStyle="None" FillOpacity="255" FillStopOpacity="255" ElementType="SolidFill" Fill="Transparent" Hatch="None" Texture="LightGrain" ImageFitStyle="StretchedFit" FillStopColor="Transparent" StrokeOpacity="255" ImagePath="" Stroke="Black" StrokeWidth="1" ImageWrapMode="Tile" TextureApplication="Normal"></PE>
+                            </StripLines>
+                            <ScrollScale Scale="1" Scroll="0" Height="10" Width="15" Visible="False"></ScrollScale>
+                            <TimeAxisStyle TimeAxisStyle="Continuous"></TimeAxisStyle>
+                            <MajorGridLines AlphaLevel="255" DrawStyle="Dot" Color="Gainsboro" Visible="True" Thickness="1"></MajorGridLines>
+                            <MinorGridLines AlphaLevel="255" DrawStyle="Dot" Color="LightGray" Visible="False" Thickness="1"></MinorGridLines>
+                            <Labels ItemFormatString="&lt;DATA_VALUE:00.##&gt;" VerticalAlign="Center" 
+                                WrapText="False" FontSizeBestFit="False" SeriesFormatString="" ClipText="True" 
+                                Font="Verdana, 7pt" Flip="False" ItemFormat="DataValue" FontColor="Gray" 
+                                Orientation="Horizontal" Visible="True" OrientationAngle="0" 
+                                HorizontalAlign="Near">
+                                <SeriesLabels Font="Verdana, 7pt" Visible="True" HorizontalAlign="Near" 
+                                    FontSizeBestFit="False" ClipText="True" FormatString="" 
+                                    Orientation="Horizontal" WrapText="False" Flip="False" FontColor="Gray" 
+                                    VerticalAlign="Center" OrientationAngle="0">
+                                    <Layout Behavior="Auto">
+                                    </Layout>
+                                </SeriesLabels>
+                                <Layout Behavior="Auto">
+                                </Layout>
+                            </Labels>
+                        </Y2>
+                        <X2 LineEndCapStyle="NoAnchor" LineDrawStyle="Solid" Visible="False" 
+                            RangeMin="0" LineColor="Black" RangeType="Automatic" TickmarkInterval="0" 
+                            LineThickness="1" Extent="80" LogBase="10" RangeMax="0" TickmarkStyle="Smart" 
+                            TickmarkPercentage="10" NumericAxisType="Linear">
+                            <StripLines Interval="2" Visible="False">
+                                <PE FillGradientStyle="None" FillOpacity="255" FillStopOpacity="255" ElementType="SolidFill" Fill="Transparent" Hatch="None" Texture="LightGrain" ImageFitStyle="StretchedFit" FillStopColor="Transparent" StrokeOpacity="255" ImagePath="" Stroke="Black" StrokeWidth="1" ImageWrapMode="Tile" TextureApplication="Normal"></PE>
+                            </StripLines>
+                            <ScrollScale Scale="1" Scroll="0" Height="10" Width="15" Visible="False"></ScrollScale>
+                            <Labels ItemFormatString="&lt;ITEM_LABEL&gt;" VerticalAlign="Center" 
+                                WrapText="False" FontSizeBestFit="False" SeriesFormatString="" ClipText="True" 
+                                Font="Verdana, 7pt" Flip="False" ItemFormat="ItemLabel" FontColor="Gray" 
+                                Orientation="VerticalLeftFacing" Visible="True" OrientationAngle="0" 
+                                HorizontalAlign="Far">
+                                <SeriesLabels Font="Verdana, 7pt" Visible="True" HorizontalAlign="Far" 
+                                    FontSizeBestFit="False" ClipText="True" FormatString="" 
+                                    Orientation="VerticalLeftFacing" WrapText="False" Flip="False" FontColor="Gray" 
+                                    VerticalAlign="Center" OrientationAngle="0">
+                                    <Layout Behavior="Auto">
+                                    </Layout>
+                                </SeriesLabels>
+                                <Layout Behavior="Auto">
+                                </Layout>
+                            </Labels>
+                            <MajorGridLines AlphaLevel="255" DrawStyle="Dot" Color="Gainsboro" Visible="True" Thickness="1"></MajorGridLines>
+                            <MinorGridLines AlphaLevel="255" DrawStyle="Dot" Color="LightGray" Visible="False" Thickness="1"></MinorGridLines>
+                            <TimeAxisStyle TimeAxisStyle="Continuous"></TimeAxisStyle>
+                            <Margin>
+                                <Far MarginType="Percentage" Value="0"></Far>
+                                <Near MarginType="Percentage" Value="0"></Near>
+                            </Margin>
+                        </X2>
+                        <Z2 LineEndCapStyle="NoAnchor" LineDrawStyle="Solid" Visible="False" 
+                            RangeMin="0" LineColor="Black" RangeType="Automatic" TickmarkInterval="0" 
+                            LineThickness="1" Extent="80" LogBase="10" RangeMax="0" TickmarkStyle="Smart" 
+                            TickmarkPercentage="10" NumericAxisType="Linear">
+                            <StripLines Interval="2" Visible="False">
+                                <PE FillGradientStyle="None" FillOpacity="255" FillStopOpacity="255" ElementType="SolidFill" Fill="Transparent" Hatch="None" Texture="LightGrain" ImageFitStyle="StretchedFit" FillStopColor="Transparent" StrokeOpacity="255" ImagePath="" Stroke="Black" StrokeWidth="1" ImageWrapMode="Tile" TextureApplication="Normal"></PE>
+                            </StripLines>
+                            <ScrollScale Scale="1" Scroll="0" Height="10" Width="15" Visible="False"></ScrollScale>
+                            <Labels ItemFormatString="" VerticalAlign="Center" WrapText="False" 
+                                FontSizeBestFit="False" SeriesFormatString="&lt;SERIES_LABEL&gt;" 
+                                ClipText="True" Font="Verdana, 7pt" Flip="False" ItemFormat="None" 
+                                FontColor="Gray" Orientation="Horizontal" Visible="True" OrientationAngle="0" 
+                                HorizontalAlign="Near">
+                                <SeriesLabels Font="Verdana, 7pt" Visible="True" HorizontalAlign="Near" 
+                                    FontSizeBestFit="False" ClipText="True" FormatString="&lt;SERIES_LABEL&gt;" 
+                                    Orientation="Horizontal" WrapText="False" Flip="False" FontColor="Gray" 
+                                    VerticalAlign="Center" OrientationAngle="0">
+                                    <Layout Behavior="Auto">
+                                    </Layout>
+                                </SeriesLabels>
+                                <Layout Behavior="Auto">
+                                </Layout>
+                            </Labels>
+                            <MajorGridLines AlphaLevel="255" DrawStyle="Dot" Color="Gainsboro" Visible="True" Thickness="1"></MajorGridLines>
+                            <MinorGridLines AlphaLevel="255" DrawStyle="Dot" Color="LightGray" Visible="False" Thickness="1"></MinorGridLines>
+                            <TimeAxisStyle TimeAxisStyle="Continuous"></TimeAxisStyle>
+                            <Margin>
+                                <Far MarginType="Percentage" Value="0"></Far>
+                                <Near MarginType="Percentage" Value="0"></Near>
+                            </Margin>
+                        </Z2>
+                        <Z LineEndCapStyle="NoAnchor" LineDrawStyle="Solid" Visible="False" 
+                            RangeMin="0" LineColor="Black" RangeType="Automatic" TickmarkInterval="0" 
+                            LineThickness="1" LogBase="10" RangeMax="0" TickmarkStyle="Smart" 
+                            TickmarkPercentage="10" NumericAxisType="Linear">
+                            <StripLines Interval="2" Visible="False">
+                                <PE FillGradientStyle="None" FillOpacity="255" FillStopOpacity="255" ElementType="SolidFill" Fill="Transparent" Hatch="None" Texture="LightGrain" ImageFitStyle="StretchedFit" FillStopColor="Transparent" StrokeOpacity="255" ImagePath="" Stroke="Black" StrokeWidth="1" ImageWrapMode="Tile" TextureApplication="Normal"></PE>
+                            </StripLines>
+                            <ScrollScale Scale="1" Scroll="0" Height="10" Width="15" Visible="False"></ScrollScale>
+                            <Labels ItemFormatString="" VerticalAlign="Center" WrapText="False" 
+                                FontSizeBestFit="False" SeriesFormatString="&lt;SERIES_LABEL&gt;" 
+                                ClipText="True" Font="Verdana, 7pt" Flip="False" ItemFormat="None" 
+                                FontColor="DimGray" Orientation="Horizontal" Visible="True" 
+                                OrientationAngle="0" HorizontalAlign="Near">
+                                <SeriesLabels Font="Verdana, 7pt" Visible="True" HorizontalAlign="Near" 
+                                    FontSizeBestFit="False" ClipText="True" FormatString="&lt;SERIES_LABEL&gt;" 
+                                    Orientation="Horizontal" WrapText="False" Flip="False" FontColor="DimGray" 
+                                    VerticalAlign="Center" OrientationAngle="0">
+                                    <Layout Behavior="Auto">
+                                    </Layout>
+                                </SeriesLabels>
+                                <Layout Behavior="Auto">
+                                </Layout>
+                            </Labels>
+                            <MajorGridLines AlphaLevel="255" DrawStyle="Dot" Color="Gainsboro" Visible="True" Thickness="1"></MajorGridLines>
+                            <MinorGridLines AlphaLevel="255" DrawStyle="Dot" Color="LightGray" Visible="False" Thickness="1"></MinorGridLines>
+                            <TimeAxisStyle TimeAxisStyle="Continuous"></TimeAxisStyle>
+                            <Margin>
+                                <Far MarginType="Percentage" Value="0"></Far>
+                                <Near MarginType="Percentage" Value="0"></Near>
+                            </Margin>
+                        </Z>
+<PE ElementType="None" Fill="Cornsilk"></PE>
+
+                        <X LineEndCapStyle="NoAnchor" LineDrawStyle="Solid" Visible="True" 
+                            LineColor="Black" RangeType="Automatic" TickmarkInterval="0" LineThickness="1" 
+                            Extent="20" TickmarkStyle="Smart" NumericAxisType="Linear">
+                            <StripLines Interval="2" Visible="False">
+                                <PE FillGradientStyle="None" FillOpacity="255" FillStopOpacity="255" ElementType="SolidFill" Fill="Transparent" Hatch="None" Texture="LightGrain" ImageFitStyle="StretchedFit" FillStopColor="Transparent" StrokeOpacity="255" ImagePath="" Stroke="Black" StrokeWidth="1" ImageWrapMode="Tile" TextureApplication="Normal"></PE>
+                            </StripLines>
+                            <ScrollScale Scale="1" Scroll="0" Height="10" Width="15" Visible="False"></ScrollScale>
+                            <TimeAxisStyle TimeAxisStyle="Continuous"></TimeAxisStyle>
+                            <Margin>
+                                <Near MarginType="Pixels" />
+                                <Far MarginType="Pixels"></Far>
+                            </Margin>
+                            <MajorGridLines AlphaLevel="255" DrawStyle="Dot" Color="Gainsboro" Visible="True" Thickness="1"></MajorGridLines>
+                            <MinorGridLines AlphaLevel="255" DrawStyle="Dot" Color="LightGray" Visible="False" Thickness="1"></MinorGridLines>
+                            <Labels ItemFormatString="&lt;ITEM_LABEL&gt;" VerticalAlign="Near" 
+                                WrapText="False" FontSizeBestFit="False" SeriesFormatString="" 
+                                ClipText="True" Flip="False" ItemFormat="ItemLabel" FontColor="DimGray" 
+                                Orientation="Horizontal" Visible="True" OrientationAngle="0" 
+                                HorizontalAlign="Center">
+                                <SeriesLabels Font="Gulim, 8pt" Visible="True" HorizontalAlign="Center" 
+                                    FontSizeBestFit="False" ClipText="True" FormatString="" 
+                                    Orientation="Horizontal" WrapText="False" Flip="False" 
+                                    FontColor="DimGray" VerticalAlign="Center" OrientationAngle="0">
+                                    <Layout Behavior="Auto">
+                                    </Layout>
+                                </SeriesLabels>
+                                <Layout Behavior="Auto" Padding="0">
+                                </Layout>
+                            </Labels>
+                        </X>
+                    </Axis>
+                    <SplineChart DrawStyle="Solid" Thickness="3" NullHandling="Zero" MidPointAnchors="True" StartStyle="DiamondAnchor" HighLightLines="False" SplineTension="0.3" EndStyle="DiamondAnchor"></SplineChart>
+                    <%--<Effects>
+                        <Effects>
+                            <igchartprop:GradientEffect />
+                        </Effects>
+                    </Effects>--%>
+                    <Legend Location="Bottom" SpanPercentage="10" Visible="True"></Legend>
+                    <TitleBottom Font="Microsoft Sans Serif, 7.8pt" Visible="False" 
+                        Text="fdsfasfasdf" FontSizeBestFit="False" Orientation="Horizontal" 
+                        WrapText="False" Extent="26" FontColor="Black" HorizontalAlign="Far" 
+                        VerticalAlign="Center" Location="Bottom">
+                        <Margins Bottom="5" Left="5" Top="5" Right="5"></Margins>
+                    </TitleBottom>
+                    <TitleTop Font="Microsoft Sans Serif, 10pt, style=Bold" Text="원시평가" FontSizeBestFit="False" 
+                        Orientation="Horizontal" WrapText="False" Extent="33" FontColor="Black" 
+                        HorizontalAlign="Center" VerticalAlign="Center" Location="Top">
+                    </TitleTop>
+                    <DeploymentScenario Scenario="FileSystem" ImageURL="/TempImages/Chart_#SEQNUM(100).png" ImageType="Png" FilePath="/TempImages"></DeploymentScenario>
+                    <Tooltips BorderThickness="1" Overflow="None" FormatString="&lt;DATA_VALUE:00.##&gt;" EnableFadingEffect="False" Format="DataValue" FontColor="Black" BorderColor="Black" Display="MouseMove" BackColor="AntiqueWhite" Padding="0"></Tooltips>
+
+                    <ColorModel AlphaLevel="150" ModelStyle="CustomLinear"></ColorModel>
+                </igchart:UltraChart>
+            
+            
+		</td>
+	</tr>
+	<tr height="8">
+	    <td>
+	        <img src="../images/blank.gif" width="1" height="8">
+        </td>
+    </tr>
+	<tr>
+		<td height="40">
+            <table width="100%">
+                <tr>
+                    <td id="tdImgBox" runat="server">
+                        &nbsp;
+                        <asp:dropdownlist id="ddlBiasTypeID" runat="server" class="box01" Visible="False"></asp:dropdownlist>
+                        <asp:imagebutton id="ibnApplyBiasPoint" runat="server" imagealign="AbsMiddle" imageurl="../images/btn/b_186.gif" CommandArgument="JOB_04" CommandName="BIZ_CONFIRM_BIAS" onclick="ibnConfirmBias_Click" Visible="False"></asp:imagebutton>
+                        <asp:imagebutton id="ibnConfirmCancel" runat="server" imagealign="AbsMiddle" imageurl="../images/btn/b_019.gif" onclick="ibnConfirmCancel_Click" visible="False"></asp:imagebutton></td>
+                    <td align="right">
+                        <%--<asp:imagebutton id="ibnDownExcel" runat="server" height="19px" imageurl="~/images/btn/b_041.gif" onclick="ibnDownExcel_Click" ImageAlign="AbsMiddle" Visible="false"></asp:imagebutton>--%>
+                        &nbsp;&nbsp;
+                        <asp:ImageButton id="ibnCalcBiasPoint" onclick="ibnCalcBiasPoint_Click" runat="server" ImageUrl="~/images/btn/b_187.gif"  CommandArgument="JOB_04" CommandName="BIZ_CONFIRM_BIAS" ImageAlign="AbsMiddle"></asp:ImageButton>
+                        <asp:ImageButton ID="ibnOrg" ImageUrl="~/images/btn/b_025.gif" runat="server" OnClick="ibnOrg_Click" ImageAlign="AbsMiddle" />
+                        <asp:ImageButton ID="ibnAvg" ImageUrl="~/images/btn/b_026.gif" runat="server" OnClick="ibnAvg_Click" ImageAlign="AbsMiddle" />
+                        <asp:ImageButton ID="ibnStd" ImageUrl="~/images/btn/b_027.gif" runat="server" OnClick="ibnStd_Click" ImageAlign="AbsMiddle" />
+                        &nbsp;&nbsp;&nbsp;
+                    </td>
+                </tr>
+            </table>
+		</td>
+	</tr>
+</table>
+
+<asp:hiddenfield id="hdfEstID" runat="server"></asp:hiddenfield>
+<asp:hiddenfield id="hdfSearchEstID" runat="server"></asp:hiddenfield>
+<asp:hiddenfield id="hdfEstTermRefID" runat="server"></asp:hiddenfield>
+<asp:hiddenfield id="hdfEstTermSubID" runat="server"></asp:hiddenfield>
+<asp:hiddenfield id="hdfEstTermStepID" runat="server"></asp:hiddenfield>
+<asp:literal id="ltrScript" runat="server"></asp:literal>
+<asp:linkbutton id="lbnReload" runat="server" OnClick="lbnReload_Click"></asp:linkbutton>
+<!--- MAIN END --->
+    <asp:placeholder runat="server" ID="phdBottom"></asp:placeholder>
+    </div>
+    </form>
+<%Response.WriteFile("../_common/html/CommonBottom.htm");%>

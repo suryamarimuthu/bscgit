@@ -1,0 +1,1595 @@
+﻿using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using System.Drawing;
+using System.Collections.Generic;
+using System.Text;
+using System.IO;
+
+using MicroBSC.Estimation.Biz;
+
+using Infragistics.WebUI.UltraWebGrid;
+using Infragistics.Documents.Excel;
+
+public partial class EST_EST1101S1 : EstPageBase
+{
+	#region ================ 필드 =======================
+
+	public string EST_ID;                           // 평가ID
+	public string EST_TGT_TYPE;                     // EST or TGT => 평가자 인지 피평가자 인지
+	public string YEAR_YN;                          // 연년평가인지 여부
+	public string MERGE_YN;                         // 합산인지 여부
+	public string DEPT_COLUMN_NO_USE_YN;            // 부서컬럼을 사용하지 않는다 에 대한 여부
+	public string ESTTERM_SUB_ALL_USE_YN;           // 모든 주기를 사용한다 에 대한 여부
+	public string ESTTERM_STEP_ALL_USE_YN;          // 모든 차수를 사용한다 에 대한 여부
+	public YesNo WEIGHT_EST_MANUAL_YN;             // 평가에 대한 수기 가중치 사용 여부
+	public YesNo WEIGHT_STEP_MANUAL_YN;            // 차수에 대한 수기 가중치 사용 여부
+
+	public string REPORT_YN;                        // 리포트 여부
+
+	public int DEFAULT_INDEX_COUNT = 1;    // Ultra
+
+	private DataTable DT_COLUMN_INFO = null; // 평가별 컬럼정보를 가지고 있는 DataTable
+	private DataTable DT_GRADE = null; // 등급에 관련된 DataTable
+	private DataTable DT_CTRL_INFO = null; // 조정에 관련된 DataTable
+	private DataTable DT_CTRL_EST_DEPT_MAP = null; // 평가대상 부서의 조정 대상 DataTable
+	private DataTable DT_CTRL_EST_EMP_MAP = null; // 평가자의 조정 대상 DataTable
+	private DataTable DT_CTRL_POINT_DATA = null; // 조정 점수 데이터 DataTable
+	private DataTable DT_CTRL_GRADE_DATA = null; // 조정 등급 데이터 DataTable
+	private DataTable DT_EST_DATA = null; // 평가 Data DataTable
+	private DataTable DT_DEPT_SCALE = null; // 부서별 절대/상대평가 여부 DataTable
+	private DataTable DT_POS_SCALE = null; // 부서별 직급체계에 따른 절대/상대평가 여부 DataTable
+	private DataTable DT_POS_BIZ = null; // 직무 데이터 DataTable
+
+    private bool IVISIBLE_PAST_POINT_YN
+    {
+        get
+        {
+            if (ViewState["VISIBLE_PAST_POINT_YN"] == null)
+                ViewState["VISIBLE_PAST_POINT_YN"] = true;
+            return (bool)ViewState["VISIBLE_PAST_POINT_YN"];
+        }
+        set
+        {
+            ViewState["VISIBLE_PAST_POINT_YN"] = value;
+        }
+    }
+
+    protected string IEST_STATUS
+    {
+        get
+        {
+            if (ViewState["EST_STATUS"] == null)
+                ViewState["EST_STATUS"] = "N";
+            return (string)ViewState["EST_STATUS"];
+        }
+        set
+        {
+            ViewState["EST_STATUS"] = value;
+        }
+    }
+
+    protected string IEST_COMPLETE
+    {
+        get
+        {
+            if (ViewState["EST_COMPLETE"] == null)
+                ViewState["EST_COMPLETE"] = "N";
+            return (string)ViewState["EST_COMPLETE"];
+        }
+        set
+        {
+            ViewState["EST_COMPLETE"] = value;
+        }
+    }
+
+	private bool USE_POS_BIZ = false; // 직무 사용 여부
+
+	#endregion
+
+	#region ====================== Page_Load =====================
+
+	protected void Page_Init(object sender, EventArgs e)
+	{
+		// PlaceHold에 화면의 레이아웃의 모양을 잡아주는 UserControl 를 넣어준다.
+		// Master Page와 유사한 기능
+		SetPageLayout(phdLayout, phdBottom);
+	}
+
+	protected void Page_Load(object sender, EventArgs e)
+	{
+		EST_JOB_IDS = WebUtility.GetRequest("EST_JOB_IDS");                 // EST_JOB_ID의 ',' 구분으로 배열을 받음 => 작업 버튼 중 배열값의 따라 보이기 여부가 결정됨
+        EST_TGT_TYPE = WebUtility.GetRequest("EST_TGT_TYPE", "EST");         // 평가자 인지 피평가자 인지 의 구분
+        YEAR_YN = WebUtility.GetRequest("YEAR_YN", "N");                // 년간 일 경우 주기의 DropDownList가 보이지 않는다.
+        MERGE_YN = WebUtility.GetRequest("MERGE_YN", "N");               // 합산 일 경우 차수의 DropDownList가 보이지 않는다.
+        DEPT_COLUMN_NO_USE_YN = WebUtility.GetRequest("DEPT_COLUMN_NO_USE_YN", "N");  // 여부에 따라 피평가 주체가 부서냐 아니면 사원이냐의 따라 관련 컬럼이 보이기 여부가 결정된다.
+        ESTTERM_SUB_ALL_USE_YN = WebUtility.GetRequest("ESTTERM_SUB_ALL_USE_YN", "N"); // 여부에 따라 주기 DropDownList가 결정된다. 기본은 보이기 Yes => 모든 주기의 정보를 보여주게 된다.
+        ESTTERM_STEP_ALL_USE_YN = WebUtility.GetRequest("ESTTERM_STEP_ALL_USE_YN", "N");// 여부에 따라 차수 DropDownList가 결정된다. 기본은 보이기 Yes => 모든 차수의 정보를 보여주게 된다.
+        REPORT_YN = WebUtility.GetRequest("REPORT_YN", "N");              // 리포트인지의 여부
+
+		if (!Page.IsPostBack)
+		{
+
+			DropDownListCommom.BindComp(ddlCompID, lblCompTitle);                       // 만약 성과평가를 사용하는 회사가 2개 이상을 경우 그 부분을 해결하기 위해서 COMP_ID 값을 사용하는데 UI를 DropDownList로 해결한다.
+			DropDownListCommom.BindEstTerm(ddlEstTermRefID);                            // 평가기간 DropDownList에 바인딩
+			DropDownListCommom.BindDefaultValue(ddlEstTermSubID, "----------", "");     // 평가주기 DropDownList에 바인딩
+			DropDownListCommom.BindDefaultValue(ddlEstTermStepID, "----------", "");    // 평가차수 DropDownList에 바인딩
+
+            ddlTgtDept.Visible = false;
+
+          
+			// COMP_ID, ESTTERM_REF_ID, ESTTERM_SUB_ID, ESTTERM_STEP_ID은 Session 변수로 사용하여
+			// 한 페이지에서 저장된 값을 이동되는 다른 페이지에서 사용한다.
+			if (COMP_ID == 0)
+				COMP_ID = WebUtility.GetIntByValueDropDownList(ddlCompID);
+
+			if (ESTTERM_REF_ID == 0)
+				ESTTERM_REF_ID = WebUtility.GetIntByValueDropDownList(ddlEstTermRefID);
+
+			if (ESTTERM_SUB_ID == 0)
+				ESTTERM_SUB_ID = WebUtility.GetIntByValueDropDownList(ddlEstTermSubID);
+			if (ESTTERM_STEP_ID == 0)
+				ESTTERM_STEP_ID = WebUtility.GetIntByValueDropDownList(ddlEstTermStepID);
+
+			// 모든 버튼을 클릭할 때는 confirm 을 사용하여 사용여부를 확인한다.
+			ibnGetOuterData.Attributes.Add("onclick", "return confirm('현재 평가 정보 데이터를 등록하시겠습니까?');");                  // 외부데이터 가져오기
+			ibnConfirmByForce.Attributes.Add("onclick", "return confirm('평가결과 강제확정하시겠습니까?');");                           // 평가결과 강제확정
+
+			// 쿼리스트링으로 받은 EST_JOB_ID로 COL_ 관련 필드의 값을 넣어 주는 메소드
+			SetColColumnsByEstJobID(EST_JOB_IDS);
+
+			// 쿼리스트링으로 EST_ID가 존재한다면
+			if (!WebUtility.GetRequest("EST_ID").Equals(""))
+			{
+				txtSearchEstName.Visible = false;        // 평가 조회 TextBox
+				imgEstButton.Visible = false;        // 평가 조회 Image
+
+				hdfSearchEstID.Value = WebUtility.GetRequest("EST_ID");  // HiddenField에 값을 저장
+				EST_ID = hdfSearchEstID.Value;             // 
+
+				// 권한에 따라 버튼의 보여주기 여부 처리함
+				BizUtility.SetButtonVisibleCommandNameByRolID(EMP_REF_ID, tdImgBox.Controls);
+
+                //if (EST_ID == "3GA" && EST_JOB_IDS == "JOB_07")
+                //    BizUtility.SetButtonVisibleCommandNameByRolID(EMP_REF_ID, ibtnSearchAll.Parent.Controls);
+
+                // 합산여부 (차수 합산)
+                
+                    ESTTERM_STEP_ID = BizUtility.GetEstTermStepIDByMergeYN(COMP_ID);
+                
+
+				// EST_JOB_ID에 따라 버튼의 보여주기 여부를 처리함
+				BizUtility.SetButtonVisibleByEstJobID(EST_JOB_IDS
+													, tdImgBox.Controls
+													, COMP_ID
+													, hdfSearchEstID.Value
+													, ESTTERM_REF_ID
+													, ESTTERM_SUB_ID
+													, ESTTERM_STEP_ID);
+
+				// EST_JOB_ID에 따라 진행상태아이콘 Html코드 반영
+				SetConfirmStatusHtml(EST_JOB_IDS);
+
+				// 전체검색 버튼 클릭에 따라 값이 true or false
+				SEARCH_ALL = false;
+
+			
+                //과거년도 점수 비활성화 여부
+                if (!User.IsInRole(ROLE_ADMIN) && !User.IsInRole(ROLE_EST_EMPLOYEE) && !User.IsInRole(ROLE_TEAM_MANAGER))
+                {
+                    Biz_EstInfos biz = new Biz_EstInfos();
+                    DataTable dtBiz = biz.GetEstInfo(COMP_ID, EST_ID).Tables[0];
+                    if (dtBiz.Rows.Count > 0)
+                        IVISIBLE_PAST_POINT_YN = (dtBiz.Rows[0]["VISIBLE_PAST_POINT_YN"].ToString().Trim() == "N" ? false : true);
+                }
+
+                
+                    GridBidingData(COMP_ID
+								, EST_ID
+								, ESTTERM_REF_ID
+								, ESTTERM_SUB_ID
+								, ESTTERM_STEP_ID
+								, SEARCH_ALL);
+			}
+		}
+
+		COMP_ID = WebUtility.GetIntByValueDropDownList(ddlCompID);              // 회사코드
+		EST_ID = hdfSearchEstID.Value;                                         // 평가ID
+		ESTTERM_REF_ID = WebUtility.GetIntByValueDropDownList(ddlEstTermRefID);        // 평가기간ID
+
+		
+			ESTTERM_SUB_ID = WebUtility.GetIntByValueDropDownList(ddlEstTermSubID);
+		
+
+		// 합산여부 (차수 합산)
+			ESTTERM_STEP_ID = BizUtility.GetEstTermStepIDByMergeYN(COMP_ID);
+		
+		ltrScript.Text = "";
+
+        // 상태 html
+        HtmlScriptCommon.CreateStatusHtmlTable(tblViewStatus, EST_ID);
+	}
+
+	#endregion
+
+	#region ==================== Page_PreRender =============================
+
+	protected void Page_PreRender(object sender, EventArgs e)
+	{
+		
+		if (MERGE_YN.Equals("Y"))
+			ddlEstTermStepID.Visible = false;
+	}
+
+	#endregion
+
+	#region ======================== 울트라 그리드 이벤트 ================
+
+	// UltraGrid의 Layout를 만들때 이벤트 발생 => 처음 페이지를 보여줄 때 한번만 발생한다.
+	protected void UltraWebGrid1_InitializeLayout(object sender, LayoutEventArgs e)
+	{
+		// 동적으로 UltraGridColumn를 만들어 준다.
+		UltraGridUtility.CreateColumns((UltraWebGrid)sender
+										, COMP_ID
+										, EST_ID
+										, DEFAULT_INDEX_COUNT
+										, out DT_COLUMN_INFO
+										, (OwnerTypeMode == OwnerType.Dept) ? "D" : "P"
+										, EST_JOB_IDS.Split(',')
+										, DEPT_COLUMN_NO_USE_YN);
+
+        // mbo평가중 차수합산 외의 작업(평가, 수기조정)은 체크박스 안보이게..
+        if (EST_ID == "3GA" && EST_JOB_IDS != "JOB_07")
+        {
+            //UltraWebGrid1.Bands[0].Columns.RemoveAt(0);
+            //UltraWebGrid1.DisplayLayout.Bands[0].HeaderLayout.RemoveAt(0);
+            UltraWebGrid1.Bands[0].Columns[0].Hidden = true;
+        }
+
+		// 가중치 컬럼을 사용할 경우
+		if (COL_WEIGHT_VISIBLE_YN.Equals("Y")
+			|| COL_GRADE_VISIBLE_YN.Equals("Y"))
+		{
+			Biz_DeptEstDetails deptEstDetail = null;
+			Biz_DeptPosDetails deptPosDetail = null;
+			DataTable dtDeptDetail = null;
+
+			// 업무컬럼를 가져온다.
+			DataRow[] drArrColumn = DT_COLUMN_INFO.Select(@"COL_STYLE_ID = 'BIZ' 
+                                                                    AND VISIBLE_YN   = 'Y'");
+
+			foreach (DataRow drColumn in drArrColumn)
+			{
+				// 평가별 가중치를 넣어주기 위해서는 컬럼의 COL_KEY 값에 "WEIGHT_평가ID" 
+				// 형식이 들어가 있어야 하는데 해당 평가ID로 WEIGHT_TYPE에 따라
+				// 부서별가중치 또는 직급체계별가중치를 적용한다.
+				if (drColumn["COL_KEY"].ToString().IndexOf("WEIGHT_") < 0)
+					continue;
+
+				string est_id = drColumn["COL_KEY"].ToString().Replace("WEIGHT_", "");
+
+				Biz_EstInfos estSubInfo = new Biz_EstInfos(COMP_ID, est_id);
+
+				if (estSubInfo.Weight_Type.Equals("DPT"))
+				{
+					deptEstDetail = new Biz_DeptEstDetails();
+					dtDeptDetail = deptEstDetail.GetDeptEstDetail(COMP_ID, ESTTERM_REF_ID, 0, est_id).Tables[0];
+				}
+				else if (estSubInfo.Weight_Type.Equals("POS"))
+				{
+					deptPosDetail = new Biz_DeptPosDetails();
+					dtDeptDetail = deptPosDetail.GetDeptPosDetail(COMP_ID, ESTTERM_REF_ID, 0, est_id).Tables[0];
+				}
+
+				if (DT_DEPT_EST_POS_DETAIL == null)
+					DT_DEPT_EST_POS_DETAIL = dtDeptDetail;
+				else
+					DT_DEPT_EST_POS_DETAIL.Merge(dtDeptDetail);
+			}
+		}
+	}
+
+	protected internal void UltraWebGrid1_InitializeRow(object sender, RowEventArgs e)
+	{
+		DataRowView drw = (DataRowView)e.Data;
+
+		// 진행상태 컬럼의 HTML코드를 넣어주기 위한 부분
+		BizUtility.SetStatusImage(drw, e.Row.Cells);
+
+		// 점수바의 HTML코드를 넣어주기 위한 부분
+		BizUtility.SetPointBar(drw, e.Row.Cells);
+
+		// 가중치관련 컬럼 보이기가 Y 인경우
+		if (COL_WEIGHT_VISIBLE_YN.Equals("Y"))
+		{
+			BizUtility.SetWeightByDptPos(DT_COLUMN_INFO.Select(@"COL_STYLE_ID            = 'BIZ' 
+                                                              AND VISIBLE_YN              = 'Y'")
+										, COMP_ID
+										, DT_DEPT_EST_POS_DETAIL
+										, drw
+										, e.Row.Cells);
+		}
+
+		// 평가별 점수 보여주기 사용 여부
+		if (COL_POINT_VISIBLE_YN.Equals("Y"))
+		{
+
+		}
+
+		// Bias 점수 조정 사용 여부
+		if (COL_BIAS_POINT_VISIBLE_YN.Equals("Y"))
+		{
+
+		}
+
+		// 등급 보이기 여부
+		if (COL_GRADE_VISIBLE_YN.Equals("Y"))
+		{
+			// 부서별 평가방법일 경우
+			if (ScaleTypeMode.Equals("DPT"))
+			{
+				DataRow[] drArr = DT_DEPT_SCALE.Select(string.Format("DEPT_REF_ID = {0}", drw["TGT_DEPT_ID"]));
+
+				if (drArr.Length > 0)
+				{
+					// 절대평가인 경우 계산된 등급컬럼에 범위 구간에 따라 값을 반환받는다.
+					if (drArr[0]["SCALE_ID"].ToString().Equals("ABS"))
+					{
+						BizUtility.SetGradeByScale_ABS(DT_SCOPE
+													, drw
+													, e.Row.Cells);
+					}
+					else if (drArr[0]["SCALE_ID"].ToString().Equals("REL"))
+					{
+						// 상대평가인 경우 상대그룹 안에 총명수에 해당하는 등수로 상위%를 구한 후 
+						// 해당하는 등급 구간에 등급을 반환 받는다.
+						BizUtility.SetGradeByScale_REL(DT_SCOPE
+													, DT_EST_DATA
+													, drw
+													, e.Row.Cells);
+					}
+				}
+			} // 직급,직책별 평가방법일 경우
+			else if (ScaleTypeMode.Equals("POS"))
+			{
+				string scale_id = "ABS";
+
+				//해당 부서 중 직책, 직급을 선별
+				DataRow[] dtArrPosScale = DT_POS_SCALE.Select(string.Format("EST_ID = '{0}' AND DEPT_REF_ID = {1}", EST_ID, drw["TGT_DEPT_ID"]), "SEQ");
+
+				//선별된 직책, 직급의 순서에 따라
+				foreach (DataRow drChildPosScale in dtArrPosScale)
+				{
+					// 기본값이면
+					if (drChildPosScale["POS_VALUE"].ToString().Equals("-"))
+					{
+						scale_id = DataTypeUtility.GetValue(drChildPosScale["SCALE_ID"]);
+						break;
+					}
+					else // 선별된 직급
+					{
+						if (drw[string.Format("TGT_POS_{0}_ID", drChildPosScale["POS_ID"])].ToString().Equals(drChildPosScale["POS_VALUE"].ToString()))
+						{
+							scale_id = DataTypeUtility.GetValue(drChildPosScale["SCALE_ID"]);
+							break;
+						}
+					}
+				}
+
+				// 위의 내용과 같다.
+				if (scale_id.Equals("ABS"))
+				{
+					BizUtility.SetGradeByScale_ABS(DT_SCOPE
+												, drw
+												, e.Row.Cells);
+				}
+				else if (scale_id.Equals("REL"))
+				{
+					BizUtility.SetGradeByScale_REL(DT_SCOPE
+												, DT_EST_DATA
+												, drw
+												, e.Row.Cells);
+				}
+			}
+		}
+
+		// 등급을 점수로 환산 사용 여부
+		if (COL_GRADE_TO_POINT_VISIBLE_YN.Equals("Y"))
+		{
+			// 현재 사용하지 않는 내용
+			BizUtility.SetGradeToPoint(DT_SCOPE
+										, drw
+										, e.Row.Cells);
+		}
+
+		// 주기별 집계 사용 여부
+		if (COL_ESTTERM_SUB_AGG_VISIBLE_YN.Equals("Y"))
+		{
+
+		}
+
+		// 차수별 집계 사용 여부
+		if (COL_ESTTERM_STEP_AGG_VISIBLE_YN.Equals("Y"))
+		{
+
+		}
+
+		// 점수 조정 사용 여부
+		if (COL_CTRL_POINT_VISIBLE_YN.Equals("Y"))
+		{
+			// 점수 조정할 때
+			BizUtility.SetCtrlPoint(drw
+									, e.Row.Cells
+									, DT_COLUMN_INFO
+									, DT_CTRL_INFO
+									, DT_CTRL_EST_DEPT_MAP
+									, DT_CTRL_POINT_DATA
+									, EMP_REF_ID);
+		}
+
+		// 등급 조정 사용 여부
+		if (COL_CTRL_GRADE_VISIBLE_YN.Equals("Y"))
+		{
+			BizUtility.SetCtrlGrade(drw
+									, e.Row.Cells
+									, DT_COLUMN_INFO
+									, DT_CTRL_INFO
+									, DT_CTRL_EST_DEPT_MAP
+									, DT_CTRL_GRADE_DATA
+									, EMP_REF_ID);
+		}
+
+
+		//------------------ 추가 시작 ------------------------------
+		// 만약 직무가 존재한다면 쉽표로 구분지어 데이터를 더한다.
+		if (USE_POS_BIZ)
+		{
+			DataRow[] drArrPosBiz = DT_POS_BIZ.Select(string.Format(@"EMP_REF_ID = {0}", drw["TGT_EMP_ID"]));
+			string temp = "";
+
+			for (int i = 0; i < drArrPosBiz.Length; i++)
+			{
+				if (i > 0)
+					temp += ",";
+
+				temp += DataTypeUtility.GetValue(drArrPosBiz[i]["POS_BIZ_NAME"]);
+			}
+
+			e.Row.Cells.FromKey("TGT_POS_BIZ_NAME").Value = temp;
+		}
+
+		// 만약 시스템관리자가 아닌 경우 (시스템관리자만 전제보기 버튼을 사용할 수 있다. 설정으로 변경할 수 있지만 일반적으로...)
+        //if (ibnSearchAll.Visible != true)
+        //{
+        //    // 평가자 화면인데 평가가로 로그인 하지 않은 경우 나 피평가자로 화면인데 피평가자로 로그인 하지 않은 경우
+        //    // 체크박스 컬럼의 사용을 금하게 한다. 현재는 기능상의 오류로 주석처리를 했는 차후 체크해야 할 부분임
+        //    if ((EST_TGT_TYPE.Equals("EST")
+        //        && DataTypeUtility.GetToInt32(drw["EST_EMP_ID"]) != EMP_REF_ID)
+        //    || (EST_TGT_TYPE.Equals("TGT")
+        //         && DataTypeUtility.GetToInt32(drw["TGT_EMP_ID"]) != EMP_REF_ID))
+        //    {
+        //        TemplatedColumn tempCol = (TemplatedColumn)e.Row.Band.Columns.FromKey("selchk");
+        //        CheckBox cBox = (CheckBox)((CellItem)tempCol.CellItems[e.Row.BandIndex]).FindControl("cBox");
+
+        //        //cBox.Enabled = false;
+        //    }
+        //}
+		//------------------ 추가 끝 ------------------------------
+	}
+
+	#endregion
+
+	#region ==================== 드롭다운 리스트 ================
+
+	// 평가기간 드롭다운리스트의 선택을 변경했을 경우
+	protected void ddlEstTermRefID_SelectedIndexChanged(object sender, EventArgs e)
+	{
+		if (HasGroupByColumns()) return;
+
+		ESTTERM_REF_ID = WebUtility.GetIntByValueDropDownList(ddlEstTermRefID);
+        
+		    GridBidingData(COMP_ID
+					     , EST_ID
+					     , ESTTERM_REF_ID
+					     , ESTTERM_SUB_ID
+					     , ESTTERM_STEP_ID
+					     , SEARCH_ALL);
+       
+	}
+
+	// 평가주기 드롭다운리스트의 선택을 변경했을 경우
+	protected void ddlEstTermSubID_SelectedIndexChanged(object sender, EventArgs e)
+	{
+		if (HasGroupByColumns()) return;
+
+		ESTTERM_SUB_ID = WebUtility.GetIntByValueDropDownList(ddlEstTermSubID);
+
+        if (EST_ID != "3GA")
+		    GridBidingData(COMP_ID
+					     , EST_ID
+					     , ESTTERM_REF_ID
+					     , ESTTERM_SUB_ID
+					     , ESTTERM_STEP_ID
+					     , SEARCH_ALL);
+        
+	}
+
+	// 평가차수 드롭다운리스트의 선택을 변경했을 경우
+	protected void ddlEstTermStepID_SelectedIndexChanged(object sender, EventArgs e)
+	{
+		if (HasGroupByColumns()) return;
+
+		ESTTERM_STEP_ID = WebUtility.GetIntByValueDropDownList(ddlEstTermStepID);
+        if (EST_ID != "3GA")
+            GridBidingData(COMP_ID
+                         , EST_ID
+                         , ESTTERM_REF_ID
+                         , ESTTERM_SUB_ID
+                         , ESTTERM_STEP_ID
+                         , SEARCH_ALL);
+       
+	}
+
+	// 회사 드롭다운리스트의 선택을 변경했을 경우 (회사가 한개일 경우는 보이지 않음)
+	protected void ddlCompID_SelectedIndexChanged(object sender, EventArgs e)
+	{
+		if (HasGroupByColumns()) return;
+
+		COMP_ID = WebUtility.GetIntByValueDropDownList(ddlCompID);
+
+		GridBidingData(COMP_ID
+					 , EST_ID
+					 , ESTTERM_REF_ID
+					 , ESTTERM_SUB_ID
+					 , ESTTERM_STEP_ID
+					 , SEARCH_ALL);
+
+		BizUtility.SetButtonVisibleCommandNameByRolID(EMP_REF_ID, tdImgBox.Controls);
+
+		BizUtility.SetButtonVisibleByEstJobID(EST_JOB_IDS
+											, tdImgBox.Controls
+											, COMP_ID
+											, hdfSearchEstID.Value
+											, ESTTERM_REF_ID
+											, ESTTERM_SUB_ID
+											, ESTTERM_STEP_ID);
+
+		SetConfirmStatusHtml(EST_JOB_IDS);
+	}
+
+    //피평가부서 선택변경
+    protected void ddlTgtDept_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        //DoBindingMbo();
+    }
+
+	#endregion
+
+	#region ================ 버튼 클릭 이벤트 =========================
+
+	/// <summary>
+	/// 팝업창에서 부모창을 Refresh 되었을 때
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
+	protected void lbnReload_Click(object sender, EventArgs e)
+	{
+		if (HasGroupByColumns()) return;
+
+		GridBidingData(COMP_ID
+					 , EST_ID
+					 , ESTTERM_REF_ID
+					 , ESTTERM_SUB_ID
+					 , ESTTERM_STEP_ID
+					 , SEARCH_ALL);
+
+		BizUtility.SetButtonVisibleCommandNameByRolID(EMP_REF_ID, tdImgBox.Controls);
+		BizUtility.SetButtonVisibleByEstJobID(EST_JOB_IDS
+											, tdImgBox.Controls
+											, COMP_ID
+											, EST_ID
+											, ESTTERM_REF_ID
+											, ESTTERM_SUB_ID
+											, ESTTERM_STEP_ID);
+
+		SetConfirmStatusHtml(EST_JOB_IDS);
+	}
+
+	/// <summary>
+	/// 전체 리스트 가지고 오기 확인
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
+	protected void ibnSearchAll_Click(object sender, ImageClickEventArgs e)
+	{
+		SEARCH_ALL = true;
+
+		GridBidingData(COMP_ID
+					 , EST_ID
+					 , ESTTERM_REF_ID
+					 , ESTTERM_SUB_ID
+					 , ESTTERM_STEP_ID
+					 , SEARCH_ALL);
+
+		BizUtility.SetButtonVisibleCommandNameByRolID(EMP_REF_ID, tdImgBox.Controls);
+		BizUtility.SetButtonVisibleByEstJobID(EST_JOB_IDS
+											, tdImgBox.Controls
+											, COMP_ID
+											, EST_ID
+											, ESTTERM_REF_ID
+											, ESTTERM_SUB_ID
+											, ESTTERM_STEP_ID);
+
+		SetConfirmStatusHtml(EST_JOB_IDS);
+	}
+
+	private bool _is_search_emp = false;
+
+	/// <summary>
+	/// 데이터 조회 확인
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
+	protected void ibnSearchEmp_Click(object sender, ImageClickEventArgs e)
+	{
+		SEARCH_ALL = true;
+
+		_is_search_emp = true;
+
+		GridBidingData(COMP_ID
+					 , EST_ID
+					 , ESTTERM_REF_ID
+					 , ESTTERM_SUB_ID
+					 , ESTTERM_STEP_ID
+					 , SEARCH_ALL);
+
+		BizUtility.SetButtonVisibleCommandNameByRolID(EMP_REF_ID, tdImgBox.Controls);
+		BizUtility.SetButtonVisibleByEstJobID(EST_JOB_IDS
+											, tdImgBox.Controls
+											, COMP_ID
+											, EST_ID
+											, ESTTERM_REF_ID
+											, ESTTERM_SUB_ID
+											, ESTTERM_STEP_ID);
+
+		SetConfirmStatusHtml(EST_JOB_IDS);
+	}
+
+	/// <summary>
+	/// 외부 데이터를 평가점수로 가지고 오기 (JOB_12) 확인
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
+	protected void ibnGetOuterData_Click(object sender, ImageClickEventArgs e)
+	{
+		ImageButton ibn = ((ImageButton)sender);
+		string est_job_id = ibn.CommandArgument;
+
+		if (HasGroupByColumns()) return;
+
+		bool isJobOK = EstJobUtility.SetConfirmButtonVisible(COMP_ID
+																	, EST_ID
+																	, ESTTERM_REF_ID
+																	, ESTTERM_SUB_ID
+																	, ESTTERM_STEP_ID
+																	, est_job_id
+																	, ibn
+																	, null
+																	, "Y"
+																	, DateTime.Now
+																	, EMP_REF_ID
+																	, ltrScript);
+
+		if (!isJobOK)
+			return;
+
+        //Biz_OuterDataProcInfos biz_data = new Biz_OuterDataProcInfos();
+        //string msg = null;
+        //bool isOK = biz_data.GetOuterData(COMP_ID
+        //                                                            , EST_ID
+        //                                                            , ESTTERM_REF_ID
+        //                                                            , ESTTERM_SUB_ID
+        //                                                            , ESTTERM_STEP_ID
+        //                                                            , out msg);
+
+        
+
+        MicroBSC.Integration.EST.Biz.Biz_Est_Outer_Data_Proc_Info biz_data = new MicroBSC.Integration.EST.Biz.Biz_Est_Outer_Data_Proc_Info();
+        string msg = null;
+
+        bool isOK = biz_data.GetOuterData(COMP_ID
+                                        , EST_ID
+                                        , ESTTERM_REF_ID
+                                        , ESTTERM_SUB_ID
+                                        , ESTTERM_STEP_ID
+                                        , out msg);
+
+		if (isOK)
+		{
+			ltrScript.Text = JSHelper.GetAlertScript("정상적으로 외부평가 데이터를 반영하였습니다.");
+
+
+            // 암호화 키가 있으면 해당 컬럼에 암호화 적용
+            //string encryption_key = WebUtility.GetConfig("ENCRYPTION_KEY");
+            //if (!encryption_key.Equals(string.Empty))
+            //{
+            //    MicroBSC.Integration.EST.Biz.Biz_Est_Data bizEstData = new MicroBSC.Integration.EST.Biz.Biz_Est_Data();
+            //    DataTable dtEstData = bizEstData.GetEstData(COMP_ID
+            //                                                , EST_ID
+            //                                                , ESTTERM_REF_ID
+            //                                                , ESTTERM_SUB_ID
+            //                                                , ESTTERM_STEP_ID);
+
+            //    for (int i = 0; i < dtEstData.Rows.Count; i++)
+            //    {
+
+            //        DataRow row = dtEstData.Rows[i];
+            //        string point = MicroBSC.Common.Cryptography.Encrypt(DataTypeUtility.GetValue(row["POINT"]), encryption_key);
+            //        row["POINT"] = point;
+            //    }
+
+            //    int okCnt = bizEstData.ModifyEstData(dtEstData);
+            //}
+
+
+			GridBidingData(COMP_ID
+						 , EST_ID
+						 , ESTTERM_REF_ID
+						 , ESTTERM_SUB_ID
+						 , ESTTERM_STEP_ID
+						 , SEARCH_ALL);
+
+			SetConfirmStatusHtml(EST_JOB_IDS);
+		}
+		else
+		{
+			EstJobUtility.SetConfirmButtonVisible(COMP_ID
+												, EST_ID
+												, ESTTERM_REF_ID
+												, ESTTERM_SUB_ID
+												, ESTTERM_STEP_ID
+												, est_job_id
+												, ibn
+												, null
+												, "N"
+												, DateTime.Now
+												, EMP_REF_ID
+												, ltrScript);
+
+			ltrScript.Text = JSHelper.GetAlertScript(msg);
+		}
+	}
+
+	/// <summary>
+	/// 평가결과 확인 (JOB_30)
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
+	protected void ibnConfirmEstResult_Click(object sender, ImageClickEventArgs e)
+	{
+		ImageButton ibn = ((ImageButton)sender);
+		string est_job_id = ibn.CommandArgument;
+
+		bool isJobOK = EstJobUtility.SetConfirmButtonVisible(COMP_ID
+																		, EST_ID
+																		, ESTTERM_REF_ID
+																		, ESTTERM_SUB_ID
+																		, ESTTERM_STEP_ID
+																		, est_job_id
+																		, ibn
+																		, null
+																		, "Y"
+																		, DateTime.Now
+																		, EMP_REF_ID
+																		, ltrScript);
+		SetConfirmStatusHtml(EST_JOB_IDS);
+
+		if (isJobOK)
+			ltrScript.Text = JSHelper.GetAlertScript("정상적으로 평가결과를 확정하였습니다.");
+	}
+
+	/// <summary>
+	/// 평가/피드백/의견상신 강제확정 (JOB_34) 확인
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
+	protected void ibnConfirmByForce_Click(object sender, ImageClickEventArgs e)
+	{
+		ImageButton ibn = ((ImageButton)sender);
+		string est_job_id = ibn.CommandArgument;
+
+		if (HasGroupByColumns()) return;
+
+		Biz_EstInfos estInfo = new Biz_EstInfos(COMP_ID, EST_ID);
+		Biz_Datas data = new Biz_Datas();
+		DataTable dataTable = data.GetDataTableSchema();
+
+		dataTable = UltraGridUtility.GetDataTableByCheckValue(UltraWebGrid1
+															, "cBox"
+															, "selchk"
+															, new string[] { "EST_ID", "ESTTERM_REF_ID", "ESTTERM_SUB_ID", "ESTTERM_STEP_ID", "EST_DEPT_ID", "EST_EMP_ID", "TGT_DEPT_ID", "TGT_EMP_ID", "STATUS_ID" }
+															, dataTable);
+
+		dataTable = DataTypeUtility.FilterSortDataTable(dataTable, "STATUS_ID <> 'N'");
+
+		if (dataTable.Rows.Count == 0)
+		{
+			ltrScript.Text = JSHelper.GetAlertScript("상태가 미평가이거나 선택된 항목이 없습니다.");
+			return;
+		}
+
+		foreach (DataRow dataRow in dataTable.Rows)
+		{
+			dataRow["COMP_ID"] = COMP_ID;
+			dataRow["STATUS_ID"] = "E";
+		}
+
+		bool isOK = data.SaveStatus(dataTable);
+
+		if (isOK)
+		{
+			ltrScript.Text = JSHelper.GetAlertScript("정상적으로 평가를 강제확정하였습니다.");
+
+			GridBidingData(COMP_ID
+						 , EST_ID
+						 , ESTTERM_REF_ID
+						 , ESTTERM_SUB_ID
+						 , ESTTERM_STEP_ID
+						 , SEARCH_ALL);
+
+			SetConfirmStatusHtml(EST_JOB_IDS);
+		}
+		else
+		{
+			ltrScript.Text = JSHelper.GetAlertScript("정상적으로 강제확정되지 않았습니다.");
+		}
+	}
+
+
+	/// <summary>
+	/// 다운로드 확인
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
+	protected void ibnDownExcel_Click(object sender, ImageClickEventArgs e)
+	{
+		uGridExcelExporter.DownloadName = "EST." + DateTime.Now.ToString("yyMMddHHmmss");
+		uGridExcelExporter.WorksheetName = "EST_DATA";
+
+		bool isSelect = false;
+		bool isStatusImg = false;
+		bool isCtrlPoint = false;
+		bool isCtrlGrade = false;
+
+		if (UltraWebGrid1.DisplayLayout.Bands[0].Columns.Exists("selchk"))
+			isSelect = !UltraWebGrid1.DisplayLayout.Bands[0].Columns.FromKey("selchk").Hidden;
+
+		if (UltraWebGrid1.DisplayLayout.Bands[0].Columns.Exists("STATUS_IMG_PATH"))
+			isStatusImg = !UltraWebGrid1.DisplayLayout.Bands[0].Columns.FromKey("STATUS_IMG_PATH").Hidden;
+
+		if (UltraWebGrid1.DisplayLayout.Bands[0].Columns.Exists("CTRL_POINT"))
+			isCtrlPoint = !UltraWebGrid1.DisplayLayout.Bands[0].Columns.FromKey("CTRL_POINT").Hidden;
+
+		if (UltraWebGrid1.DisplayLayout.Bands[0].Columns.Exists("CTRL_GRADE"))
+			isCtrlGrade = !UltraWebGrid1.DisplayLayout.Bands[0].Columns.FromKey("CTRL_GRADE").Hidden;
+
+		if (isSelect)
+			UltraWebGrid1.DisplayLayout.Bands[0].Columns.FromKey("selchk").Hidden = true;
+
+		if (isStatusImg)
+			UltraWebGrid1.DisplayLayout.Bands[0].Columns.FromKey("STATUS_IMG_PATH").Hidden = true;
+
+		if (isCtrlPoint)
+			UltraWebGrid1.DisplayLayout.Bands[0].Columns.FromKey("CTRL_POINT").Hidden = true;
+
+		if (isCtrlGrade)
+			UltraWebGrid1.DisplayLayout.Bands[0].Columns.FromKey("CTRL_GRADE").Hidden = true;
+
+		uGridExcelExporter.Export(UltraWebGrid1);
+
+		if (isSelect)
+			UltraWebGrid1.DisplayLayout.Bands[0].Columns.FromKey("selchk").Hidden = false;
+
+		if (isStatusImg)
+			UltraWebGrid1.DisplayLayout.Bands[0].Columns.FromKey("STATUS_IMG_PATH").Hidden = false;
+
+		if (isCtrlPoint)
+			UltraWebGrid1.DisplayLayout.Bands[0].Columns.FromKey("CTRL_POINT").Hidden = false;
+
+		if (isCtrlGrade)
+			UltraWebGrid1.DisplayLayout.Bands[0].Columns.FromKey("CTRL_GRADE").Hidden = false;
+	}
+
+	#endregion
+
+	#region =================== 일반 메소드 ==========================
+
+	/// <summary>
+	/// 그리드 바인딩 메소드
+	/// </summary>
+	/// <param name="comp_id"></param>
+	/// <param name="est_id"></param>
+	/// <param name="estterm_ref_id"></param>
+	/// <param name="estterm_sub_id"></param>
+	/// <param name="estterm_step_id"></param>
+	private void GridBidingData(int comp_id
+								, string est_id
+								, int estterm_ref_id
+								, int estterm_sub_id
+								, int estterm_step_id
+								, bool isAll)
+	{
+		// 평가정보를 가져온다.
+		Biz_EstInfos estInfo = new Biz_EstInfos(comp_id, est_id);
+
+		// 해당평가가 존재하는지 여부 체크
+		if (!estInfo.IsExists(comp_id, est_id))
+		{
+			ltrScript.Text = JSHelper.GetAlertScript("선택된 회사의 평가정보가 없습니다.");
+			return;
+		}
+
+		DropDownListCommom.BindEstTermSub(ddlEstTermSubID, comp_id, est_id, YEAR_YN);   // 평가주기 DropDownList 바인딩 
+		DropDownListCommom.BindEstTermStep(ddlEstTermStepID, comp_id, est_id);          // 평가차수 DropDownList 바인딩
+
+		// 처음 실행될때 (추가)
+		if (estterm_sub_id.Equals(0))    // 값 존재 여부
+		{
+			ESTTERM_SUB_ID = WebUtility.GetIntByValueDropDownList(ddlEstTermSubID);     // DropDownList의 값을 반환
+		}
+		else
+		{
+			WebUtility.FindByValueDropDownList(ddlEstTermSubID, estterm_sub_id);        // DropDwonList의 값을 선택함
+			ESTTERM_SUB_ID = WebUtility.GetIntByValueDropDownList(ddlEstTermSubID);     // DropDownList의 값을 반환
+		}
+
+		estterm_sub_id = ESTTERM_SUB_ID;
+
+		
+		// 만약 차수가 합산일 경우
+		if (MERGE_YN.Equals("Y"))
+		{
+			ESTTERM_STEP_ID = BizUtility.GetEstTermStepIDByMergeYN(COMP_ID);            // 차수집계인 경우 (차추집계의 차수ID의 값을 반환)
+		}
+		else
+		{
+			
+		}
+
+		WebUtility.FindByValueDropDownList(ddlEstTermRefID, estterm_ref_id);
+
+		if (ddlEstTermSubID.Visible)
+			WebUtility.FindByValueDropDownList(ddlEstTermSubID, estterm_sub_id);
+
+		if (ddlEstTermStepID.Visible)
+			WebUtility.FindByValueDropDownList(ddlEstTermStepID, estterm_step_id);
+
+		// 상태 html
+		HtmlScriptCommon.CreateStatusHtmlTable(tblViewStatus, est_id);
+        
+		// 피평가 주체가 부서인지 사원인지 여부 
+		if (estInfo.Owner_Type.Equals("D"))  // D:부서, E:사원
+			OwnerTypeMode = OwnerType.Dept;
+		else
+			OwnerTypeMode = OwnerType.Emp_User;
+
+		ScaleTypeMode = estInfo.Scale_Type;       // 절대,상대평가
+		WeightTypeMode = estInfo.Weight_Type;      // 가중치 처리 방식 (부서별 인지 직급체계별 인지)
+
+		if (estInfo.Bias_YN.Equals("Y"))             // Bias 사용 여부
+			BiasYN = YesNo.Yes;
+		else
+			BiasYN = YesNo.No;
+
+		if (estInfo.Grade_Confirm_YN.Equals("Y"))    // 등급확정 여부
+			GradeConfirmYN = YesNo.Yes;
+		else
+			GradeConfirmYN = YesNo.No;
+
+		Biz_Datas est_data = new Biz_Datas();
+
+		int est_emp_id = 0;                    // 평가자 아이디
+		int tgt_dept_id = 0;                    // 피평가부서 아이디 or 피평가자가 속한 부서 아이디
+		int tgt_emp_id = 0;                    // 피평가자 아이디
+
+        DataTable dtTargetDepartment = null;
+
+		// 만약 피평가자 주체가 부서일 경우
+		if (OwnerTypeMode == OwnerType.Dept)
+		{
+			est_emp_id = EMP_REF_ID;           // 해당 평가자 아이디에 해당하는 정보 조회
+			tgt_dept_id = 0;                    // 모든 피평가부서는 조회됨
+			tgt_emp_id = -1;                   // 사원은 조회 안됨 (피평가자 주체가 부서이기 때문)
+		}
+		else if (OwnerTypeMode == OwnerType.Emp_User)            // 만약 피평가주체가 사원인 경우
+		{
+			
+				est_emp_id = EMP_REF_ID;               // 로그인한 평가자의 아이디로 검색을 한다.
+				tgt_dept_id = 0;                        // 모든 피평가자가 속한 부서를 가져온다.
+				tgt_emp_id = 0;                        // 모든 피평가자를 가져온다.
+			
+		}
+
+		if (isAll)                                       // 전체검색 버튼을 클릭했을 경우
+		{
+			est_emp_id = 0;                            // 모든 피평가자를 가져온다.
+			tgt_dept_id = 0;                            // 모든 피평가자가 속한 부서를 가져온다.
+			tgt_emp_id = 0;                            // 모든 피평가가를 가져온다.
+		}
+
+
+		//---------------------- 추가 시작 ---------------------
+		int est_emp_id_back_up = 0;
+
+		// 만약 평가별로 하위차수의 평가정보 보여주기가 Y 이면 
+		// 피평가자의 모든 리스트를 보여주게 하고
+		// 평가자의 정보를 포함한 하위평가 정보를 보여주게 한다.
+		if (estInfo.All_Step_Visible_YN.Equals("Y"))
+		{
+			est_emp_id_back_up = est_emp_id;
+			est_emp_id = 0;
+		}
+
+		// 점수조정컬럼 및 등급조정컬럼을 사용하고 전체버튼을 클릭하지 않았을 겨우
+        if ((COL_CTRL_POINT_VISIBLE_YN.Equals("Y")
+            || COL_CTRL_GRADE_VISIBLE_YN.Equals("Y"))
+            && isAll == false)
+        {
+            string grd_pnt_type = "";
+
+            if (COL_CTRL_POINT_VISIBLE_YN.Equals("Y"))
+                grd_pnt_type = "PNT";
+            else
+                grd_pnt_type = "GRD";
+
+            DT_EST_DATA = est_data.GetEstDataByCtrl(comp_id
+                                                , est_id
+                                                , ESTTERM_REF_ID
+                                                , ESTTERM_SUB_ID
+                                                , ESTTERM_STEP_ID
+                                                , 0
+                                                , 0
+                                                , 0
+                                                , 0
+                                                , YEAR_YN
+                                                , MERGE_YN
+                                                , OwnerTypeMode
+                                                , EMP_REF_ID
+                                                , grd_pnt_type).Tables[0];
+        }
+        else
+        {
+            
+                DT_EST_DATA = est_data.GetEstData(comp_id
+                                                , est_id
+                                                , ESTTERM_REF_ID
+                                                , ESTTERM_SUB_ID
+                                                , ESTTERM_STEP_ID
+                                                , 0
+                                                , est_emp_id
+                                                , tgt_dept_id
+                                                , tgt_emp_id
+                                                , YEAR_YN
+                                                , MERGE_YN
+                                                , OwnerTypeMode).Tables[0];
+            
+        }
+
+
+
+		// 보통 1차,2차 평가를 할 경우 평가자는 해당 차수의 평가만 리스트에 나오는데
+		// 만약 자신이 2차평가자인데 1차 평가가 정보를 보고 싶을 경우가 있다.
+		// 설정에서 모든 차수 평가 보기가 설정되어 있다면 1,2차 평가 모두 볼 수게 된다.
+		// 이와 같은 일을 위해서 아래와 같은 함수가 필요하다.
+		if (estInfo.All_Step_Visible_YN.Equals("Y"))
+			DT_EST_DATA = GetEstDataByAllStepVisible(DT_EST_DATA, est_emp_id_back_up);
+
+		//---------------------- 추가 끝 ------------------------------
+
+
+		// 작업ID에 따라서 UltraGrid에 바인되는 데이터의 정렬를 반영하기 위한 컬럼값을 반환한다.
+		string sort_columns = BizUtility.GetSortColumns(EST_JOB_IDS);
+
+	    if ( DT_EST_DATA.Rows.Count > 0)
+		{
+			DT_EST_DATA = DataTypeUtility.FilterSortDataTable(DT_EST_DATA, "", sort_columns);
+		}
+
+
+		// 조회된 데이터가 존재할 경우
+		if (DT_EST_DATA != null)
+		{
+			// 만약 가중치 보이기 Y 일때
+			// 가중치 컬럼이 보이는 경우는 현재의 평가에서 하위의 평가가 존재하는데
+			// 현재평가와 관련되어 있는 모든 하위평가를 정보를 가지고와서 DataTable를 동적으로
+			// 만들어 준다. 데이터 Row가 많거나 하위평가가 많이 존재할 경우는 처리시간이 길 수있다.
+			// 현업에서 충분한 설명이 필요하고 [하위평가 집계]버튼을 클릭시 데이터 반영 후에는
+			// 모든 데이터가 DB에 집계되어 있어 이후에는 처리속도가 이전보다는 빠르게 처리된다.
+			if (COL_WEIGHT_VISIBLE_YN.Equals("Y"))
+			{
+				DataTable _dtEstID = null;
+
+				//if(DT_MENUAL_EST == null)
+
+                //2011.12.28 박효동 : 하위평가를 가져오니 문제가 있어서 수정
+                // - MBO의 하위평가를 가져오도록 평가컬럼설정이 되있는데 현재는 현재평가의 하위차수를 가져오니 안나오더라
+                // - 해서 평가컬럼설정에 등록되어있는 POINT_평가아이디에 해당하는 평가아이디를 가져오도록 수정 휴~~
+				// 하위평가 정보를 가지고 온다.
+				//_dtEstID = estInfo.GetEstInfoByUpEstID(comp_id, est_id).Tables[0];
+
+                _dtEstID = estInfo.GetEstInfoByUpEstID(comp_id, est_id).Tables[0];
+                _dtEstID.Rows.Clear();
+                Biz_ColumnInfos colInfo = new Biz_ColumnInfos();
+                DataTable dtEstID = colInfo.GetColumnInfo(COMP_ID, EST_ID).Tables[0];
+                foreach (DataRow dr in dtEstID.Rows)
+                {
+                    string colnames = dr[6].ToString();
+                    if (colnames.Length > 5)
+                    {
+                        if (colnames.Substring(0, 6) == "POINT_" && colnames.Length == 8)
+                        {
+                            DataRow insertDR = _dtEstID.NewRow();
+                            insertDR["EST_ID"] = colnames.Remove(0, 6);
+                            _dtEstID.Rows.Add(insertDR);
+                            insertDR = null;
+                        }
+                    }
+                }
+
+				//else
+				//    _dtEstID  = DT_MENUAL_EST;
+
+				// 하위평가의 하나씩 읽어가며 평가데이터 및 가중치컬럼을 추가한다.
+				foreach (DataRow dataRow in _dtEstID.Rows)
+				{
+					DT_EST_DATA.Columns.Add(string.Format("WEIGHT_{0}", dataRow["EST_ID"]), typeof(double));    // 하위평가별 가중치 컬럼 추가
+
+					// 평가별 점수 보이기 여부에 따라
+					if (COL_POINT_VISIBLE_YN.Equals("Y"))
+					{
+						DT_EST_DATA.Columns.Add(string.Format("POINT_{0}", dataRow["EST_ID"]), typeof(double)); // 하위평가별 점수 컬럼 추가
+
+						// 하위평가 평가결과정보를 가져온다.
+						DataTable dtEstData = est_data.GetData(comp_id
+																, dataRow["EST_ID"].ToString()
+																, ESTTERM_REF_ID
+																, ESTTERM_SUB_ID
+																, 0
+																, 0
+																, 0
+																, 0
+																, 0
+																, YEAR_YN
+																, "Y"
+																, OwnerTypeMode).Tables[0];
+
+						// 보통 1차,2차 평가를 할 경우 평가자는 해당 차수의 평가만 리스트에 나오는데
+						// 만약 자신이 2차평가자인데 1차 평가가 정보를 보고 싶을 경우가 있다.
+						// 설정에서 모든 차수 평가 보기가 설정되어 있다면 1,2차 평가 모두 볼 수게 된다.
+						// 이와 같은 일을 위해서 아래와 같은 함수가 필요하다.
+
+						//==================================================================================
+
+						//----------------- 추가 시작 -------------
+						if (estInfo.All_Step_Visible_YN.Equals("Y"))
+							dtEstData = GetEstDataByAllStepVisible(dtEstData, est_emp_id_back_up);
+						//--------------- 추가 끝 ------------------
+
+						foreach (DataRow drEstData in dtEstData.Rows) //// ESTTERM_STEP 를 제거함 //AND ESTTERM_STEP_ID = {2}
+						{
+							DataRow[] drArrEstData = DT_EST_DATA.Select(string.Format(@"ESTTERM_REF_ID  = {0}
+                                                                                    AND ESTTERM_SUB_ID  = {1}
+                                                                                    
+                                                                                    AND TGT_DEPT_ID     = {3}
+                                                                                    AND TGT_EMP_ID      = {4}"
+																					, drEstData["ESTTERM_REF_ID"]
+																					, drEstData["ESTTERM_SUB_ID"]
+																					, drEstData["ESTTERM_STEP_ID"]
+																					, drEstData["TGT_DEPT_ID"]
+																					, drEstData["TGT_EMP_ID"]));
+
+							if (drArrEstData.Length > 0)
+							{
+								drArrEstData[0][string.Format("POINT_{0}", dataRow["EST_ID"])] = drEstData["POINT"];
+							}
+						}
+
+						//==================================================================================
+					}
+				}
+			}
+
+			// 등급 컬럼 보이기가 Y 일경우 (이건 DT_EST_DATA 과 관계 없음)
+			if (COL_GRADE_VISIBLE_YN.Equals("Y")
+				|| COL_GRADE_TO_POINT_VISIBLE_YN.Equals("Y"))
+			{
+				// 부서별 절대/상대평가 설정 DataTable 반환
+				Biz_DeptEstDetails deptEstDetail = new Biz_DeptEstDetails();
+				DT_DEPT_SCALE = deptEstDetail.GetDeptEstDetail(comp_id, estterm_ref_id, 0, est_id).Tables[0];
+
+				// 직급체계별 절대/상대평가 설정 DataTable 반환
+				Biz_DeptPosScales deptPosScale = new Biz_DeptPosScales();
+				DT_POS_SCALE = deptPosScale.GetDeptPosScale(comp_id, estterm_ref_id, 0, est_id).Tables[0];
+
+				// 평가별 절대/상대 점수를 등급으로 계산시 점수 범위 DataTable 반환
+				Biz_Scopes scope = new Biz_Scopes();
+				DT_SCOPE = scope.GetScope(comp_id, est_id).Tables[0];
+
+				DT_EST_DATA.Columns.Add("RANK", typeof(double));            // 상대평가시 상위%를 계산하기 위해서 등수컬럼 추가
+				DT_EST_DATA.Columns.Add("SCALE_ID", typeof(string));        // 절대/상대평가 ID 컬럼 추가
+				DT_EST_DATA.Columns.Add("SCALE_NAME", typeof(string));      // 절대/상대평가 Name 컬럼 추가
+				DT_EST_DATA.Columns.Add("GRADE_CALC_ID", typeof(string));   // 계산된 평가등급 ID 컬럼 추가
+			}
+
+			// 평가주기 집계 사용 여부 (현재 특별히 필요한 부분이 없다.)
+			if (COL_ESTTERM_SUB_AGG_VISIBLE_YN.Equals("Y"))
+			{
+
+			}
+
+			// 평가차수 집계 사용 여부 (현재 특별히 필요한 부분이 없다.)
+			if (COL_ESTTERM_STEP_AGG_VISIBLE_YN.Equals("Y"))
+			{
+
+			}
+
+			// 점수조정, 등급조정을 진행할 경우 아래와 같은 공통사항의 처리가 진행된다.
+			if (COL_CTRL_POINT_VISIBLE_YN.Equals("Y")
+				|| COL_CTRL_GRADE_VISIBLE_YN.Equals("Y"))
+			{
+				Biz_CtrlEstMaps ctrlEstDeptMap = new Biz_CtrlEstMaps();
+				DT_CTRL_INFO = ctrlEstDeptMap.GetCtrlInfoByEstID(COMP_ID, EST_ID).Tables[0];
+				DT_CTRL_EST_DEPT_MAP = ctrlEstDeptMap.GetCtrlEstDeptByEstID(COMP_ID, EST_ID).Tables[0];
+
+				// ---------------- 추가 시작 ----------------
+				Biz_ColumnInfos columnInfo = new Biz_ColumnInfos();
+				// 평가ID의 컬럼 정보를 가져온다.
+				DT_COLUMN_INFO = columnInfo.GetColumnInfo(COMP_ID, EST_ID).Tables[0];
+				// ---------------- 추가 끝 ------------------
+
+				// 만약 점수조정 컬럼을 사용할 경우
+				if (COL_CTRL_POINT_VISIBLE_YN.Equals("Y"))
+				{
+					Biz_CtrlPointDatas ctrlPointData = new Biz_CtrlPointDatas();
+					DT_CTRL_POINT_DATA = ctrlPointData.GetCtrlPointData(comp_id
+																						, est_id
+																						, estterm_ref_id
+																						, estterm_sub_id
+																						, estterm_step_id
+																						, 0
+																						, 0
+																						, 0
+																						, 0).Tables[0];
+				}
+
+				// 만약 등급조정 컬럼을 사용할 경우
+				if (COL_CTRL_GRADE_VISIBLE_YN.Equals("Y"))
+				{
+					Biz_CtrlGradeDatas ctrlGradeData = new Biz_CtrlGradeDatas();
+					DT_CTRL_GRADE_DATA = ctrlGradeData.GetCtrlGradeData(comp_id
+																						, est_id
+																						, estterm_ref_id
+																						, estterm_sub_id
+																						, estterm_step_id
+																						, 0
+																						, 0
+																						, 0
+																						, 0).Tables[0];
+				}
+			}
+
+			ClearGroupByBoxColumn();
+
+			DataTable dtEmpComp = null;
+
+			if (estInfo.Emp_Com_Dept_YN.Equals("N") && _is_search_emp == true)
+			{
+				return;
+			}
+
+			if (estInfo.Emp_Com_Dept_YN.Equals("Y") && _is_search_emp == true)
+			{
+				Biz_EmpComDeptDetails bizEmpCom = new Biz_EmpComDeptDetails();
+				dtEmpComp = bizEmpCom.GetComDeptDetail(EMP_REF_ID, 0).Tables[0];
+			}
+
+			if (dtEmpComp != null)
+			{
+				DataTable dtClone = DT_EST_DATA.Clone();
+
+				foreach (DataRow drEmpCom in dtEmpComp.Rows)
+				{
+					DataRow[] drCol = DT_EST_DATA.Select(string.Format("TGT_DEPT_ID = {0}", drEmpCom["DEPT_REF_ID"]));
+
+					foreach (DataRow dr in drCol)
+					{
+						dtClone.ImportRow(dr);
+					}
+				}
+
+				DT_EST_DATA = dtClone.Copy();
+			}
+
+
+
+
+			UltraWebGrid1.DataSource = DT_EST_DATA;
+
+			try
+			{
+				UltraWebGrid1.DataBind();
+                //점수 보여주기 여부
+                if (!IVISIBLE_PAST_POINT_YN)
+                    for (int i = 0; i < UltraWebGrid1.Columns.Count; i++)
+                    {
+                        //if (UltraWebGrid1.Columns[i].Header.Caption.Trim() == "점수")
+                        if (UltraWebGrid1.Columns[i].Key == "POINT")
+                        {
+                            UltraWebGrid1.Columns[i].Hidden = true;
+                        }
+                    }
+			}
+			catch
+			{
+
+			}
+
+			lblRowCount.Text = DT_EST_DATA.Rows.Count.ToString("#,##0");
+		}
+	}
+
+	// 보통 1차,2차 평가를 할 경우 평가자는 해당 차수의 평가만 리스트에 나오는데
+	// 만약 자신이 2차평가자인데 1차 평가가 정보를 보고 싶을 경우가 있다.
+	// 설정에서 모든 차수 평가 보기가 설정되어 있다면 1,2차 평가 모두 볼 수게 된다.
+	// 이와 같은 일을 위해서 아래와 같은 함수가 필요하다.
+	private DataTable GetEstDataByAllStepVisible(DataTable dtData, int est_emp_id)
+	{
+		if (est_emp_id == 0)
+			return dtData;
+
+		DataTable dtTemp = dtData.Clone();
+		DataTable dtSub = null;
+
+		DataTable dtTgt = DataTypeUtility.GetGroupByDataTable(dtData, new string[] { "TGT_EMP_ID" });
+
+		foreach (DataRow drTgt in dtTgt.Rows)
+		{
+			DataRow[] drCol = dtData.Select(string.Format("EST_EMP_ID = {0} AND TGT_EMP_ID = {1}", est_emp_id, drTgt["TGT_EMP_ID"]));
+
+			if (drCol.Length == 0)
+				continue;
+
+			int step_order = DataTypeUtility.GetToInt32(drCol[0]["STEP_ORDER"]);
+
+			dtSub = DataTypeUtility.FilterSortDataTable(dtData, string.Format("TGT_EMP_ID = {0} AND STEP_ORDER <= {1}", drTgt["TGT_EMP_ID"], step_order));
+
+			dtTemp.Merge(dtSub);
+		}
+
+		return dtTemp;
+	}
+
+	/// <summary>
+	/// 쿼리스트링으로 받은 EST_JOB_ID로 COL_ 관련 필드의 값을 넣어 주는 메소드
+	/// </summary>
+	/// <param name="est_job_ids"></param>
+	private void SetColColumnsByEstJobID(string est_job_ids)
+	{
+		// 작업ID에 따라서 EST_JOB_ID 테이블의 VAR_MAP_KEY 컬럼의 값이 존재하는 것에 따라
+		// 사용여부의 값을 반환하는데 이러한 변수(COL_XXX_XXX_YN)를 사용하는 이유는
+		// 동적으로 컬럼을 만들 때 필요하지 않은 경우 성능을 위해서 프로그램 처리를 안하기 위해서 이다.
+
+		//public string COL_WEIGHT_VISIBLE_YN             = "N";
+		//public string COL_POINT_VISIBLE_YN              = "N";
+		//public string COL_BIAS_POINT_VISIBLE_YN         = "N";
+		//public string COL_GRADE_VISIBLE_YN              = "N";
+		//public string COL_GRADE_TO_POINT_VISIBLE_YN     = "N";
+		//public string COL_ESTTERM_SUB_AGG_VISIBLE_YN    = "N";
+		//public string COL_ESTTERM_STEP_AGG_VISIBLE_YN   = "N";
+		//public string COL_CTRL_POINT_VISIBLE_YN         = "N";
+		//public string COL_CTRL_GRADE_VISIBLE_YN         = "N";
+		//public string COL_DEPT_TO_EMP_DATA              = "N";
+		//public string COL_GET_OUTER_DATA                = "N";
+		//public string COL_LINK_EST_DATA                 = "N";
+
+		if (est_job_ids.Equals(""))
+		{
+			return;
+		}
+
+        Biz_JobInfos jobInfo = null;
+
+		foreach (string est_job_id in est_job_ids.Split(','))
+		{
+			jobInfo = new Biz_JobInfos(est_job_id);
+
+            if (jobInfo.Var_Map_Key != null)
+            {
+                //jobInfo = new Biz_JobInfos(est_job_id);
+
+                // 선택컬럼 보이기 여부
+                if (COL_CHECK_VISIBLE_YN.Equals("N"))
+                    COL_CHECK_VISIBLE_YN = (jobInfo.Var_Map_Key.IndexOf("COL_CHECK_VISIBLE_YN") >= 0) ? "Y" : "N";
+
+                // 가중치 컬럼 보이기 여부
+                if (COL_WEIGHT_VISIBLE_YN.Equals("N"))
+                    COL_WEIGHT_VISIBLE_YN = (jobInfo.Var_Map_Key.IndexOf("COL_WEIGHT_VISIBLE_YN") >= 0) ? "Y" : "N";
+
+                // 점수 컬럼 보이기 여부
+                if (COL_POINT_VISIBLE_YN.Equals("N"))
+                    COL_POINT_VISIBLE_YN = (jobInfo.Var_Map_Key.IndexOf("COL_POINT_VISIBLE_YN") >= 0) ? "Y" : "N";
+
+                // Bias 컬럼 보이기 여부(원시점수, 평균조정, 표준편차)
+                if (COL_BIAS_POINT_VISIBLE_YN.Equals("N"))
+                    COL_BIAS_POINT_VISIBLE_YN = (jobInfo.Var_Map_Key.IndexOf("COL_BIAS_POINT_VISIBLE_YN") >= 0) ? "Y" : "N";
+
+                // 등급 컬럼 보이기 여부
+                if (COL_GRADE_VISIBLE_YN.Equals("N"))
+                    COL_GRADE_VISIBLE_YN = (jobInfo.Var_Map_Key.IndexOf("COL_GRADE_VISIBLE_YN") >= 0) ? "Y" : "N";
+
+                // 등급을 점수로 환산 컬럼 보이기 여부
+                if (COL_GRADE_TO_POINT_VISIBLE_YN.Equals("N"))
+                    COL_GRADE_TO_POINT_VISIBLE_YN = (jobInfo.Var_Map_Key.IndexOf("COL_GRADE_TO_POINT_VISIBLE_YN") >= 0) ? "Y" : "N";
+
+                // 주기 집계 컬럼 보이기 여부(상반기,하반기 -> 년간)
+                if (COL_ESTTERM_SUB_AGG_VISIBLE_YN.Equals("N"))
+                    COL_ESTTERM_SUB_AGG_VISIBLE_YN = (jobInfo.Var_Map_Key.IndexOf("COL_ESTTERM_SUB_AGG_VISIBLE_YN") >= 0) ? "Y" : "N";
+
+                // 차수 집계 컬럼 보이기 여부(1차,2차 -> 집계)
+                if (COL_ESTTERM_STEP_AGG_VISIBLE_YN.Equals("N"))
+                    COL_ESTTERM_STEP_AGG_VISIBLE_YN = (jobInfo.Var_Map_Key.IndexOf("COL_ESTTERM_STEP_AGG_VISIBLE_YN") >= 0) ? "Y" : "N";
+
+                // 조정 점수 컬럼 보이기 여부
+                if (COL_CTRL_POINT_VISIBLE_YN.Equals("N"))
+                    COL_CTRL_POINT_VISIBLE_YN = (jobInfo.Var_Map_Key.IndexOf("COL_CTRL_POINT_VISIBLE_YN") >= 0) ? "Y" : "N";
+
+                // 조정 등급 컬럼 보이기 여부
+                if (COL_CTRL_GRADE_VISIBLE_YN.Equals("N"))
+                    COL_CTRL_GRADE_VISIBLE_YN = (jobInfo.Var_Map_Key.IndexOf("COL_CTRL_GRADE_VISIBLE_YN") >= 0) ? "Y" : "N";
+
+                // 부서 점수를 사원 점수로 반영 컬럼 보이기 여부
+                if (COL_DEPT_TO_EMP_DATA.Equals("N"))
+                    COL_DEPT_TO_EMP_DATA = (jobInfo.Var_Map_Key.IndexOf("COL_DEPT_TO_EMP_DATA") >= 0) ? "Y" : "N";
+
+                // 외부 데이터 처리 컬럼 보이기 여부
+                if (COL_GET_OUTER_DATA.Equals("N"))
+                    COL_GET_OUTER_DATA = (jobInfo.Var_Map_Key.IndexOf("COL_GET_OUTER_DATA") >= 0) ? "Y" : "N";
+
+                // 링크된 평가 컬럼 보이기 여부
+                if (COL_LINK_EST_DATA.Equals("N"))
+                    COL_LINK_EST_DATA = (jobInfo.Var_Map_Key.IndexOf("COL_LINK_EST_DATA") >= 0) ? "Y" : "N";
+            }
+		}
+	}
+
+	/// <summary>
+	/// EST_JOB_ID의 확정 상태
+	/// </summary>
+	/// <param name="est_job_ids"></param>
+	private void SetConfirmStatusHtml(string est_job_ids)
+	{
+		// 작업ID에 따른 상태진행 아이콘 Html 코드 반환
+		ltrConfirmStatus.Text = EstJobUtility.GetStatusHtml(COMP_ID
+															, EST_ID
+															, ESTTERM_REF_ID
+															, ESTTERM_SUB_ID
+															, ESTTERM_STEP_ID
+															, est_job_ids.Split(','));
+	}
+
+	private void ClearGroupByBoxColumn()
+	{
+		UltraWebGrid1.DisplayLayout.ViewType = ViewType.Flat;
+		UltraWebGrid1.Clear();
+		UltraWebGrid1.DisplayLayout.ViewType = ViewType.OutlookGroupBy;
+	}
+
+	// UltraGrid의 GroupByColumn에 특정 컬럼으로 Group 되어 있으면 하단의 작업 버튼 처리시 오류가 발생되어
+	// 그런 사항이 있는지 체크하고 만약 존재한다면 아래와 같은 메세지를 출력한다.
+	private bool HasGroupByColumns()
+	{
+		bool isColumns = false;
+		string temp = "";
+
+		for (int i = 0; i < UltraWebGrid1.Columns.Count; i++)
+		{
+			if (UltraWebGrid1.Columns[i].IsGroupByColumn)
+			{
+				temp += string.Format("[{0}] ", UltraWebGrid1.Columns[i].Header.Caption);
+
+				if (!isColumns)
+					isColumns = true;
+			}
+		}
+
+		if (isColumns)
+			ltrScript.Text = JSHelper.GetAlertScript(string.Format("현재의 작업을 진행하시기 전에 GroupByBox에서 존재하는 {0}컬럼을 모두 제거하세요.", temp));
+
+		return isColumns;
+	}
+
+    //MBO조회
+    private void DoBindingMbo()
+    {
+        if (!IsPostBack)
+        {
+            DropDownListCommom.BindEstTermSub(ddlEstTermSubID, COMP_ID, EST_ID, YEAR_YN);   // 평가주기 DropDownList 바인딩 
+            DropDownListCommom.BindEstTermStep(ddlEstTermStepID, COMP_ID, EST_ID);          // 평가차수 DropDownList 바인딩
+            ddlEstTermStepID.Items.Insert(0, new ListItem("::전체::", "0"));
+            ddlEstTermStepID.SelectedIndex = 0;
+        }
+        
+        ESTTERM_STEP_ID = WebUtility.GetIntByValueDropDownList(ddlEstTermStepID);
+
+        // 처음 실행될때 (추가)
+        if (ESTTERM_SUB_ID.Equals(0))    // 값 존재 여부
+        {
+            ESTTERM_SUB_ID = WebUtility.GetIntByValueDropDownList(ddlEstTermSubID);     // DropDownList의 값을 반환
+        }
+        else
+        {
+            WebUtility.FindByValueDropDownList(ddlEstTermSubID, ESTTERM_SUB_ID);        // DropDwonList의 값을 선택함
+            ESTTERM_SUB_ID = WebUtility.GetIntByValueDropDownList(ddlEstTermSubID);     // DropDownList의 값을 반환
+        }
+
+
+        // 만약 차수가 합산일 경우
+        if (MERGE_YN.Equals("Y"))
+        {
+            ESTTERM_STEP_ID = BizUtility.GetEstTermStepIDByMergeYN(COMP_ID);            // 차수집계인 경우 (차추집계의 차수ID의 값을 반환)
+        }
+        else
+        {
+            
+        }
+
+        WebUtility.FindByValueDropDownList(ddlEstTermRefID, ESTTERM_REF_ID);
+
+        if (ddlEstTermSubID.Visible)
+            WebUtility.FindByValueDropDownList(ddlEstTermSubID, ESTTERM_SUB_ID);
+
+        //if (ddlEstTermStepID.Visible)
+        //    WebUtility.FindByValueDropDownList(ddlEstTermStepID, ESTTERM_SUB_ID);
+
+        // 상태 html
+        HtmlScriptCommon.CreateStatusHtmlTable(tblViewStatus, EST_ID);
+
+        Biz_Datas biz = new Biz_Datas();
+        DataSet ds = biz.Get3GADataEstData(COMP_ID, EST_ID, ESTTERM_REF_ID, ESTTERM_SUB_ID, ESTTERM_STEP_ID, DataTypeUtility.GetToInt32(ddlTgtDept.SelectedValue));
+        UltraWebGrid1.Clear();
+        UltraWebGrid1.DataSource = ds.Tables[0];
+        UltraWebGrid1.DataBind();
+
+        if (ds.Tables[1].Rows.Count > 0)
+            this.IEST_STATUS = ds.Tables[1].Rows[0]["STATUS_YN"].ToString();
+
+        if (ds.Tables[2].Rows.Count > 0)
+            this.IEST_COMPLETE = "N";
+        else
+            this.IEST_COMPLETE = "Y";
+
+        //점수 보여주기 여부
+        if (!IVISIBLE_PAST_POINT_YN)
+            for (int i = 0; i < UltraWebGrid1.Columns.Count; i++)
+            {
+                if (UltraWebGrid1.Columns[i].Header.Caption.Trim() == "점수")
+                {
+                    UltraWebGrid1.Columns[i].Hidden = true;
+                }
+            }
+
+        lblRowCount.Text = ds.Tables[0].Rows.Count.ToString("#,##0");
+    }
+	#endregion
+
+
+
+}

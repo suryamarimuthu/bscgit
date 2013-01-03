@@ -1,0 +1,137 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM
+END
+Dac_LowDemensionName.cs
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_LowDemensionName.cs
+END
+Dac_CodeInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_CodeInfos.cs
+END
+Dac_CategoryInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_CategoryInfos.cs
+END
+Dac_ApprovalPrcs.cs
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_ApprovalPrcs.cs
+END
+Dac_LowDemensionStrings.cs
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_LowDemensionStrings.cs
+END
+Dac_KPIThresholdCodes.cs
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_KPIThresholdCodes.cs
+END
+Dac_PageTraces.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_PageTraces.cs
+END
+Dac_ApprovalLines.cs
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_ApprovalLines.cs
+END
+Dac_EmpInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_EmpInfos.cs
+END
+Dac_UnitTypeInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_UnitTypeInfos.cs
+END
+Dac_BizInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_BizInfos.cs
+END
+Dac_MicroBSCEnum.cs
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_MicroBSCEnum.cs
+END
+Dac_EmpSysInfos.Data.cs
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_EmpSysInfos.Data.cs
+END
+Dac_DeptInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_DeptInfos.cs
+END
+Dac_CheckInOutInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_CheckInOutInfos.cs
+END
+Dac_SendLog.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_SendLog.cs
+END
+Dac_RelationDeptEmp.cs
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_RelationDeptEmp.cs
+END
+Dac_LowDemensionNumbers.cs
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_LowDemensionNumbers.cs
+END
+Dac_RoleInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_RoleInfos.cs
+END
+Dac_EmpSysInfos.Biz.cs
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_EmpSysInfos.Biz.cs
+END
+Dac_Aproval_Infos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_Aproval_Infos.cs
+END
+Dac_StaticDsMenu.cs
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/COM/DAL_OLD_COM/Dac_StaticDsMenu.cs
+END

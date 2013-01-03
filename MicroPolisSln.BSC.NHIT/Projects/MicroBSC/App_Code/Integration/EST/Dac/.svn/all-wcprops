@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/EST/Dac
+END
+Dac_Est_Data.cs
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/EST/Dac/Dac_Est_Data.cs
+END
+Dac_Est_Bias_Group.cs
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/EST/Dac/Dac_Est_Bias_Group.cs
+END
+Dac_Est_Emp_Est_Target_Map.cs
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/EST/Dac/Dac_Est_Emp_Est_Target_Map.cs
+END
+Dac_Est_Position_Info.cs
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/EST/Dac/Dac_Est_Position_Info.cs
+END
+Dac_Est_Question_Data.cs
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/EST/Dac/Dac_Est_Question_Data.cs
+END
+Dac_Est_Refusal.cs
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/EST/Dac/Dac_Est_Refusal.cs
+END
+Dac_Est_Self_Data.cs
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/EST/Dac/Dac_Est_Self_Data.cs
+END
+Dac_Est_Term_Info.cs
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/EST/Dac/Dac_Est_Term_Info.cs
+END
+Dac_Est_Outer_Data_Proc_Info.cs
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/EST/Dac/Dac_Est_Outer_Data_Proc_Info.cs
+END
+Dac_Est_Pos_Weight.cs
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/EST/Dac/Dac_Est_Pos_Weight.cs
+END

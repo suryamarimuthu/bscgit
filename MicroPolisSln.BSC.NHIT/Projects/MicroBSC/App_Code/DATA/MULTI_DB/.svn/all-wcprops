@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/DATA/MULTI_DB
+END
+IDbAgent.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/DATA/MULTI_DB/IDbAgent.cs
+END
+DbAgentBase.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/DATA/MULTI_DB/DbAgentBase.cs
+END
+ExcelAgent.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/DATA/MULTI_DB/ExcelAgent.cs
+END
+SqlDbTypeConverter.cs
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/DATA/MULTI_DB/SqlDbTypeConverter.cs
+END
+DbProviderType.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/DATA/MULTI_DB/DbProviderType.cs
+END
+DbAgentHelper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/DATA/MULTI_DB/DbAgentHelper.cs
+END
+SqlDbAgent.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/DATA/MULTI_DB/SqlDbAgent.cs
+END
+OdbcAgent.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/DATA/MULTI_DB/OdbcAgent.cs
+END
+OracleDbAgent.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/DATA/MULTI_DB/OracleDbAgent.cs
+END

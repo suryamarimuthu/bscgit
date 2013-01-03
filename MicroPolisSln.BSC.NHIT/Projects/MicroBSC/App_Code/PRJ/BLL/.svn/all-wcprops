@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PRJ/BLL
+END
+Biz_Prj_Schedule.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PRJ/BLL/Biz_Prj_Schedule.cs
+END
+Biz_Prj_Task_Owner.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PRJ/BLL/Biz_Prj_Task_Owner.cs
+END
+Biz_Prj_QuestionData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PRJ/BLL/Biz_Prj_QuestionData.cs
+END
+Biz_Prj_QuestionPrjMap.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PRJ/BLL/Biz_Prj_QuestionPrjMap.cs
+END
+Biz_Prj_Share.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PRJ/BLL/Biz_Prj_Share.cs
+END
+Biz_Prj_Execution.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PRJ/BLL/Biz_Prj_Execution.cs
+END
+Biz_Prj_Task_Share.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PRJ/BLL/Biz_Prj_Task_Share.cs
+END
+Biz_Prj_EmpEstPrjMap.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PRJ/BLL/Biz_Prj_EmpEstPrjMap.cs
+END
+Biz_Prj_Resource.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PRJ/BLL/Biz_Prj_Resource.cs
+END
+Biz_Prj_Data.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PRJ/BLL/Biz_Prj_Data.cs
+END
+Biz_Bsc_Kpi_Prj.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PRJ/BLL/Biz_Bsc_Kpi_Prj.cs
+END
+Biz_Prj_Budget.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PRJ/BLL/Biz_Prj_Budget.cs
+END
+Biz_Prj_Info.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PRJ/BLL/Biz_Prj_Info.cs
+END

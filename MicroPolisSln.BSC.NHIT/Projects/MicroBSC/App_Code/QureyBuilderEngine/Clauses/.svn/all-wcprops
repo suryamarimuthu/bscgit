@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/QureyBuilderEngine/Clauses
+END
+JoinClause.cs
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/QureyBuilderEngine/Clauses/JoinClause.cs
+END
+TopClause.cs
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/QureyBuilderEngine/Clauses/TopClause.cs
+END
+WhereStatement.cs
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/QureyBuilderEngine/Clauses/WhereStatement.cs
+END
+OrderByClause.cs
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/QureyBuilderEngine/Clauses/OrderByClause.cs
+END
+WhereClause.cs
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/QureyBuilderEngine/Clauses/WhereClause.cs
+END

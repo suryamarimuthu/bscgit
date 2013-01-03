@@ -1,0 +1,349 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>경동도시가스 KD PRO </title>
+<script language="JavaScript">
+<!--
+
+	function CheckLogin(){
+		var frm = document.fm;
+	    if( frm.user_id.value.length == 0 ) {
+	        alert("사용자ID를 입력해 주시기 바랍니다!");
+	        frm.user_id.focus();
+	        return;
+	    } else if( frm.pswd.value.length == 0 ) {
+	        alert("패스워드를 입력해 주시기 바랍니다!");
+	        frm.pswd.focus();
+	        return;
+	    } else {
+	        frm.submit();
+	    }
+	    setCookie1();
+	    frm.action ="http://bs.kdgas.co.kr/login_check.jsp";
+	    frm.submit();
+	    return;
+	}
+	var expDays = 30;
+	var exp = new Date();
+	exp.setTime(exp.getTime() + (expDays*24*60*60*1000));
+	function setCookie1() {
+		var frm = document.fm;
+		var userid = "userid";
+		var useridvalue= frm.user_id.value;
+		var prokdgas= frm.prokdgas.value;
+		deleteCookie(userid);
+		return;
+	}
+	function fnOnload() {
+	    var frm = document.fm;
+		var userid = getCookie("userid");
+		if( userid != "" ) {
+			frm.user_id.value        = userid;
+			frm.user_id.select();
+		} else {
+		    frm.user_id.focus();
+		}
+	    return;
+	}
+	function fnOnkeyup(pGb) {
+		var frm = document.fm;
+
+	    if(event.keyCode == 13) {
+	        if( pGb == 0 ) {
+	            frm.pswd.focus();
+	        } else {
+	            CheckLogin();
+	        }
+	    }
+	    return;
+	}
+	function js_requestId() {
+		// alert('아이디 신청');
+		window.open('http://bs.kdgas.co.kr/id_request.jsp','id_r','width=400,height=234,scrollbars=no,resizable=no');
+	}
+	function setCookie2(name, value) {
+	    var argc = setCookie2.arguments.length;
+	    var argv = setCookie2.arguments;
+	    var expires = (argc > 2) ? argv[2] : null;
+	    var path    = (argc > 3) ? argv[3] : null;
+	    //var domain  = (argc > 4) ? argv[4] : null;
+		var domain  = "bs.kdgas.co.kr";
+	    var secure  = (argc > 5) ? argv[5] : false;
+	    document.cookie = name + "=" + escape(value) +
+	        ((expires==null) ? "" : ("; expires=" + expires.toGMTString())) +
+	        ((path==null) ? "" : ("; path=" + path)) +
+	        ((domain==null) ? "" : ("; domain=" + domain)) +
+	        ((secure==true) ? "; secure" : "");
+	}
+	function deleteCookie(name) {
+	    var today = new Date();
+	    today.setTime(today.getTime() - 1);
+	    var value = getCookie(name);
+	    if(value != "")
+	        document.cookie = name + "=" + value + "; expires=" + today.toGMTString();
+	    return;
+	}
+	function getCookie(name) {
+	    var find_flag = false;
+	    var start, end;
+	    var i = 0;
+		var kkkk = document.cookie;
+	    while(i <= document.cookie.length) {
+	         start = i;
+	         end = start + name.length;
+	         if(document.cookie.substring(start, end) == name) {
+	             find_flag = true;
+	             break;
+	         }
+	         i++;
+	    }
+	    if(find_flag == true) {
+	        start = end + 1;
+	        end = document.cookie.indexOf(";", start);
+	        if(end < start)
+	            end = document.cookie.length;
+	        return document.cookie.substring(start, end);
+	    }
+	    return "";
+	}
+
+// -->
+</script>
+<script language="JavaScript">
+<!--
+function na_restore_img_src(name, nsdoc)
+{
+  var img = eval((navigator.appName.indexOf('Netscape', 0) != -1) ? nsdoc+'.'+name : 'document.all.'+name);
+  if (name == '')
+    return;
+  if (img && img.altsrc) {
+    img.src    = img.altsrc;
+    img.altsrc = null;
+  } 
+}
+
+function na_preload_img()
+{ 
+  var img_list = na_preload_img.arguments;
+  if (document.preloadlist == null) 
+    document.preloadlist = new Array();
+  var top = document.preloadlist.length;
+  for (var i=0; i < img_list.length; i++) {
+    document.preloadlist[top+i]     = new Image;
+    document.preloadlist[top+i].src = img_list[i+1];
+  } 
+}
+
+function na_change_img_src(name, nsdoc, rpath, preload)
+{ 
+  var img = eval((navigator.appName.indexOf('Netscape', 0) != -1) ? nsdoc+'.'+name : 'document.all.'+name);
+  if (name == '')
+    return;
+  if (img) {
+    img.altsrc = img.src;
+    img.src    = rpath;
+  } 
+}
+
+// -->
+</script>
+</head>
+
+<body bgcolor="#FBFBF4" text="black" link="blue" vlink="purple" alink="red" OnLoad="fnOnload();na_preload_img(false, './kd_img/kdpro_button_o.jpg', './kd_img/kdpro_billing_button_o.jpg', './kd_img/kdpro_gis_button_o.jpg', './kd_img/kdpin_button_o.jpg', './kd_img/kdnet_button_o.jpg', './kd_img/kdjump_button_o.jpg');">
+<table align="center" cellpadding="0" cellspacing="0" width="829" height="539">
+    <tr>
+        <td width="829" height="6" background="./kd_img/top_line1.jpg">
+            <p></p>
+        </td>
+    </tr>
+    <tr>
+        <td width="829" height="528" background="./kd_img/main_bg1.jpg">
+            <table align="center" cellpadding="0" cellspacing="0" width="784" bordercolordark="black" bordercolorlight="black">
+                <tr>
+                    <td width="784" colspan="3">
+                        <p></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="784" colspan="3">
+                        <p><img src="./kd_img/kdpro.jpg" width="251" height="42" border="0"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="551" height="436">
+                        <p><img src="./kd_img/1_1.jpg" width="551" height="436" border="0"></p>
+                    </td>
+                    <td width="11" height="467" rowspan="2">
+                        <p>&nbsp;</p>
+                    </td>
+                    <td width="222" height="467" rowspan="2" valign="top">
+                        <table cellpadding="0" cellspacing="0" width="222">
+                            <tr>
+                                <td width="222" colspan="2">
+                                    <p><img src="./kd_img/navigator.jpg" border="0"></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="222" height="15" colspan="2">
+                                    <p></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="40" rowspan="6">
+                                    <p><img src="./kd_img/navigator_img.jpg" width="40" height="153" border="0"></p>
+                                </td>
+                                <td width="182">
+                                    <p><a href="index.html" OnMouseOut="na_restore_img_src('image3', 'document')" OnMouseOver="na_change_img_src('image3', 'document', './kd_img/kdpro_button_o.jpg', true);"><img src="./kd_img/kdpro_button.jpg" align="absmiddle" width="154" height="16" border="0" name="image3"></a></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="182">
+                                    <p style="margin-left:30;"><a OnMouseOut="na_restore_img_src('image2', 'document')" OnMouseOver="na_change_img_src('image2', 'document', './kd_img/kdpro_billing_button_o.jpg', true);"><img src="./kd_img/kdpro_billing_button.jpg" align="absmiddle" width="50" height="14" border="0" name="image2"></a></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="182">
+                                    <p style="margin-left:30;"><a href="gis.html" OnMouseOut="na_restore_img_src('image1', 'document')" OnMouseOver="na_change_img_src('image1', 'document', './kd_img/kdpro_gis_button_o.jpg', true);"><img src="./kd_img/kdpro_gis_button.jpg" align="absmiddle" width="50" height="14" border="0" name="image1"></a></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="182">
+                                    <p><a href="pin.asp" OnMouseOut="na_restore_img_src('image4', 'document')" OnMouseOver="na_change_img_src('image4', 'document', './kd_img/kdpin_button_o.jpg', true);"><img src="./kd_img/kdpin_button.jpg" align="absmiddle" width="154" height="16" border="0" name="image4"></a></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="182">
+                                    <p><a href="net.asp" OnMouseOut="na_restore_img_src('image5', 'document')" OnMouseOver="na_change_img_src('image5', 'document', './kd_img/kdnet_button_o.jpg', true);"><img src="./kd_img/kdnet_button.jpg" align="absmiddle" width="154" height="16" border="0" name="image5"></a></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="182">
+                                    <p><a OnMouseOut="na_restore_img_src('image6', 'document')" OnMouseOver="na_change_img_src('image6', 'document', './kd_img/kdjump_button_o.jpg', true);" href="http://bsc.kdgas.co.kr/base/Login.aspx"><img src="./kd_img/kdjump_button.jpg" align="absmiddle" width="154" height="16" border="0" name="image6"></a></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="222" colspan="2">
+                                    <p>&nbsp;</p>
+                                </td>
+                            </tr>
+						</form>
+                        </table>
+                        <table cellpadding="0" cellspacing="0" width="222" background="./kd_img/login_bg1.jpg">
+							<form name=fm method=post action='' onsubmit="CheckLogin(); return false;">
+							<input type=hidden name=mode value=''>
+							<input type=hidden name='prokdgas' value='BILLING'>
+                            <tr>
+                                <td width="222" colspan="3">
+                                    <p><img src="./kd_img/login_top_line1.jpg" width="222" height="3" border="0"></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="222" colspan="3">
+                                    <p><img src="./kd_img/login_title.jpg" width="222" height="29" border="0"></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="222" height="15" colspan="3">
+                                    <p></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="72" height="22">
+                                    <p><img src="./kd_img/id.jpg" align="absmiddle" width="72" height="10" border="0"></p>
+                                </td>
+                                <td width="78" height="22">
+                                        <p><input type="text" name="user_id" size="8" style="background-color:rgb(250,248,240); border-width:1; border-color:rgb(196,196,196); border-style:solid;height:18px;width:70px;" tabindex=1></p>
+                                </td>
+                                <td width="72" height="45" rowspan="2">
+                                    <p><a href="javascript:CheckLogin();"><img src="./kd_img/login_btn_1.gif" align="absmiddle" width="65" height="46" border="0" tabindex=3></a></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="72" height="22">
+                                    <p><img src="./kd_img/passwd.jpg" align="absmiddle" width="72" height="10" border="0"></p>
+                                </td>
+                                <td width="78" height="22">
+                                    <p><input type="password" name="pswd" size="8" style="background-color:rgb(250,248,240); border-width:1; border-color:rgb(196,196,196); border-style:solid;height:18px;width:70px;" tabindex=2></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="222" height="10" colspan="3">
+                                    <p></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="222" colspan="3" height="9">
+                                    <p><img src="./kd_img/login_mid_line1.jpg" align="absmiddle" width="222" height="6" border="0"></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="72" height="20">
+&nbsp;                                </td>
+                                <td width="78" height="20">
+                                        <p>&nbsp;</p>
+                                </td>
+                                <td width="72" height="20">
+&nbsp;                                </td>
+                            </tr>
+                            <tr>
+                                <td width="222" height="5" colspan="3">
+                                    <p></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="222" colspan="3">
+                                    <p><img src="./kd_img/login_bottom_line1.jpg" width="222" height="3" border="0"></p>
+                                </td>
+                            </tr>
+                        </table>
+                        <table cellpadding="0" cellspacing="0" width="222">
+                            <tr>
+                                <td width="212" height="18">                                    <p>&nbsp;</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="212">                                    <p><img src="./kd_img/notice.jpg" align="absmiddle" width="80" height="16" border="0"></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="212" height="10">
+                                    <p></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="212" height="22">
+                                    <p>&nbsp;</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="212" height="22">
+                                    <p>&nbsp;</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="212" height="22">
+                                    <p>&nbsp;</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="551" height="31">
+                        <p align="center"><img src="./kd_img/copyright.jpg" width="305" height="21" border="0" align="absbottom"></p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td width="829" height="5" background="./kd_img/bottom_line1.jpg">
+            <p></p>
+        </td>
+    </tr>
+</table>
+<p align="center">&nbsp;</p>
+</body>
+
+</html>

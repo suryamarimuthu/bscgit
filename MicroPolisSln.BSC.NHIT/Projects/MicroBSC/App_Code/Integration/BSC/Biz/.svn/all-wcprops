@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz
+END
+Biz_Bsc_Map_Kpi.cs
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Map_Kpi.cs
+END
+Biz_Bsc_Dashboard_Data.cs
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Dashboard_Data.cs
+END
+Biz_Bsc_Kpi_Score_Goal.cs
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Kpi_Score_Goal.cs
+END
+Biz_Bsc_Kpi_Result.cs
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Kpi_Result.cs
+END
+Biz_Bsc_Kpi_Notice.cs
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Kpi_Notice.cs
+END
+Biz_Bsc_Kpi_Pool_Ver_Map.cs
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Kpi_Pool_Ver_Map.cs
+END
+Biz_Bsc_Intro_Score.cs
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/MicroBSC_NHIT/!svn/ver/18/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Intro_Score.cs
+END
+Biz_Bsc_Mbo_Kpi_Weight.cs
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Mbo_Kpi_Weight.cs
+END
+Biz_Bsc_Kpi_Pool_Ver.cs
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Kpi_Pool_Ver.cs
+END
+Biz_Bsc_Term_Detail.cs
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Term_Detail.cs
+END
+Biz_Bsc_Kpi_Target.cs
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Kpi_Target.cs
+END
+Biz_Bsc_Kpi_Weight.cs
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Kpi_Weight.cs
+END
+Biz_Bsc_Kpi_Target_Goal.cs
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Kpi_Target_Goal.cs
+END
+Biz_Bsc_Kpi_Info.cs
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Kpi_Info.cs
+END
+Biz_My_Kpi.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_My_Kpi.cs
+END
+Biz_Bsc_Kpi_Pool_Question.cs
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Kpi_Pool_Question.cs
+END
+Biz_Bsc_Interface_Dicode.cs
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Interface_Dicode.cs
+END
+Biz_Bsc_Faq.cs
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Faq.cs
+END
+Biz_Bsc_Kpi_Pool_Templete_Map.cs
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Kpi_Pool_Templete_Map.cs
+END
+Biz_Bsc_Est_Dept_Grade.cs
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Est_Dept_Grade.cs
+END
+Biz_Bsc_Kpi_Pool_Templete.cs
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Kpi_Pool_Templete.cs
+END
+Biz_Bsc_Kpi_Sqt_Eql.cs
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Kpi_Sqt_Eql.cs
+END
+Biz_Bsc_Mbo_Kpi_Score_Mt.cs
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Mbo_Kpi_Score_Mt.cs
+END
+Biz_Bsc_Kpi_Pool.cs
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Kpi_Pool.cs
+END
+Biz_Bsc_Kpi_Score.cs
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/Integration/BSC/Biz/Biz_Bsc_Kpi_Score.cs
+END

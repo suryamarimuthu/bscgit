@@ -1,0 +1,527 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL
+END
+Dac_QuestionDefines.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_QuestionDefines.cs
+END
+Dac_RoleMenuRels.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_RoleMenuRels.cs
+END
+Dac_ReportItems.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_ReportItems.cs
+END
+Dac_MenuInfo.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_MenuInfo.cs
+END
+Dac_QuestionObjects.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_QuestionObjects.cs
+END
+Dac_ScheInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_ScheInfos.cs
+END
+Dac_RelGroupPositionInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_RelGroupPositionInfos.cs
+END
+Dac_CtrlGradeDatas.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_CtrlGradeDatas.cs
+END
+Dac_DeptPosDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_DeptPosDetails.cs
+END
+Dac_EmpEstTargetMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_EmpEstTargetMaps.cs
+END
+Dac_Positions.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_Positions.cs
+END
+Dac_PosClsEmps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_PosClsEmps.cs
+END
+Dac_ScheDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_ScheDetails.cs
+END
+Dac_EmpRoleRels.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_EmpRoleRels.cs
+END
+Dac_EstInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_EstInfos.cs
+END
+Dac_ColumnInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_ColumnInfos.cs
+END
+Dac_BoardCategories.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_BoardCategories.cs
+END
+Dac_RelGroupDepts.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_RelGroupDepts.cs
+END
+Dac_RelGroupPositionDatas.cs
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_RelGroupPositionDatas.cs
+END
+Dac_CtrlDeptMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_CtrlDeptMaps.cs
+END
+Dac_PosDutEmps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_PosDutEmps.cs
+END
+Dac_CtrlInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_CtrlInfos.cs
+END
+Dac_KeyGens.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_KeyGens.cs
+END
+Dac_QuestionPageStyles.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_QuestionPageStyles.cs
+END
+Dac_DeptGroupInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_DeptGroupInfos.cs
+END
+Dac_QuestionComments.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_QuestionComments.cs
+END
+Dac_GradeCtrlDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_GradeCtrlDetails.cs
+END
+Dac_Status.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_Status.cs
+END
+Dac_Styles.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_Styles.cs
+END
+Dac_PointCtrlDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_PointCtrlDetails.cs
+END
+Dac_BoardPopupPages.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_BoardPopupPages.cs
+END
+Dac_Datas.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_Datas.cs
+END
+Dac_Scopes.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_Scopes.cs
+END
+Dac_PositionKinds.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_PositionKinds.cs
+END
+Dac_RelGroupTgtMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_RelGroupTgtMaps.cs
+END
+Dac_RoleInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_RoleInfos.cs
+END
+Dac_CtrlEstMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_CtrlEstMaps.cs
+END
+Dac_PositionInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_PositionInfos.cs
+END
+Dac_QuestionEstMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_QuestionEstMaps.cs
+END
+Dac_PositionGroups.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_PositionGroups.cs
+END
+Dac_TermSubs.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_TermSubs.cs
+END
+Dac_Grades.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_Grades.cs
+END
+Dac_TermInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_TermInfos.cs
+END
+Dac_QuestionDeptEmpMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_QuestionDeptEmpMaps.cs
+END
+Dac_QuestionItems.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/MicroBSC_NHIT/!svn/ver/30/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_QuestionItems.cs
+END
+Dac_JobInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_JobInfos.cs
+END
+Dac_JobColumnMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_JobColumnMaps.cs
+END
+Dac_OuterDataProcInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_OuterDataProcInfos.cs
+END
+Dac_ButtonCommandRoleMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_ButtonCommandRoleMaps.cs
+END
+Dac_DeptEstDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_DeptEstDetails.cs
+END
+Dac_TermSubEstMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_TermSubEstMaps.cs
+END
+Dac_JobDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_JobDetails.cs
+END
+Dac_EmpInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_EmpInfos.cs
+END
+Dac_PositionClasses.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_PositionClasses.cs
+END
+Dac_ScaleInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_ScaleInfos.cs
+END
+Dac_StatusStyles.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_StatusStyles.cs
+END
+Dac_EstMap.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_EstMap.cs
+END
+Dac_CtrlPointDatas.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_CtrlPointDatas.cs
+END
+Dac_BiasDatas.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_BiasDatas.cs
+END
+Dac_PositionBizs.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_PositionBizs.cs
+END
+Dac_EmpPositionBizMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_EmpPositionBizMaps.cs
+END
+Dac_ScopeUnits.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_ScopeUnits.cs
+END
+Dac_PositionKindBizMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_PositionKindBizMaps.cs
+END
+Dac_ColumnStyles.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_ColumnStyles.cs
+END
+Dac_EstDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_EstDetails.cs
+END
+Dac_PositionBizQuestionSubjectMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_PositionBizQuestionSubjectMaps.cs
+END
+Dac_PositionRanks.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_PositionRanks.cs
+END
+Dac_ReportSumDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_ReportSumDetails.cs
+END
+Dac_JobEstMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_JobEstMaps.cs
+END
+Dac_EstDeptInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_EstDeptInfos.cs
+END
+Dac_ButtonCommandInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_ButtonCommandInfos.cs
+END
+Dac_DeptPosScales.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_DeptPosScales.cs
+END
+Dac_QuestionSubjects.cs
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/MicroBSC_NHIT/!svn/ver/31/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_QuestionSubjects.cs
+END
+Dac_Boards.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_Boards.cs
+END
+Dac_CtrlEstDeptMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_CtrlEstDeptMaps.cs
+END
+Dac_ReportDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_ReportDetails.cs
+END
+Dac_QuestionDatas.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_QuestionDatas.cs
+END
+Dac_TermSteps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_TermSteps.cs
+END
+Dac_MapPageLinkInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_MapPageLinkInfos.cs
+END
+Dac_DeptInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_DeptInfos.cs
+END
+Dac_DeptOpinionTgtEmps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_DeptOpinionTgtEmps.cs
+END
+Dac_PositionDutys.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_PositionDutys.cs
+END
+Dac_RelGroupInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_RelGroupInfos.cs
+END
+Dac_PosGrpEmps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_PosGrpEmps.cs
+END
+Dac_TermStepEstMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_TermStepEstMaps.cs
+END
+Dac_PosRnkEmps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_PosRnkEmps.cs
+END
+Dac_BiasTypes.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/DAL/Dac_BiasTypes.cs
+END

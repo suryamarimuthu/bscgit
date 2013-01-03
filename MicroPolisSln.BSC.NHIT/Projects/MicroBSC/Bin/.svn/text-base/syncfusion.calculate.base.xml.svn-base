@@ -1,0 +1,3218 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Syncfusion.Calculate.Base</name>
+    </assembly>
+    <members>
+        <member name="T:Syncfusion.CalculateBaseAssembly">
+            <summary>
+            This class holds the name of the Syncfusion.Calculate.Base assembly and provides a helper 
+            routine that helps with resolving types when loading a serialization stream and when 
+            the framework probes for assemblies by reflection. 
+            </summary>
+        </member>
+        <member name="F:Syncfusion.CalculateBaseAssembly.Name">
+            <summary>
+            The full name of this assembly without version information, e.g. "Syncfusion.Grid".
+            </summary>
+        </member>
+        <member name="F:Syncfusion.CalculateBaseAssembly.Assembly">
+            <summary>
+            A reference to the <see cref="T:System.Reflection.Assembly" /> for the grid assembly.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.CalculateBaseAssembly.RootNamespace">
+            <summary>
+            The root namespace of this assembly. Used internally for locating resources within the assembly.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.CalculateBaseAssembly.AssemblyResolver(System.Object,System.ResolveEventArgs)">
+            <summary>
+            This delegate helps with resolving types and can be used as an event handler
+            for a <see cref="E:System.AppDomain.AssemblyResolve" /> event.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The event data with information about the type.</param>
+            <returns>A reference to the assembly where the type is located.</returns>
+            <remarks>
+            Use this handler when reading back types from a serialization stream
+            saved with an earlier version of this assembly.
+            </remarks>
+            <example>
+            <code lang="C#">
+            		public static GridModel LoadSoap(Stream s)
+            		{
+            			try
+            			{
+            				AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(GridAssembly.AssemblyResolver);
+            				SoapFormatter b = new SoapFormatter();
+            				b.AssemblyFormat = FormatterAssemblyStyle.Simple;
+            				GridModel t = b.Deserialize(s) as GridModel;
+            				t.Modified = false;
+            				return t;
+            			}
+            			finally
+            			{
+            				AppDomain.CurrentDomain.AssemblyResolve -= new ResolveEventHandler(GridAssembly.AssemblyResolver);
+            			}
+            		}
+            
+            </code>
+            </example>
+        </member>
+        <member name="T:Syncfusion.Calculate.CalculateConfig">
+            <summary>
+            Configuration class for the calculate library. In the current version, there are no explicit settings.
+            Adding this component from the tool box allows you to easily configure your project for calculate support.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalculateConfig.Copyright">
+            <summary>
+            Copyright notice for the library.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Calculate.ICalcData">
+            <summary>
+            Defines the minimal interface that a data object must support in order to use 
+            this formula engine.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Calculate.ICalcData.GetValueRowCol(System.Int32,System.Int32)">
+            <summary>
+            Returns the data value at a specified row and column.
+            </summary>
+            <param name="row">1-based index specifying the row index of the requested value.
+            </param>
+            <param name="col">1-based index specifying the column index of the requested data.</param>
+            <returns>The data value at the given row and column index.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.ICalcData.SetValueRowCol(System.Object,System.Int32,System.Int32)">
+            <summary>
+            Sets the data value at the specified row and column.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="row">One-based index specifying the row index of the value.</param>
+            <param name="col">One-based index specifying the column index of the value.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.ICalcData.WireParentObject">
+            <summary>
+            Called immediately after the CalcEngine object is created or when a 
+            RegisterGridAsSheet call is made.
+            </summary>
+            <remarks>This method is a callback to the ParentObject so it can have a chance 
+            to subscribe to any change events it may need to implement ValueChanged properly.
+            </remarks>
+        </member>
+        <member name="E:Syncfusion.Calculate.ICalcData.ValueChanged">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Calculate.ISupportsRowCount">
+            <summary>
+            Used in conjunction with <see cref="P:Syncfusion.Calculate.CalcEngine.RowMaxCount" />.
+            </summary>
+            <remarks>
+            Essential Calculate supports column ranges of the form A:D as in =SUM(A:D) to represent all cells in columns
+            A, B, C and D from a ICalcData object. To get a value for the number of rows, the CalcEngine first checks to 
+            see if the ICalcData object supports the ISupportsRowCount interface. If this interface is supported, the row
+            count used to determine the range is obtained through this interface. If the ICalcData object does not support
+            ISupportsRowCount, then the value of <see cref="P:Syncfusion.Calculate.CalcEngine.RowMaxCount" /> is used provided RowMaxCount &gt; 0. 
+            If not, the fixed value 50
+            is used.
+            </remarks>
+        </member>
+        <member name="T:Syncfusion.Calculate.ISupportsColumnCount">
+            <summary>
+            Used in conjunction with <see cref="P:Syncfusion.Calculate.CalcEngine.ColumnMaxCount" />.
+            </summary>
+            <remarks>
+            Essential Calculate supports row ranges of the form 2:3 as in =SUM(2:3) to represent all cells in rows
+            2 and 3 from a ICalcData object. To get a value for the number of columns, the CalcEngine first checks to 
+            see if the ICalcData object supports the ISupportsColumnCount interface. If this interface is supported, the column
+            count used to determine the range is obtained through this interface. If the ICalcData object does not support
+            ISupportsColumnCount, then the value of <see cref="P:Syncfusion.Calculate.CalcEngine.ColumnMaxCount" /> is used provided ColumnMaxCount &gt; 0. 
+            If not, the fixed value 50
+            is used.
+            </remarks>
+        </member>
+        <member name="T:Syncfusion.Calculate.ValueChangedEventArgs">
+            <summary>
+            Event arguments class for the ICalcData.ValueChanged event.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Calculate.ValueChangedEventArgs.#ctor(System.Int32,System.Int32,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="row">One-based row index for the value.</param>
+            <param name="col">One-based col index for the value.</param>
+            <param name="value">the value</param>
+        </member>
+        <member name="P:Syncfusion.Calculate.ValueChangedEventArgs.RowIndex">
+            <summary>
+            One-based row index.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.ValueChangedEventArgs.Value">
+            <summary>
+            The value.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.ValueChangedEventArgs.ColIndex">
+            <summary>
+            One-base column index.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Calculate.FormulaInfo">
+            <summary>
+            Maintains information on a single formula object.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.FormulaInfo.FormulaText">
+            <summary>
+            The text of the initial formula.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.FormulaInfo.ParsedFormula">
+            <summary>
+            The formula as a parsed string.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.FormulaInfo.FormulaValue">
+            <summary>
+            The last computed value of this formula.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Calculate.RangeInfo">
+            <summary>
+            Represents a rectangle array of cells that may contain formulas, strings, or numbers
+            that may be referenced by other formulas.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Calculate.RangeInfo.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructs a RangeInfo instance with the given top, left, bottom and right values.
+            </summary>
+            <param name="top">Top row index of this range.</param>
+            <param name="left">Left column index of this range.</param>
+            <param name="bottom">Bottom row index of this range.</param>
+            <param name="right">Right column index  of this range.</param>
+            <remarks>The range values must be one-based indexes.</remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.RangeInfo.Cells(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns a RangeInfo object based on the arguments.
+            </summary>
+            <param name="top">Top row index of this range.</param>
+            <param name="left">Left column index of this range.</param>
+            <param name="bottom">Bottom row index of this range.</param>
+            <param name="right">Right column index  of this range.</param>
+            <remarks>The range values must be one-based indexes.</remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.RangeInfo.GetAlphaLabel(System.Int32)">
+            <summary>
+            Retrieves an alphabetic label for the column whose numerical index is passed in.
+            </summary>
+            <param name="col"> Number index such as 1, 5, 27.</param>
+            <returns>Corresponding alphs label like A, E, AA.</returns>
+        </member>
+        <member name="P:Syncfusion.Calculate.RangeInfo.Top">
+            <summary>
+            Top row index of this range.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.RangeInfo.Left">
+            <summary>
+            Left column index of this range.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.RangeInfo.Bottom">
+            <summary>
+            Bottom row index of this range.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.RangeInfo.Right">
+            <summary>
+            Right row index of this range.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Calculate.CalcEngine">
+            <summary>
+            Encapsulates the code required to parse and compute formulas. Hashtable
+            properties maintain a Formula Library of functions as well as a list
+            of dependent cells.
+            <para />
+            You can add and remove library functions.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.RegisterVariableNames(System.String[])">
+            <summary>
+            Registers a list of variable names so you can use it within formulas.
+            </summary>
+            <param name="list">List of names.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ResetVariableNames">
+            <summary>
+            Clears any variable names registered with the CalcEngine.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.PlaceVariablenameTokensIntoFormula(System.String)">
+            <summary>
+            Swaps variable names for tokens.
+            </summary>
+            <param name="formula">The formula holding variable names.</param>
+            <returns>The formula with tokens.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.UpdateCalcID">
+            <summary>
+            Increases the calculation level of the CalcEngine.
+            </summary>
+            <remarks>Every formula has a calculation ID level associated with it. Every time
+            a formula is retrieved, its calculation ID level is compared with the CalcEngine
+            ID level. If they do not agree, the formula is recomputed. Calling UpdateCalcID
+            will force any formula to be recomputed the next time it is retrieved.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.GetCalcID">
+            <summary>
+            Retrieves the current CalcEngine calculation level ID.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.GetFormulaRowCol(Syncfusion.Calculate.ICalcData,System.Int32,System.Int32)">
+            <summary>
+            Gets the text of any formula at the given row and column of the ICalcData object.
+            </summary>
+            <param name="grd">The ICalcData object.</param>
+            <param name="row">The one-based row in the grd object.</param>
+            <param name="col">The one-based col in the grd object.</param>
+            <returns>String containing the text of the formula.</returns>
+            <remarks>If the data item at row and column is not a formula, the
+            return value is an empty string.</remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ParseAndComputeFormula(System.String)">
+            <summary>
+            Parses and computes the passed in string formula.
+            </summary>
+            <param name="formula">The text formula to be parsed and computed.</param>
+            <returns>A string holding the computed value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ParseFormula(System.String)">
+            <summary>
+            Parses the text in a formula cell.
+            </summary>
+            <param name="formula">The text formula to be parsed.</param>
+            <returns>A string holding a parsed representation of the formula.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeFormula(System.String)">
+            <summary>
+            Computes a parsed formula.
+            </summary>
+            <param name="parsedFormula">The parsed formula to be computed.</param>
+            <returns>A string holding the computed value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.TextIsEmpty(System.String)">
+            <summary>
+            Tests whether a string is NULL or empty.
+            </summary>
+            <param name="s">String to be tested.</param>
+            <returns>True is passed in string is null or empty, otherwise False.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.GetSheetFamilyItem(Syncfusion.Calculate.ICalcData)">
+            <summary>
+            Returns the GridSheetFamilyItem for the specified model. If there was no item registered for 
+            the model, a new item is created and cached.
+            </summary>
+            <param name="model">The grid model.</param>
+            <returns>The GridSheetFamilyItem for the specified model.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ToString">
+            <summary>
+            Displays information on the cell currently being calculated.
+            </summary>
+            <returns>String with information on the cell currently being calculated.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.RegisterGridAsSheet(System.String,Syncfusion.Calculate.ICalcData,System.Int32)">
+            <summary>
+             Registers an ICalcData object so it can be referenced in a formula from another ICalcData object.
+             </summary>
+            <param name="refName">The reference name used to refer to this ICalcData object from formulas in other ICalcData objects.
+             </param>
+            <param name="model">The ICalcData from the ICalcData object being registered.
+             </param>
+            <param name="sheetFamilyID">An integer previously created with a call 
+             to CalcEngine.CreateSheetFamilyID. This number is used to identify
+             the ICalcData objects as belonging to a particular family of ICalcData objects. You can only reference
+             ICalcData objects from within the same family.
+             </param>
+            <remarks>
+             Essential Calculate supports multisheet references with its formulas. For example, if you
+             have two ICalcData objects, then you can reference cells from the first ICalcData object
+             in the second ICalcData object. For this to work, both ICalcData objects need to be registered using this method.
+             
+             The syntax for using a sheet reference as part of a formula is to prefix a cell reference 
+             with the sheet reference name followed by an exclamation point.
+             
+             The formula "= sheet1!A1 + sheet2!C3" would add the value is cell A1 for 
+             the ICalcData object whose reference name is sheet1 to the value from cell C3 in the ICalcData object 
+             whose reference name is sheet2.
+              
+             </remarks>
+            <example> Use this code to use cross sheet references:
+             <code lang="C#">
+            		//Register three ICalcData objects so cell can be referenced across ICalcData objects:
+            		int sheetfamilyID = CalcEngine.CreateSheetFamilyID();
+            		myCalcEngine.RegisterGridAsSheet("summary", calcData1, sheetfamilyID);
+            		myCalcEngine.RegisterGridAsSheet("income", calcData2, sheetfamilyID);
+            		myCalcEngine.RegisterGridAsSheet("expenses", calcData3, sheetfamilyID);
+            		....
+            		//Sample formula usage for cells in calcData1, the 'summary' data source.
+            		//This code sums ups some cells from calcData3, the 'expenses' data source 
+            		//and calcData2, the 'income' data source.
+            		
+            		//Sum the range B2:B8 from expenses:
+            		string sumExpenses = "= Sum(expenses!B2:expenses!B8)";
+            
+            		//Sum the range B2:B4 from income:
+            		string sumIncome = "= Sum(income!B2:income!B4)";
+            		
+             </code>
+             <code lang="VB">
+            		'Register three ICalcData objects so cell can be referenced across ICalcData objects:
+            		Dim sheetfamilyID As Integer = CalcEngine.CreateSheetFamilyID();
+            		myCalcEngine.RegisterGridAsSheet("summary", calcData1, sheetfamilyID)
+            		myCalcEngine.RegisterGridAsSheet("income", calcData2, sheetfamilyID) 
+            		myCalcEngine.RegisterGridAsSheet("expenses", calcData3, sheetfamilyID) 
+            		....
+            		'Sample formula usage for cells in calcData1, the 'summary' data source.
+            		'This code sums ups some cells from calcData3, the 'expenses' data source
+            		'and calcData2, the 'income' data source.
+            		
+            		'Sum the range B2:B8 from expenses:
+            		Dim sumExpenses As String = "= Sum(expenses!B2:expenses!B8)"
+            
+            		'Sum the range B2:B4 from income:
+            		Dim sumIncome As String = "= Sum(income!B2:income!B4)"
+             </code>
+             </example>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.CreateSheetFamilyID">
+            <summary>
+            Returns an integer that is used to identify a family of grids.
+            </summary>
+            <remarks>
+            Essential Calculate supports multisheet references within a family of ICalcData objects. To use
+            this functionality, you use this method to get a unique identifier for
+            the family. Then in the RegisterGridAsSheet method that you call to add ICalcData objects
+            to this family, you pass this unique identifier to mark the ICalcData objects as belonging
+            to this family. You can only cross reference ICalcData objects within the same family.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ResetSheetFamilyID">
+            <summary>
+            Reset the cached ICalcData object IDs.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.UnregisterGridAsSheet(System.String,Syncfusion.Calculate.ICalcData)">
+            <summary>
+            Unregisters a grid so it can no longer be referenced in a formula from another grid.
+            </summary>
+            <param name="refName">The reference name used to refer to this grid from formulas in other grids.
+            </param>
+            <param name="model">The grid model.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.PutTokensForSheets(System.String@)">
+            <summary>
+            Accepts an unparsed formula string and replaces any sheet references with corresponding tokens.
+            </summary>
+            <param name="text">The unparsed formula string.</param>
+            <remarks>
+            This is an advanced method that lets you replace sheet names with corresponding tokens. You may have need of 
+            this method if you are adding your own functions to the functiona library.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.#ctor(Syncfusion.Calculate.ICalcData)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="ICalcData">The ICalcData from the underlying grid.</param>
+        </member>
+        <member name="F:Syncfusion.Calculate.CalcEngine.IgnoreValueChanged">
+            <summary>
+            Field that turns on/off processing of the ICalcData.ValueChanged event.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.PullUpdatedValue(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Forces the computation of all cells that are used to compute the requested value.
+            </summary>
+            <param name="targetSheetID">Integer identifying the ICalcData object.</param>
+            <param name="row">The row in the ICalcData object.</param>
+            <param name="col">The column in the ICalcData object.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.PullUpdatedValue(System.String)">
+            <summary>
+            Returns the value in the requested cell reference using fresh computations for
+            for any cells that affect the value of the requested cell.
+            </summary>
+            <param name="cellRef"> A cell reference like:   Sheet5!B14</param>
+            <returns>A freshly computed value for the cell.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.UpdateDependenciesAndCell(System.String)">
+            <summary>
+            Triggers a calculation for any value depending upon the given cell.
+            </summary>
+            <param name="cell1">The cell.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.Refresh(System.String)">
+            <summary>
+            Recalculates any cell that depends upon the passed in cell.
+            </summary>
+            <param name="s">A cell such as A21 or EE31.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.RefreshRange(Syncfusion.Calculate.RangeInfo)">
+            <summary>
+            Recalculates every cell that depends upon any cell in the passed-in range.
+            </summary>
+            <remarks>For example, if range is RangeInfo(1,1,2,2), and cells (5,6) and
+            (12,17) hold formulas that reference the cells in the range, then cells (5,6) 
+            and (12,17) will be re-computed as the result of this call.</remarks>
+            <param name="range">RangeInfo object to be refreshed.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.RecalculateRange(Syncfusion.Calculate.RangeInfo,Syncfusion.Calculate.ICalcData)">
+            <summary>
+            Recalculates any formula cells in the specified range.
+            </summary>
+            <remarks>The calculations for non-visible formula cells are performed the next time 
+             cell are actually displayed. If you want the calculation performed immediately 
+             on cells (visible or not), call the two argument overload of RecalculateRange, 
+             passing the forceCalculations argument as True.</remarks>
+            <param name="range">GridRangInfo object that specifies the cells to be recalculated.</param>
+            <param name="data">ICalcData object that holds the data to be recalculated.</param>
+        </member>
+        <member name="F:Syncfusion.Calculate.CalcEngine.FormulaErrorStrings">
+            <summary>
+            String array that holds the strings used in error messages within the Formula Engine.
+            </summary>
+            <remarks>If you want to change the error messages displayed within the Formula Engine,
+            you can set your new strings into the appropriate position in the FormulaErrorStrings 
+            array. Here is the code that shows the default settings. You should assign your new
+            strings to the corresponding positions. 
+            </remarks>
+            <example>Here is the code that shows position of each string in FormulaErrorStrings:
+            <code lang="C#">
+            	public string[] FormulaErrorStrings = new string[]
+            	{
+            		"binary operators cannot start an expression",	//0
+            		"cannot parse",									//1
+            		"bad library",									//2
+            		"invalid char in front of",						//3
+            		"number contains 2 decimal points",				//4
+            		"expression cannot end with an operator",		//5
+            		"invalid characters following an operator",		//6
+            		"invalid character in number",					//7
+            		"mismatched parentheses",						//8
+            		"unknown formula name",							//9
+            		"requires a single argument",					//10
+            		"requires 3 arguments",							//11
+            		"invalid Math argument",						//12
+            		"requires 2 arguments",							//13
+            		"bad index",									//14
+            		"too complex",									//15
+            		"circular reference: ",							//16
+            		"missing formula",								//17
+            		"improper formula",								//18
+            		"invalid expression",							//19
+            		"cell empty"									//20
+            		"bad formula",									//21
+            		"empty expression",								//22
+            		""                                              //23
+            		"mismatched string quotes",                     //24
+                    "wrong number of arguments",                    //25
+                    "invalid arguments",							//26
+                    "iterations do not converge",                   //27
+                    "Control named '{0}' is already registered",    //28
+                    "Calculation overflow",							//29
+                    "Missing sheet"								    //30
+            	};
+            </code>
+            </example>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.MarkNamedRanges(System.String@)">
+            <summary>
+            Replaces NamedRanges with their values.
+            </summary>
+            <remarks>
+            Accepts a string such as Sin(SumRange) and tokenizes it into
+            bqSIN[A1A4a]b which serves as input to ComputedValue.
+            </remarks>
+            <param name="argList">argList containing named ranges.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.MarkLibraryFormulas(System.String@)">
+            <summary>
+            Tokenizes all library references.
+            </summary>
+            <remarks>
+            Accepts a string such as Sin(A1+A2) and tokenizes it into
+            bqSIN[A1A2a]b which serves as input to ComputedValue.
+            </remarks>
+            <param name="formula">Formula to be tokenized.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.AddNamedRange(System.String,System.String)">
+            <summary>
+            Adds a named range to the NamedRanges collection.
+            </summary>
+            <param name="name">The name of the range to be added.</param>
+            <param name="range">The range to be added.</param>
+            <returns>True if successfully added, otherwise False.</returns>
+            <remarks>
+            The range should be a string such as A4:C8.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.RemoveNamedRange(System.String)">
+            <summary>
+            Removes a range from the NamedRanges collection.
+            </summary>
+            <param name="name">The name of the range to be removed.</param>
+            <returns>True if successfully removed, otherwise False.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.AddFunction(System.String,Syncfusion.Calculate.CalcEngine.LibraryFunction)">
+            <summary>
+            Adds a function to the function library.
+            </summary>
+            <param name="name">The name of the function to be added.</param>
+            <param name="func">The function to be added.</param>
+            <returns>True if successfully added, otherwise False.</returns>
+            <remarks>
+            LibraryFunction is a delegate that defines the signature of functions that
+            you can add to the function library.
+            <code>
+            public delegate string LibraryFunction(string args);
+            </code>
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.RemoveFunction(System.String)">
+            <summary>
+            Removes a function from the function library.
+            </summary>
+            <param name="name">The name of the function to be removed.</param>
+            <returns>True if successfully removed, otherwise False.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeHLookUp(System.String)">
+            <summary>
+            Returns a horizontal table look up value.
+            </summary>
+            <param name="range">Contains search value, table, return index and match properties.</param>
+            <returns>Matching value found in the table.</returns>
+            <remarks> For example, =HLOOKUP("Axles",A1:C4,2,TRUE) looks for the exact 
+            match for Axles in A1:C1 and returns the corresponding value in A2:C2. 
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeVLookUp(System.String)">
+            <summary>
+            Returns a vertical table look up value.
+            </summary>
+            <param name="range">Contains search value, table, return index and match properties.</param>
+            <returns>Matching value found in the table.</returns>
+            <remarks> For example, =VLOOKUP("Axles",A1:C4,2,TRUE) looks for the exact 
+            match for Axles in A1:A4 and returns the corresponding value in B1:B4. 
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeLeft(System.String)">
+            <summary>
+            Returns the left so many characters in the given string.
+            </summary>
+            <param name="range">Contains the string and the number of characters.</param>
+            <returns>A string.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeRight(System.String)">
+            <summary>
+            Returns the right so many characters in the given string.
+            </summary>
+            <param name="range">Contains the string and the number of characters.</param>
+            <returns>A string.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeLen(System.String)">
+            <summary>
+            Returns the length of the given string.
+            </summary>
+            <param name="range">Contains the string.</param>
+            <returns>An integer length.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeMid(System.String)">
+            <summary>
+            Returns a substring of the given string.
+            </summary>
+            <param name="range">Contains the original string, start position of the substring, 
+            and the number of characters in the substring.</param>
+            <returns>A string.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.IsSeparatorInTIC(System.String)">
+            <summary>
+            Returns True if the ParseArgumentSeparator character is included in a string.
+            </summary>
+            <param name="s">The string to be searched.</param>
+            <returns>True or False.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.GetStringArray(System.String)">
+            <summary>
+            Returns an array of strings from an argument list.
+            </summary>
+            <param name="s">A delimited argument list.</param>
+            <returns>Array of strings from an argument list.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeConcatenate(System.String)">
+            <summary>
+            Returns a single character string.
+            </summary>
+            <param name="range">List of strings to be concatenated.</param>
+            <returns>A single string.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeProduct(System.String)">
+            <summary>
+            Returns the product of the arguments in the list.
+            </summary>
+            <param name="range">List of arguments.</param>
+            <returns>Product of the arguments.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeText(System.String)">
+            <summary>
+            Returns a quoted string from a date or number.
+            </summary>
+            <param name="range">Value to be converted to a string.</param>
+            <returns>Quoted string.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeValue(System.String)">
+            <summary>
+            Returns a number.
+            </summary>
+            <param name="range">A date or number string.</param>
+            <returns>A number.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeMod(System.String)">
+            <summary>
+            Returns the remainder after dividing one number by another.
+            </summary>
+            <param name="range">Two numbers in a list.</param>
+            <returns>The remainder.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeInt(System.String)">
+            <summary>
+            Returns the integer value.
+            </summary>
+            <param name="range">Number to be truncated.</param>
+            <returns>An integer.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeTrunc(System.String)">
+            <summary>
+            Truncates a number to an integer.
+            </summary>
+            <param name="range">Value and number of digits.</param>
+            <returns>Truncated value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeSumProduct(System.String)">
+            <summary>
+            Returns the sum of the products of corresponding values.
+            </summary>
+            <param name="range">Two cell ranges.</param>
+            <returns>Sum of the products.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeIsError(System.String)">
+            <summary>
+            Returns True is the string denotes an error.
+            </summary>
+            <param name="range">String to be tested.</param>
+            <returns>True if the value is an error.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeIsNumber(System.String)">
+            <summary>
+            Determines whether the string contains a number or not.
+            </summary>
+            <param name="range">String to be tested.</param>
+            <returns>True if the string is a number.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeAvg(System.String)">
+            <summary>
+            Returns the simple average of all values listed in the argument.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.</param>
+            <returns>A string holding the simple average of all values listed in the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeOr(System.String)">
+            <summary>
+            Returns the inclusive Or of all values treated as logical values listed in the argument.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers. Each item in the list is considered True if it is nonzero
+            and False if it is zero.</param>
+            <returns>A string holding the Or of all values listed in the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeAnd(System.String)">
+            <summary>
+            Returns the And of all values treated as logical values listed in the argument.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers. Each item in the list is considered True if it is nonzero
+            and False if it is zero.</param>
+            <returns>A string holding the And of all values listed in the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeNot(System.String)">
+            <summary>
+             Flips the logical value represented by the argument.
+            </summary>
+            <remarks>
+            The argument is
+            treated as a logical expression with a non-zero value considered True and a zero value considered False.
+            </remarks>
+            <param name="args">A string holding either a single argument consisting of a 
+            cell reference, formula, or number. 
+            </param>
+            <returns>Returns 0 if the argument evaluates to a non-zero value. Otherwise, it returns 1.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeIf(System.String)">
+            <summary>
+            Conditionally computes one of two alternatives depending upon a logical expression.
+            </summary>
+            <remarks>
+            The first argument is
+            treated as a logical expression with a non-zero value considered True and a zero value considered False.
+            The value of only one of the alternatives is computed depending upon the logical expression.
+            </remarks>
+            <param name="args">A string holding a list of three arguments. 
+            </param>
+            <returns>Returns a string holding the second argument if the first argument is True (non-zero). Otherwise, it returns a string holding the third argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeSum(System.String)">
+            <summary>
+            Returns the sum of all values listed in the argument.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.</param>
+            <returns>A string holding the sum of all values listed in the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeMax(System.String)">
+            <summary>
+            Returns the maximum value of all values listed in the argument.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.</param>
+            <returns>A string holding the maximum value of all values listed in the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeMin(System.String)">
+            <summary>
+            Returns the minimum value of all values listed in the argument.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.</param>
+            <returns>A string holding the minimum value of all values listed in the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputePI(System.String)">
+            <summary>
+            Returns the number pi.
+            </summary>
+            <param name="args">Ignored. Can be empty.</param>
+            <returns>A string holding the number pi.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeSign(System.String)">
+            <summary>
+            Returns a number indicating the sign of the argument.
+            </summary>
+            <param name="args">A cell reference, formula, or number.</param>
+            <returns>A string holding a number representing the sign of the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputePow(System.String)">
+            <summary>
+            Returns a specified number raised to the specified power.
+            </summary>
+            <param name="args">String containing two parameters separated by commas:
+            the first being base number,
+            the second being the exponent.</param>
+            <returns>A string holding the value of the base number raised to the exponent.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeAcos(System.String)">
+            <summary>
+            Computes angle whose cosine is the argument.
+            </summary>
+            <param name="args">A cell reference, formula, or number.</param>
+            <returns>A string holding an angle whose cosine is the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeAsin(System.String)">
+            <summary>
+            Computes angle whose sine is the argument.
+            </summary>
+            <param name="args">A cell reference, formula, or number.</param>
+            <returns>A string holding an angle whose sine is the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeAtan(System.String)">
+            <summary>
+            Computes angle whose tangent is the argument.
+            </summary>
+            <param name="args">A cell reference, formula, or number.</param>
+            <returns>A string holding the tangent of the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeCos(System.String)">
+            <summary>
+            Computes the cosine of the argument.
+            </summary>
+            <param name="args">A cell reference, formula, or number.</param>
+            <returns>A string holding the cosine of the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeSin(System.String)">
+            <summary>
+            Computes the sine of the argument.
+            </summary>
+            <param name="args">A cell reference, formula, or number.</param>
+            <returns>A string holding the sine of the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeCosh(System.String)">
+            <summary>
+            Computes the hyperbolic cosine of the argument.
+            </summary>
+            <param name="args">A cell reference, formula, or number.</param>
+            <returns>A string holding the hyperbolic cosine of the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeSinh(System.String)">
+            <summary>
+            Computes the hyperbolic sine of the argument.
+            </summary>
+            <param name="args">A cell reference, formula, or number.</param>
+            <returns>A string holding the hyperbolic sine of the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeTanh(System.String)">
+            <summary>
+            Computes the hyperbolic tangent of the argument.
+            </summary>
+            <param name="args">A cell reference, formula, or number.</param>
+            <returns>A string holding the hyperbolic tangent of the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeCeiling(System.String)">
+            <summary>
+            Computes the smallest whole number greater than or equal to the argument.
+            </summary>
+            <param name="args">A cell reference, formula, or number.</param>
+            <returns>A string holding the smallest whole number greater than or equal to the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeFloor(System.String)">
+            <summary>
+            Computes the largest whole number less than or equal to the argument.
+            </summary>
+            <param name="args">A cell reference, formula, or number.</param>
+            <returns>A string holding the largest whole number less than or equal to the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeLog(System.String)">
+            <summary>
+            Computes the natural logarithm of the value in the argument.
+            </summary>
+            <param name="args">A cell reference, formula, or number.</param>
+            <returns>A string holding the natural logarithm of the value in the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeLn(System.String)">
+            <summary>
+            Computes the natural logarithm of the value in the argument.
+            </summary>
+            <param name="args">A cell reference, formula, or number.</param>
+            <returns>A string holding the natural logarithm of the value in the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeLog10(System.String)">
+            <summary>
+            Computes the base 10 logarithm of the value in the argument.
+            </summary>
+            <param name="args">A cell reference, formula, or number.</param>
+            <returns>A string holding the base 10 logarithm of the value in the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeExp(System.String)">
+            <summary>
+            Computes e raised to the value of the argument.
+            </summary>
+            <param name="args">A cell reference, formula, or number.</param>
+            <returns>A string holding the e raised to the value of the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeSqrt(System.String)">
+            <summary>
+            Computes the square root of the argument.
+            </summary>
+            <param name="args">A cell reference, formula, or number.</param>
+            <returns>A string holding the square root of the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeAbs(System.String)">
+            <summary>
+            Computes the absolute value of the argument.
+            </summary>
+            <param name="args">A cell reference, formula, or number.</param>
+            <returns>A string holding the absolute value of the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeTan(System.String)">
+            <summary>
+            Computes the tangent the argument.
+            </summary>
+            <param name="args">A cell reference, formula, or number.</param>
+            <returns>A string holding the tangent of the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeDb(System.String)">
+            <summary>
+            Computes the declining balance of an asset.
+            </summary>
+            <param name="argList">Delimited string containing the initial cost, 
+            salvage value, life of asset, period of calculation, and months in the initial year.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeDdb(System.String)">
+            <summary>
+            Computes the double declining balance of an asset.
+            </summary>
+            <param name="argList">Delimited string containing the initial cost, 
+            salvage value, life of asset, period of calculation, and factor.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeFv(System.String)">
+            <summary>
+            Computes the future value of an investment.
+            </summary>
+            <param name="argList">Delimited string containing the rate as percentage per period, 
+            number of periods, payment per period, present value, and payment type (0 = end of period, 1 = start of period).</param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeIpmt(System.String)">
+            <summary>
+            Computes the interest payment for a period.
+            </summary>
+            <param name="argList">Delimited string containing the rate as percentage per period, the period,
+            number of periods, present value, future value, and payment type (0 = end of period, 1 = start of period).</param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeIspmt(System.String)">
+            <summary>
+            Computes the simple interest payment.
+            </summary>
+            <param name="argList">Delimited string containing the rate as percentage per period, the period,
+            number of periods, and present value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeNper(System.String)">
+            <summary>
+            Computes the number of periods an investment.
+            </summary>
+            <param name="argList">Delimited string containing the rate as percentage per period, 
+            payment per period, present value, future value, and payment type (0 = end of period, 1 = start of period).</param>
+            <returns>Number of periods.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeNpv(System.String)">
+            <summary>
+            Computes the net present value an investment.
+            </summary>
+            <param name="argList">Delimited string containing the rate as percentage per period  
+            and a list of invested values.</param>
+            <returns>Net present value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputePmt(System.String)">
+            <summary>
+            Computes the payment for a loan.
+            </summary>
+            <param name="argList">Delimited string containing the rate as percentage per period, 
+            number of periods, present value, future value, and payment type (0 = end of period, 1 = start of period).</param>
+            <returns>Payment amount.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputePpmt(System.String)">
+            <summary>
+            Computes the principal payment for a period.
+            </summary>
+            <param name="argList">Delimited string containing the rate as percentage per period, the period,
+            number of periods, present value, future value, and payment type (0 = end of period, 1 = start of period).</param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputePv(System.String)">
+            <summary>
+            Computes the present value of an investment.
+            </summary>
+            <param name="argList">Delimited string containing the rate as percentage per period, 
+            number of periods, payment per period, future value, and payment type (0 = end of period, 1 = start of period).</param>
+            <returns>Present value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeSln(System.String)">
+            <summary>
+            Computes the straight-line depreciation of an asset per period.
+            </summary>
+            <param name="argList">Delimited string containing the cost, 
+            salvage value, and life.</param>
+            <returns>Depreciation.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeSyd(System.String)">
+            <summary>
+            Computes the sum of years digits depreciation of an asset per period.
+            </summary>
+            <param name="argList">Delimited string containing the cost, 
+            salvage value, life, and period.</param>
+            <returns>Depreciation for the requested period.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeVdb(System.String)">
+            <summary>
+            Computes the variable declining balance of an asset.
+            </summary>
+            <param name="argList">Delimited string containing the initial cost, 
+            salvage value, life of asset, period of calculation, and factor.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeAcosh(System.String)">
+            <summary>
+            The inverse of Cosh.
+            </summary>
+            <param name="args">Value &gt;= 1.</param>
+            <returns>ACosh(value).</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeAsinh(System.String)">
+            <summary>
+            The inverse of Sinh.
+            </summary>
+            <param name="args">Value</param>
+            <returns>ASinh(value).</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeAtanh(System.String)">
+            <summary>
+            The inverse of Tanh.
+            </summary>
+            <param name="args">|Value| &lt; 1.</param>
+            <returns>ATanh(value).</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeAtan2(System.String)">
+            <summary>
+            The ArcTangent of the x and y values. 
+            </summary>
+            <param name="args">x_value and y_value.</param>
+            <returns>Angle whose tangent is y_value/x_value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeCombin(System.String)">
+            <summary>
+            The number of combinations of a given number of items. 
+            </summary>
+            <param name="args">Number, number_items.</param>
+            <returns>The number of combinations.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeDegrees(System.String)">
+            <summary>
+            Converts radians into degrees.
+            </summary>
+            <param name="args">Value in radians.</param>
+            <returns>Degrees.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeEven(System.String)">
+            <summary>
+            Rounds up to larger in magnitude even number.
+            </summary>
+            <param name="args">Number to be rounded.</param>
+            <returns>Rounded even value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeFact(System.String)">
+            <summary>
+            Factorial of a given number.
+            </summary>
+            <param name="args">x.</param>
+            <returns>x!.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeOdd(System.String)">
+            <summary>
+            Rounds up to larger in magnitude odd number.
+            </summary>
+            <param name="args">Number to be rounded.</param>
+            <returns>Rounded odd value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeRadians(System.String)">
+            <summary>
+            Converts degrees into radians.
+            </summary>
+            <param name="args">Value in degrees.</param>
+            <returns>Radians.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeRound(System.String)">
+            <summary>
+            Rounds a number to a specified number of digits.
+            </summary>
+            <param name="args">Number and number of digits.</param>
+            <returns>Rounded number.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeRounddown(System.String)">
+            <summary>
+            Rounds a number to a specified number of digits.
+            </summary>
+            <param name="args">Number and number of digits.</param>
+            <returns>Rounded number.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeRoundup(System.String)">
+            <summary>
+            Rounds a number to a specified number of digits.
+            </summary>
+            <param name="args">Number and number of digits.</param>
+            <returns>Rounded number.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeSumif(System.String)">
+            <summary>
+            Sums the cells specified by some criteria.
+            </summary>
+            <param name="range">The criteria range, the criteria, and the sum range.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeSumsq(System.String)">
+            <summary>
+            Returns the sum of the square of all values listed in the argument.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.</param>
+            <returns>A string holding the sum of the squares of all values listed in the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeSumx2my2(System.String)">
+            <summary>
+            Returns the sum of the differences of squares of the two ranges.
+            </summary>
+            <param name="range">x_range and y_range.</param>
+            <returns>A string holding sum of the differences of squares.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeSumx2py2(System.String)">
+            <summary>
+            Returns the sum of the sums of squares of the two ranges.
+            </summary>
+            <param name="range">x_range and y_range.</param>
+            <returns>A string holding sum of the sums of squares.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeSumxmy2(System.String)">
+            <summary>
+            Returns the sum of the squares of the differences between two ranges.
+            </summary>
+            <param name="range">x_range and y_range.</param>
+            <returns>A string holding sum of the squares of the differences.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeDate(System.String)">
+            <summary>
+            Returns the number of days since 01 Jan 1900.
+            </summary>
+            <param name="args">Year, month, and day.</param>
+            <returns>Number of days.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeDatevalue(System.String)">
+            <summary>
+            Returns the number of days since 01 Jan 1900.
+            </summary>
+            <param name="args">Text containing a date.</param>
+            <returns>Number of days.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeDay(System.String)">
+            <summary>
+            Returns the day of the serial number date.
+            </summary>
+            <param name="args">Serial number date.</param>
+            <returns>Day.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeDays360(System.String)">
+            <summary>
+            Number of days between 2 dates using 360 day year.
+            </summary>
+            <param name="args">Serial number date1, serial number date1 and method.</param>
+            <returns>Days between the dates.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeHour(System.String)">
+            <summary>
+            Returns the hour of the given time.
+            </summary>
+            <param name="args">Given time.</param>
+            <returns>Hour.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeMinute(System.String)">
+            <summary>
+            Returns the minute of the given time.
+            </summary>
+            <param name="args">Given time.</param>
+            <returns>Minute.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeSecond(System.String)">
+            <summary>
+            Returns the second of the given time.
+            </summary>
+            <param name="args">Given time.</param>
+            <returns>Second.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeMonth(System.String)">
+            <summary>
+            Returns the month of the given date.
+            </summary>
+            <param name="args">given time</param>
+            <returns>month.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeNow(System.String)">
+            <summary>
+            Returns the current date and time as a date serial number.
+            </summary>
+            <param name="args">Ignored.</param>
+            <returns>Current date and time as serial number.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeToday(System.String)">
+            <summary>
+            Returns the current date as a date serial number.
+            </summary>
+            <param name="args">Ignored.</param>
+            <returns>Current date as date serial number.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeTime(System.String)">
+            <summary>
+            Returns a fraction of a day.
+            </summary>
+            <param name="argList">Hour, minute, and second.</param>
+            <returns>Fraction of a day.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeTimevalue(System.String)">
+            <summary>
+            Returns a fraction of a day.
+            </summary>
+            <param name="argList">Time as a text string.</param>
+            <returns>Fraction of a day.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeWeekday(System.String)">
+            <summary>
+            Day of the week.
+            </summary>
+            <param name="args">Serial number date1 and return_type.</param>
+            <returns>Days between the dates.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeYear(System.String)">
+            <summary>
+            Returns the year of the given date.
+            </summary>
+            <param name="args">Given date.</param>
+            <returns>Month.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeAvedev(System.String)">
+            <summary>
+            Returns the average deviation of all values listed in the argument.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.</param>
+            <returns>A string holding the average deviation of all values listed in the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeAveragea(System.String)">
+            <summary>
+            Returns the simple average of all values (including text) listed in the argument.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.</param>
+            <returns>A string holding the simple average of all values listed in the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeGammaln(System.String)">
+            <summary>
+            Returns the natural logarithm of the gamma function.
+            </summary>
+            <param name="args">The value to be evaluated.</param>
+            <returns>Returns the natural logarithm of the gamma function.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeGammadist(System.String)">
+            <summary>
+            Returns the gamma distribution.
+            </summary>
+            <param name="args">X, alpha, beta, cumulative.</param>
+            <returns>Returns the gamma distribution.</returns>
+            <remarks>
+            X, alpha, and beta should be positive real numbers. Cumulative should be either 
+            True if you want to return the value of the distribution function or False
+            if you want to return the value of the density function. The distribution value
+            is computed interactively using Trapezoidel Rule to six to seven significant digits
+            or 20 iteration maximum.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeGammainv(System.String)">
+            <summary>
+            Returns the inverse of gamma distribution.
+            </summary>
+            <param name="args">p, alpha, beta</param>
+            <returns>Returns x such that gamma distribution at x is p.</returns>
+            <remarks>
+            P, alpha, and beta should be positive real numbers, with p between 0 and 1.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeGeomean(System.String)">
+            <summary>
+            Returns the geometric mean of all values listed in the argument.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.</param>
+            <returns>The geometric mean all values listed in the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeHarmean(System.String)">
+            <summary>
+            Returns the harmonic mean of all values listed in the argument.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.</param>
+            <returns>The harmonic mean all values listed in the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeHypgeomdist(System.String)">
+            <summary>
+            Returns the hypergeometric distribution.
+            </summary>
+            <param name="args">Number of sample successes, number of sample, number of population successes, number of population.</param>
+            <returns>Returns the gamma distribution.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeIntercept(System.String)">
+            <summary>
+            Returns the y-intercept of the least square fit line through the given points.
+            </summary>
+            <param name="range">y_range, x_range.</param>
+            <returns>y-intercept.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeBinomdist(System.String)">
+            <summary>
+            Returns the binomial distribution.
+            </summary>
+            <param name="args">Number of successes, number of trials, probability, cumulative.</param>
+            <returns>Returns the binomial distribution.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeChidist(System.String)">
+            <summary>
+            Returns the chi-squared distribution.
+            </summary>
+            <param name="args">x, degrees of freedom.</param>
+            <returns>Returns the chi-squared distribution.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeChiinv(System.String)">
+            <summary>
+            Returns the inverse of the chi-squared distribution.
+            </summary>
+            <param name="args">x, degrees of freedom.</param>
+            <returns>Returns the inverse of the chi-squared distribution.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeChitest(System.String)">
+            <summary>
+            Returns the Chi Test for independence.
+            </summary>
+            <param name="range">Actual_range, expected_range.</param>
+            <returns>y-intercept.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeNormdist(System.String)">
+            <summary>
+            Returns the normal distribution.
+            </summary>
+            <param name="args">x, mean, standarddev, cumulative.</param>
+            <returns>Returns the normal distribution.</returns>
+            <remarks>
+            Cumulative should be either 
+            True if you want to return the value of the distribution function or False
+            if you want to return the value of the density function. The distribution value
+            is computed interactively using Trapezoidel Rule to six to seven significant digits
+            or 20 iteration maximum.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeNorminv(System.String)">
+            <summary>
+            Returns the inverse of normal distribution.
+            </summary>
+            <param name="args">P, mean, standard deviation.</param>
+            <returns>Returns x such that normal distribution at x is p.</returns>
+            <remarks>
+            P should be between 0 and 1.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeConfidence(System.String)">
+            <summary>
+            Returns a confidence interval radius.
+            </summary>
+            <param name="args">Alpha, standard deviation, size.</param>
+            <returns>Returns x such that normal distribution at x is p.</returns>
+            <remarks>
+            P should be between 0 and 1.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeCorrel(System.String)">
+            <summary>
+            Returns the correlation coefficient of the two sets of points.
+            </summary>
+            <param name="range">range1, range2.</param>
+            <returns>Correlation coefficient.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.AdjustRangeArg(System.String@)">
+            <summary>
+            Accepts a possible parsed formula and returns the calculated value
+            without quotes.
+            </summary>
+            <param name="range">The argument to be adjusted.</param>
+            <remarks>
+            This method is useful in custom functions if you want to allow
+            your custom functions to handle parsed formulas as arguments. In
+            this case, calling this method at the beginning of your custom function
+            will allow you custom function to work only with computed values, and not
+            have to handle parsed formulas directly.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeCount(System.String)">
+            <summary>
+            Returns the count of all values (including text) listed in the argument to
+            evaluate to a number.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.</param>
+            <returns>A string holding the count of all numerical values listed in the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeCounta(System.String)">
+            <summary>
+            Returns the count of all values (including text) listed in the argument.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.</param>
+            <returns>A string holding the count of all values listed in the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeCountblank(System.String)">
+            <summary>
+            Returns the count of blank cells listed in the argument.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.</param>
+            <returns>A string holding the count of blank cells listed in the argument.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeCountif(System.String)">
+            <summary>
+            Counts the cells specified by some criteria.
+            </summary>
+            <param name="range">The criteria range, the criteria.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeCovar(System.String)">
+            <summary>
+            Returns the covariance between the two sets of points.
+            </summary>
+            <param name="range">range1, range2.</param>
+            <returns>Covariance.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeCritbinom(System.String)">
+            <summary>
+            Returns the smallest value for which the cumulative binomial distribution is greater than or equal to a criterion value.
+            </summary>
+            <param name="args">Number of trials, probability, alpha.</param>
+            <returns>Returns the critcal value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeDevsq(System.String)">
+            <summary>
+            Returns the sum of the squares of the mean deviations.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.
+            </param>
+            <returns>Sum of the squares of the mean deviation.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeExpondist(System.String)">
+            <summary>
+            Returns the exponential distribution.
+            </summary>
+            <param name="args">x, lambda, cumulative.</param>
+            <returns>Returns the exponential distribution.</returns>
+            <remarks>
+            Cumulative should be either 
+            True if you want to return the value of the distribution function or False
+            if you want to return the value of the density function. 
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeFdist(System.String)">
+            <summary>
+            Returns the F (Fisher) probability distribution.
+            </summary>
+            <param name="args">x, degreesfreedom1, degreesfreedom2.</param>
+            <returns>Returns the F probability distribution.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeFinv(System.String)">
+            <summary>
+            Returns the inverse of F distribution.
+            </summary>
+            <param name="args">p, degreesfreedom1, degreesfreedom2.</param>
+            <returns>Returns x such that F distribution at x is p.</returns>
+            <remarks>
+            P should be between 0 and 1.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeFisher(System.String)">
+            <summary>
+            Returns the Fisher transformation of the input variable.
+            </summary>
+            <param name="args">Input variable x.</param>
+            <returns>Fisher transformation of x.</returns>
+            <remarks>
+            X should be between -1 and 1.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeFisherinv(System.String)">
+            <summary>
+            Returns the inverse of Fisher transformation.
+            </summary>
+            <param name="args">Input variable y.</param>
+            <returns>The value x such that the Fisher transformation y is x.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeForecast(System.String)">
+            <summary>
+            Returns a forecasted value based on two sets of points using least square fit regression.
+            </summary>
+            <param name="range">x, rangex, rangey.</param>
+            <returns>Forecasted.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeKurt(System.String)">
+            <summary>
+            Returns the kurtosis of the passed in values.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.
+            </param>
+            <returns>The kurtosis of the data.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeLarge(System.String)">
+            <summary>
+            Returns the kth largest value in the range.
+            </summary>
+            <param name="range">range, k.</param>
+            <returns>Kth largest value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeLognormdist(System.String)">
+            <summary>
+            Returns the lognormal distribution.
+            </summary>
+            <param name="args">x, mean, standarddev.</param>
+            <returns>Returns the lognormal distribution.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeLoginv(System.String)">
+            <summary>
+            Returns the inverse of the lognormal distribution.
+            </summary>
+            <param name="args">p, mean, standarddev.</param>
+            <returns>Returns the value x where the lognormal distribution of x is p.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeMaxa(System.String)">
+            <summary>
+            Returns the maximum value of all values listed in the argument including logical values.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.</param>
+            <returns>A string holding the maximum value of all values listed in the argument.</returns>
+            <remarks> True is treated as 1; False is treated as 0.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeMedian(System.String)">
+            <summary>
+            Returns the median value in the range.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.
+            </param>
+            <returns>Median value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeMina(System.String)">
+            <summary>
+            Returns the minimum value of all values listed in the argument including logical values.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of:
+            cell references,
+            formulas, or numbers.</param>
+            <returns>A string holding the minimum value of all values listed in the argument.</returns>
+            <remarks> True is treated as 1; False is treated as 0.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeMode(System.String)">
+            <summary>
+            Returns the most frequent value in the range.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.
+            </param>
+            <returns>The most frequent value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeNegbinomdist(System.String)">
+            <summary>
+            Returns the negative binomial distribution.
+            </summary>
+            <param name="args">Number of failures, success threshold, probability, cumulative.</param>
+            <returns>Returns the negative binomial distribution.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputePearson(System.String)">
+            <summary>
+            Returns the Pearson product moment correlation coefficient.
+            </summary>
+            <param name="range">Range1, range2.</param>
+            <returns>Pearson product.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputePercentile(System.String)">
+            <summary>
+            Returns the percentile position in the range.
+            </summary>
+            <param name="range">Range, k.</param>
+            <returns>Percentile position.</returns>
+            <remarks>K is a value between 0 and 1.</remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputePercentrank(System.String)">
+            <summary>
+            Returns the percentage rank in the range.
+            </summary>
+            <param name="range">Range, x, signifcant digits.</param>
+            <returns>Percentile position.</returns>
+            <remarks>Signifcant digits are optional, defaulting to 3.</remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputePermut(System.String)">
+            <summary>
+            The number of permutations of n items taken k at the time. 
+            </summary>
+            <param name="args">n, k</param>
+            <returns>The number of combinations.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputePoisson(System.String)">
+            <summary>
+            Returns the Poisson distribution.
+            </summary>
+            <param name="args">x, mean, cumulative</param>
+            <returns>Returns the exponential distribution.</returns>
+            <remarks>
+            Cumulative should be either 
+            True if you want to return the value of the distribution function or False
+            if you want to return the value of the density function. 
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeProb(System.String)">
+            <summary>
+            Returns the probability that a value in the given range occurs.
+            </summary>
+            <param name="range">xrange1, prange2, lowerbound, upperbound.</param>
+            <returns>The probability.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeQuartile(System.String)">
+            <summary>
+            Returns the quartile position in the range.
+            </summary>
+            <param name="range">Range, q.</param>
+            <returns>Percentile position.</returns>
+            <remarks>Q is 0, 1, 2, 3, 4.</remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeRank(System.String)">
+            <summary>
+            Returns the rank of x in the range.
+            </summary>
+            <param name="range">X, range, order.</param>
+            <returns>Rank.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeRsq(System.String)">
+            <summary>
+            Returns the square of the Pearson product moment correlation coefficient.
+            </summary>
+            <param name="range">Range1, range2.</param>
+            <returns>Square of the Pearson product.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeSkew(System.String)">
+            <summary>
+            Returns the skewness of a distribution.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.
+            </param>
+            <returns>Skewness of a distribution.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeSlope(System.String)">
+            <summary>
+            Returns the slope of the least square fit line through the given points.
+            </summary>
+            <param name="range">Y_range, x_range.</param>
+            <returns>Y-intercept.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeSmall(System.String)">
+            <summary>
+            Returns the kth smallest value in the range.
+            </summary>
+            <param name="range">Range, k.</param>
+            <returns>Kth smallest value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeStandardize(System.String)">
+            <summary>
+            Returns a normalized value.
+            </summary>
+            <param name="args">X, mean, stddev.</param>
+            <returns>Normalized value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeStdev(System.String)">
+            <summary>
+            Returns the sample standard deviation.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.
+            </param>
+            <returns>The sample standard deviation.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeStdeva(System.String)">
+            <summary>
+            Returns the sample standard deviation.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.
+            </param>
+            <returns>The sample standard deviation.</returns>
+            <remarks>Treats True as 1; False as 0.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeStdevp(System.String)">
+            <summary>
+            Returns the population standard deviation.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.
+            </param>
+            <returns>The population standard deviation.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeStdevpa(System.String)">
+            <summary>
+            Returns the population standard deviation.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.
+            </param>
+            <returns>The population standard deviation.</returns>
+            <remarks>Treats True as 1; False as 0.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeSteyx(System.String)">
+            <summary>
+            Returns the standard error of the least square fit line through the given points.
+            </summary>
+            <param name="range">Y_range, x_range.</param>
+            <returns>Standard error.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeTrimmean(System.String)">
+            <summary>
+            Returns the mean of the range after removing points on either extreme.
+            </summary>
+            <param name="range">Range, percent.</param>
+            <returns>Kth smallest value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeVar(System.String)">
+            <summary>
+            Returns sample variance of the listed values.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.</param>
+            <returns>The sample variance.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeVara(System.String)">
+            <summary>
+            Returns sample variance of the listed values.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.</param>
+            <returns>The sample variance.</returns>
+            <remarks> True is treated as 1; False is treated as 0.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeVarp(System.String)">
+            <summary>
+            Returns population variance of the listed values.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.</param>
+            <returns>The population variance.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeVarpa(System.String)">
+            <summary>
+            Returns population variance of the listed values.
+            </summary>
+            <param name="range">A string holding a list (separated by commas) of
+            cell references,
+            formulas, or numbers.</param>
+            <returns>The population variance.</returns>
+            <remarks> True is treated as 1; False is treated as 0.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeWeibull(System.String)">
+            <summary>
+            Returns the Weibull distribution.
+            </summary>
+            <param name="args">X, alpha, beta, cumulative.</param>
+            <returns>Returns the Weibull distribution.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeZtest(System.String)">
+            <summary>
+            Returns the one-tailed probability value of a Z test.
+            </summary>
+            <param name="range">Range, mu, sigma.</param>
+            <returns>Kth smallest value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeMatch(System.String)">
+            <summary>
+            Finds the index a specified value in a lookup_range.
+            </summary>
+            <param name="arg">look_value, lookup_range, match_type</param>
+            <returns>The relative index of the lookup_value in the lookup_range.</returns>
+            <remarks>
+            Lookup_range should be a either a single row range or a single column range. 
+            If match_type is 0, the relative index of the first exact match (ignoring case)
+            in the specified range is returned. If match_type is 1, the values in the range
+            should be in ascending order, and the index of the largest value less than or 
+            equal to the lookup_value is returned. If match_type is -1, the values in the range
+            should be in descending order, and the index of the smallest value greater than or 
+            equal to the lookup_value is returned.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeIndex(System.String)">
+            <summary>
+            Returns the value at a specified row and column from within a given range.
+            </summary>
+            <param name="arg">look_range, row, col</param>
+            <returns>The value.</returns>
+            <remarks>
+            Only the array form of this function is supported.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputeOffSet(System.String)">
+            <summary>
+            Returns a range that is the offset of the reference range by rows and cols.
+            </summary>
+            <param name="arg">reference, rows, cols, [height], [width]</param>
+            <returns>A range.</returns>
+            <remarks>The returned range is the range passed in through the reference variable offset
+            by the number of rows in the rows variable and number of columns in the cols variable. If height and
+            width are present in the argument list, they determine the number of rows and columns
+            in the returned range. Otherwise, the dimensions of the returned range match the input range.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.InitLibraryFunctions">
+            <summary>
+            Creates and initially loads the function library with the supported functions.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.GetCellsFromArgs(System.String)">
+            <summary>
+            Accepts an argument string and returns a string array of cells.
+            </summary>
+            <remarks>
+            Converts arguments in these forms to a string array of individual cells:<para />
+            	A1,A2,B4,C1,...,D8<para />
+            	A1:A5<para />
+            	A1:C5<para />
+            </remarks>
+            <param name="args">String containing a cell range.</param>
+            <returns>String array of cells.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.GetValueFromParentObject(System.Int32,System.Int32)">
+            <summary>
+            Conditionally gets either the formula value or the cell 
+            value depending upon whether the requested cell is a FormulaCell.
+            </summary>
+            <param name="row">Row index of the requested cell.</param>
+            <param name="col">Column index of the requested cell.</param>
+            <returns>String holding either the cell value or the computed formula value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.GetValueFromParentObject(System.String)">
+            <summary>
+            Conditionally gets either the formula value or the cell 
+            value depending upon whether the requested cell is a FormulaCell.
+            </summary>
+            <param name="cell">The alphanumeric cell label, like A1, or EE14.</param>
+            <returns>String holding either the cell value or the computed formula value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.GetValueFromParentObject(Syncfusion.Calculate.ICalcData,System.Int32,System.Int32)">
+            <summary>
+            Conditionally gets either the formula value or the cell 
+            value depending upon whether the requested cell is a FormulaCell.
+            </summary>
+            <param name="grd">The ICalcData object holding the requested cell.</param>
+            <param name="row">Row index of the requested cell.</param>
+            <param name="col">Column index of the requested cell.</param>
+            <returns>String holding either the cell value or the computed formula value.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.GetValueFromArg(System.String)">
+            <summary>
+            Computes the value contained in the argument.
+            </summary>
+            <remarks>
+            This method takes the argument and checks whether it is a 
+            parsed formula, a raw number, or a cell reference like A21.
+            The return value is a string that holds the computed value of 
+            the passed in argument.
+            </remarks>
+            <param name="arg">A parsed formula, raw number, or cell reference.</param>
+            <returns>A string with the computed number in it.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.RowIndex(System.String)">
+            <summary>
+            Returns the row index from a cell reference.
+            </summary>
+            <param name="s">String holding a cell reference such as C21 or AB11.</param>
+            <returns>An integer with the corresponding row number.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ColIndex(System.String)">
+            <summary>
+            Returns a column index from a cell reference.
+            </summary>
+            <param name="s">String holding a cell reference such as C21 or AB11.</param>
+            <returns>An integer with the corresponding column number.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ResetSheetIDs">
+            <summary>
+            Resets the internal sheet token marker to 0. 
+            </summary>
+            <remarks>
+            When RegisterGridAsSheet is called to add a ICalcData object to a CalcEngine,
+            this newly added sheet is associated with an integer used in tokenizing formulas.
+            This sheetID integer is required in the PullUpdatedValue method to specify the ICalcData
+            object being accessed. The GetSheetID method allows you to retrieve a sheetID given
+            an ICalcData object. This internal sheet token marker is a static member of CalcEngine,
+            and is incremented each time a new ICalcData object is registered with the CalcEngine
+            using RegisterGridAsSheet. 
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.GetSheetID(Syncfusion.Calculate.ICalcData)">
+            <summary>
+            Retrieves a sheetID associated with the given ICalcData object. You can use this method 
+            to retrieve the sheetID required by the PullUpdatedValue method.
+            </summary>
+            <param name="grd">The ICalcData object.</param>
+            <returns>The sheetID.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.ComputedValue(System.String)">
+            <summary>
+            Evaluates a parsed formula.
+            </summary>
+            <param name="formula">A string holding a valid parsed formula.</param>
+            <returns>The computed value of the formula.</returns>
+            <remarks>The string passed into this function must be previously parsed 
+            using ParseFormula. </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcEngine.StripTics(System.String)">
+            <summary>
+            Removes outer quote marks from a string with no inner quote marks.
+            </summary>
+            <param name="s">The string with possible outer quote marks.</param>
+            <returns>The string with any outer quote marks removed.</returns>
+            <remarks>This is a utility method that removes outer quotes on a string.</remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.UseDependencies">
+            <summary>
+            Gets / sets whether the CalcEngine should track dependencies. 
+            </summary>
+            <remarks>If you are using the CalEngine in a manner where you always
+            call PullUpdatedValue to access the computations, then setting UseDependencies
+            to False will make things more efficient as any requested computed value will
+            be fully computed every time it is retrieved. In this situation, the CalcEngine
+            does not need to track dependencies.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.SupportRangeOperands">
+            <summary>
+            Gets or sets whether ranges can be used as binary operands.
+            </summary>
+            <remarks>
+            If this property is true, Essential Calculate recognizes ranges such
+            as B1:B5 and A4:E4 as operands of binary operators. So, if you
+            set the formula  = A1:A5 + B1:B5  into cell C4, the calculation
+            will retrieve the values in A4 and B4 to be used in place of the
+            corresponding ranges A1:A5 and B1:B5. Note that such ranges must 
+            either have one column wide or one row tall. This fact is used to
+            make the corresponding lookup determined by where the host cell that holds 
+            the formula is located. This host cell
+            must either be in the same row or column as some cell in range.
+            
+            The default value is false.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.IterationMaxCount">
+            <summary>
+            Gets or sets the maximum number of iterative calls that can be made on a cell. <see cref="P:Syncfusion.Calculate.CalcEngine.ThrowCircularException" />
+            will be set to true when you set IterationMaxCount to any value other than zero.
+            </summary>
+            <remarks>
+            Essential Calculate supports an iterative process to solve equations of the
+            form x=f(x). Here you should think of x as being a cell reference like B2 for example. Setting
+            IterationMaxCount to some value other than zero allows the engine to iteratively compute
+            f(x) using the previous iteration's calculated value for x. The initial value is either 0
+            or the last saved value for a formula in that cell (if the calculation has been performed previously). 
+            The iterations continue until either the iteration count exceeds IterationMaxCount, or two 
+            successive iteration return values have a relative difference less than IterationMaxTolerance.
+            
+            For example, to have an initial value of 1, you can enter a formula   =1   into the cell, and then
+            enter the self referencing formula into the same cell. This will make the iterative calculations start
+            at 1 instead of 0.
+            
+            <see cref="P:Syncfusion.Calculate.CalcEngine.ThrowCircularException" /> must be set to true in order for the Iterative Calculation
+            support to fucntion. For this reason, ThrowCircularException will be automatically set to true
+            when you set a non-zero value to IterationMaxCount.
+            
+            The default value is 0 indicating that iterative calculation support is turned off.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.IterationMaxTolerance">
+            <summary>
+            Gets or sets the success tolerance used by the CalcEngine's iterative calculation support.
+            </summary>
+            <remarks>
+            Essential Calculate supports an iterative process to solve equations of the
+            form x=f(x). Here you should think of x as being a cell reference like B2 for example. Setting
+            IterationMaxCount to some value other than zero allows the engine to iteratively compute
+            f(x) using the previous iteration's calculated value for x. The initial value is either 0
+            or the last saved value for a formula in that cell (if the calculation has been performed previously). 
+            The iterations continue until either the iteration count exceeds IterationMaxCount, or two 
+            successive iteration return values have a relative difference less than IterationMaxTolerance.
+            
+            The default value is 0.001.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.ThrowCircularException">
+            <summary>
+            Gets / sets whether the CalcQuick should throw an exception when a circular calculation is encountererd.
+            </summary>
+            <remarks>If this property is True, the CalcQuick will throw an exception
+            when it detects a circular calculation. If ThrowCircularException is False, then
+            no exception is thrown and the calculation will loop recursively until Engine.MaximumRecursiveCalls
+            is exceeded.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.ActiveCell">
+            <summary>
+            Gets the cell that is being calculated by the Engine.
+            </summary>
+            <remarks> You can use this properly within your custom functions to
+            identify the item in the ICalcData object being computed.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.FormulaInfoTable">
+            <summary>
+            Collection of FormulaInfo objects being used by the CalcEngine.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.FormulaCharacter">
+            <summary>
+            Strings starting with this character are treated as 
+            formulas.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.DependentCells">
+            <summary>
+            Contains a mapping between a cell and a list of formula cells that depend on it.
+            </summary>
+            <remarks>
+            The key is the given cell, and the value is a ArrayList of cells containing
+            formulas that reference this cell.
+            </remarks>
+            <example> Here is code that will list formula cells affected by changing the given cell.
+            <code lang="C#">
+            public void DisplayAllAffectedCells()
+            {
+            	CalcEngine engine = ((GridFormulaCellModel)this.gridControl1.CellModels["FormulaCell"]).Engine;
+            
+            	foreach(object o in engine.DependentCells.Keys)
+            	{
+            		string s1 = o as string;
+            		Console.Write(s1 + " affects ");
+            		ArrayList ht = (ArrayList) engine.DependentCells[s1];
+            		foreach(object o1 in ht)
+            		{
+            			string s2 = o1 as string;
+            			Console.Write(s2 + " ");
+            		}
+            		Console.WriteLine("");
+            	}
+            }
+            </code>
+            <code lang="VB">
+            	Public Sub DisplayAllAffectedCells()
+            		Dim engine As GridCalcEngine = CType(Me.gridControl1.CellModels("FormulaCell"), GridFormulaCellModel).Engine
+            		Dim o As Object
+            		For Each o In  engine.DependentCells.Keys
+            			Dim s1 As String = CStr(o)
+            			Console.Write((s1 + " affects "))
+            			Dim ht As ArrayList = CType(engine.DependentCells(s1), ArrayList)
+            			Dim o1 As Object
+            			For Each o1 In  ht
+            				Dim s2 As String = CStr(o1)
+            				Console.Write((s2 + " "))
+            			Next o1
+            			Console.WriteLine("")
+            		Next o
+            	End Sub 'DisplayAllAffectedCells
+            </code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.DependentFormulaCells">
+            <summary>
+            Contains a mapping between a formula cell and a list of cells upon which it depends.
+            </summary>
+            <remarks>
+            The key is the given formula cell and the value is a Hashtable of cells that this 
+            formula cell references.
+            </remarks>
+            <example> Here is code that will lists formula cells affected by changing a given cell:
+            <code lang="C#">
+            	public void DisplayAllFormulaDependencies()
+            	{
+            		GridCalcEngine engine = ((GridFormulaCellModel)this.gridControl1.CellModels["FormulaCell"]).Engine;
+            		
+            		foreach(object o in engine.DependentFormulaCells.Keys)
+            		{
+            			string s1 = o as string;
+            			Console.Write(s1 + " depends upon ");
+            			Hashtable ht = (Hashtable) engine.DependentFormulaCells[s1];
+            			foreach(object o1 in ht.Keys)
+            			{
+            				string s2 = o1 as string;
+            				Console.Write(s2 + " ");
+            			}
+            			Console.WriteLine("");
+            		}
+            	}
+            </code>
+            <code lang="VB">
+            	Public Sub DisplayAllFormulaDependencies()
+            		Dim engine As GridCalcEngine = CType(Me.gridControl1.CellModels("FormulaCell"), GridFormulaCellModel).Engine
+              
+            		Dim o As Object
+            		For Each o In  engine.DependentFormulaCells.Keys
+            			Dim s1 As String = CStr(o)
+            			Console.Write((s1 + " depends upon "))
+            			Dim ht As Hashtable = CType(engine.DependentFormulaCells(s1), Hashtable)
+            			Dim o1 As Object
+            			For Each o1 In  ht.Keys
+            				Dim s2 As String = CStr(o1) 
+            				Console.Write((s2 + " "))
+            			Next o1
+            			Console.WriteLine("")
+            		Next o
+            	End Sub 'DisplayAllFormulaDependencies
+            </code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.SupportsSheetRanges">
+            <summary>
+            Gets or sets whether sheet range notation is supported.
+            </summary>
+            <remarks>
+            Excel supports sheet range notation such as
+            = SUM( sheet1:sheet3!A1 ) + Sum( sheet1:sheet3!B1:B4 )
+            For backward compatibility with earlier versions that did
+            not support this sheet range notation, you can set
+            this SupportsSheetRanges false.
+            
+            This implementation replaces a sheet range (sheet1:sheet3!B1:B4) with
+            list of ranges (sheet1!B1:B4,sheet2!B1:B4,sheet3!B1:B4). 
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.RethrowParseExceptions">
+            <summary>
+            Gets / sets whether the engine throws an exception when
+            parsing fails with an unknown function error.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.CalculatingSuspended">
+            <summary>
+            Indicates whether formulas are immediately calculated as dependent cells are changed.
+            </summary>
+            <remarks>Use this property to suspend calculations while a series of changes 
+            are made to dependent cells either by the user or programmatically. When the changes are 
+            complete, set this property to False and then call Engine.RecalcRange to recalculate
+            the affected range. See the sample in GridFormulaCellModel.CalculatingSuspended.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.MaximumRecursiveCalls">
+            <summary>
+            Specifies the maximum number of recursive calls that can be used to compute a cellvalue.
+            </summary>
+            <remarks>This property comes into play when you have a calculated formula cell that depends on  
+            another calculated formula that depends on another calculated formula and so on. If the number of
+            'depends on another formula' exceeds MaximumRecursiveCalls, you will see a Too Complex message
+            displayed in the cell. The default value is 100, but you can set it higher or lower depending upon 
+            your expected needs. The purpose of the limit is to avoid a circular reference locking up your
+            application.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.AlwaysComputeDuringRefresh">
+            <summary>
+            Gets or sets whether <see cref="!:FormulaInfo.CalcID" /> is tested before
+            computing a formula during a call to <see cref="M:Syncfusion.Calculate.CalcEngine.Refresh(System.String)" />
+            </summary>
+            <remarks>When a value changes, then the Refresh method is called on any other
+            formula that had a dependency on the changed value. During the Refresh call,
+            the default behavior is to recompute all formulas (AlwaysComputeDuringRefresh = true).
+            If you are using <see cref="M:Syncfusion.Calculate.CalcEngine.UpdateCalcID" /> to strictly control when new values
+            should be used, then you should set this property to false. For example, if you are
+            only using <see cref="M:Syncfusion.Calculate.CalcEngine.PullUpdatedValue(System.Int32,System.Int32,System.Int32)" /> exclusively to retrieve computed values, 
+            then setting AlwaysComputeDuringRefresh = false
+            may be more efficient as it will only recompute the value once during the calculations.</remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.ParseDecimalSeparator">
+            <summary>
+            Character recognized by the parsing engine as decimal separator for numbers.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.ParseArgumentSeparator">
+            <summary>
+            Character recognized by the parsing code as the delimiter for arguments in a named formula's argument list
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.LockDependencies">
+            <summary>
+            Gets / sets whether a changed value should trigger dependent changes.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.NamedRanges">
+            <summary>
+            Contains the current named ranges.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.LibraryFunctions">
+            <summary>
+            Contains the current library functions.
+            </summary>
+            <remarks>
+            This field gives you direct access to all library functions. 
+            The function name serves as the hash key and the function delegate
+            serves as the hash value.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.RowMaxCount">
+            <summary>
+            Used with column ranges to possibly provide the upperlimit on the number of rows in the ICalcData object.
+            </summary>
+            <remarks>
+            Essential Calculate supports column ranges of the form A:D as in =SUM(A:D) to represent all cells in columns
+            A, B, C and D from a ICalcData object. To get a value for the number of rows, the CalcEngine first checks to 
+            see if the ICalcData object supports the ISupportsRowCount interface. If this interface is supported, the row
+            count used to determine the range is obtained through this interface. If the ICalcData object does not support
+            ISupportRowCount, then the value of RowMaxCount is used provided RowMaxCount &gt; 0. If not, the fixed value 50
+            is used.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.ColumnMaxCount">
+            <summary>
+            Used with row ranges to possibly provide the upperlimit on the number of columns in the ICalcData object.
+            </summary>
+            <remarks>
+            Essential Calculate supports column ranges of the form 2:4 as in =SUM(2:4) to represent all cells in rows
+            2, 3 and 4 from a ICalcData object. To get a value for the number of olumns, the CalcEngine first checks to 
+            see if the ICalcData object supports the ISupportsColumnCount interface. If this interface is supported, the column
+            count used to determine the range is obtained through this interface. If the ICalcData object does not support
+            ISupportColumnCount, then the value of ColumnMaxCount is used provided ColumnMaxCount &gt; 0. If not, the fixed value 50
+            is used.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.MaxStackDepth">
+            <summary>
+            Gets or sets the maximum calculation stack depth.
+            </summary>
+            <remarks>
+            The default is 50. This is the number of recursive calls that can be made dusring calculations.</remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcEngine.UseDatesInCalculations">
+            <summary>
+            Gets or sets whether dates can be used as operands in calculations. The default value is false.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Calculate.CalcEngine.LibraryFunction">
+            <summary>
+            Delegate used to define functions that you add to the function library.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Calculate.GridSheetFamilyItem">
+            <summary>
+            Encapsulates the properties that are needed to support multiple families of crossed-referenced grids.
+            This class is for internal use only.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Calculate.GridSheetFamilyItem.SheetNameToParentObject">
+            <summary>
+            Holds mapping from sheet name to parent object.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Calculate.GridSheetFamilyItem.TokenToParentObject">
+            <summary>
+            Holds mapping from sheet token to parent object.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Calculate.GridSheetFamilyItem.ParentObjectToToken">
+            <summary>
+            Holds mapping from parent object to sheet token.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Calculate.GridSheetFamilyItem.SheetNameToToken">
+            <summary>
+            Holds mapping from parent object to sheet name.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Calculate.CalcQuick">
+            <summary>
+             Allows you to quickly add calculation support for controls on a form, or usercontrol.
+             </summary>
+            <remarks>
+             To use CalcQuick, you instantiate an instance of the class. Then just by indexing the
+             class object with string names to identify a formula object, you can have calculation support
+             in your form. Alternatively, you can add a collection of Control-derived objects and the 
+             CalcQuick object will bind the Control.Text property allowing you to use the Control/Name property
+             to reference other controls in a formula.
+             </remarks>
+            <example>
+             Here is code that uses three TextBoxes, the first showing a value for an angle in degrees, 
+             and the other two displaying the sine and cosine of this angle. In this code, the calculations
+             are done on the click of a button:
+             <code lang="C#">
+             	CalcQuick calculator = null;
+            
+            		private void AngleForm_Load(object sender, System.EventArgs e)
+            		{
+            			//TextBox Angle = new TextBox();
+            			this.Angle.Name = "Angle";
+            			this.Angle.Text = "30";
+            
+            			//cosTB = new TextBox();
+            			this.cosTB.Name = "cosTB";
+            			this.cosTB.Text = "= cos([Angle] * pi() / 180) ";
+            
+            			//sinTB = new TextBox();
+            			this.sinTB.Name = "sinTB";
+            			this.sinTB.Text = "= sin([Angle] * pi() / 180) ";
+            
+            			// Instantiate the CalcQuick object:
+            			this.calculator = new CalcQuick();
+            		}
+            
+            		// Perform a manual calculation:
+            		private void ComputeButton_Click(object sender, System.EventArgs e)
+            		{
+            			// Let the calculator know the values/formulas 
+            			// by using an indexer on the calculator object.
+            			// Here we are using the TextBox.Name as the indexer key
+            			// provided to the calculator object. This is not required.
+            			// The only restriction for the indexer key values is that they 
+            			// be unique nonempty strings:
+            			this.calculator["Angle"] = this.Angle.Text;
+            			this.calculator["cosTB"] = this.cosTB.Text;
+            			this.calculator["sinTB"] = this.sinTB.Text;
+            
+            			// Mark the calculator dirty:
+            			this.calculator.SetDirty();
+            
+            			// Now as the values are retrieved from the calculator, they
+            			// will be the newly calculated values:
+            			this.cosTB.Text = this.calculator["cosTB"];
+            			this.sinTB.Text = this.calculator["sinTB"];
+            		}
+             </code>
+             <code lang="VB">
+             Dim calculator As CalcQuick = Nothing
+            
+            	Private Sub AngleForm_Load(sender As Object, e As System.EventArgs)
+            		'TextBox Angle = new TextBox();
+            		Me.Angle.Name = "Angle"
+            		Me.Angle.Text = "30"
+            
+            		'cosTB = new TextBox();
+            		Me.cosTB.Name = "cosTB"
+            		Me.cosTB.Text = "= cos([Angle] * pi() / 180) "
+            
+            		'sinTB = new TextBox();
+            		Me.sinTB.Name = "sinTB"
+            		Me.sinTB.Text = "= sin([Angle] * pi() / 180) "
+            		   
+            		'Instantiate the CalcQuick object:
+            		Me.calculator = New CalcQuick()
+            		End Sub 'AngleForm_Load
+            
+            	'Perform a manual calculation:
+            	Private Sub ComputeButton_Click(sender As Object, e As System.EventArgs)
+            		'Let the calculator know the values/formulas 
+            		'by using an indexer on the calculator object.
+            		'Here we are using the TextBox.Name as the indexer key
+            		'provided to the calculator object. This is not required.
+            		'The only restriction for the indexer key values is that they 
+            		'be unique nonempty strings:
+            		Me.calculator("Angle") = Me.Angle.Text
+            		Me.calculator("cosTB") = Me.cosTB.Text
+            		Me.calculator("sinTB") = Me.sinTB.Text
+            
+            		'Mark the calculator dirty:
+            		Me.calculator.SetDirty()
+               
+            		'Now as the values are retrieved from the calculator, they
+            		'will be the newly calculated values:
+            		Me.cosTB.Text = Me.calculator("cosTB")
+            		Me.sinTB.Text = Me.calculator("sinTB")
+            	End Sub 'ComputeButton_Click
+             </code>
+             Here is code that uses the same three TextBoxes as above, but this time
+             the code is set up to automatically compute things as you change the 
+             value in the Angle TextBox. There is no longer a need for a button handler
+             to trigger setting / getting values.
+             <code lang="C#">
+             	CalcQuick calculator = null;
+            
+            		private void AngleForm_Load(object sender, System.EventArgs e)
+            		{
+            			//TextBox Angle = new TextBox();
+            			this.Angle.Name = "Angle";
+            			this.Angle.Text = "30";
+            
+            			//cosTB = new TextBox();
+            			this.cosTB.Name = "cosTB";
+            			this.cosTB.Text = "= cos([Angle] * pi() / 180) ";
+            
+            			//sinTB = new TextBox();
+            			this.sinTB.Name = "sinTB";
+            			this.sinTB.Text = "= sin([Angle] * pi() / 180) ";
+            
+            			// Instantiate the CalcQuick object:
+            			this.calculator = new CalcQuick();
+            		}
+            
+            		// Perform a manual calculation:
+            		private void ComputeButton_Click(object sender, System.EventArgs e)
+            		{
+            			// Let the calculator know the values/formulas 
+            			// by using an indexer on the calculator object.
+            			// Here we are using the TextBox.Name as the indexer key
+            			// provided to the calculator object. This is not required.
+            			// The only restriction for the indexer key values is that they 
+            			// be unique nonempty strings:
+            			this.calculator["Angle"] = this.Angle.Text;
+            			this.calculator["cosTB"] = this.cosTB.Text;
+            			this.calculator["sinTB"] = this.sinTB.Text;
+            
+            			// Mark the calculator dirty:
+            			this.calculator.SetDirty();
+            
+            			// Now as the values are retrieved from the calculator, they
+            			// will be the newly calculated values:
+            			this.cosTB.Text = this.calculator["cosTB"];
+            			this.sinTB.Text = this.calculator["sinTB"];
+            		}
+             </code>
+             <code lang="VB">
+             Dim calculator As CalcQuick = Nothing
+            
+            	Private Sub AngleForm_Load(sender As Object, e As System.EventArgs)
+            		'TextBox Angle = new TextBox();
+            		Me.Angle.Name = "Angle"
+            		Me.Angle.Text = "30"
+            
+            		'cosTB = new TextBox();
+            		Me.cosTB.Name = "cosTB"
+            		Me.cosTB.Text = "= cos([Angle] * pi() / 180) "
+            
+            		'sinTB = new TextBox();
+            		Me.sinTB.Name = "sinTB"
+            		Me.sinTB.Text = "= sin([Angle] * pi() / 180) "
+            		   
+            		'Instantiate the CalcQuick object:
+            		Me.calculator = New CalcQuick()
+            		End Sub 'AngleForm_Load
+            
+            	'Perform a manual calculation:
+            	Private Sub ComputeButton_Click(sender As Object, e As System.EventArgs)
+            		'Let the calculator know the values/formulas 
+            		'by using an indexer on the calculator object.
+            		'Here we are using the TextBox.Name as the indexer key
+            		'provided to the calculator object. This is not required.
+            		'The only restriction for the indexer key values is that they 
+            		'be unique nonempty strings:
+            		Me.calculator("Angle") = Me.Angle.Text
+            		Me.calculator("cosTB") = Me.cosTB.Text
+            		Me.calculator("sinTB") = Me.sinTB.Text
+            
+            		'Mark the calculator dirty:
+            		Me.calculator.SetDirty()
+               
+            		'Now as the values are retrieved from the calculator, they
+            		'will be the newly calculated values:
+            		Me.cosTB.Text = Me.calculator("cosTB")
+            		Me.sinTB.Text = Me.calculator("sinTB")
+            	End Sub 'ComputeButton_Click
+             </code>
+             </example>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcQuick.#ctor">
+            <summary>
+            Default constructor:
+            </summary>
+            <remarks>Use this constructor when you want to have
+            several CalcQuick objects that access the same
+            static members of the CalcEngine.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcQuick.#ctor(System.Boolean)">
+            <summary>
+            Constructor that resets the CalcEngine object.
+            </summary>
+            <param name="resetStaticMembers"> 
+            Indicates whether the static members of the CalcEngine class will be cleared.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcQuick.InitCalcQuick(System.Boolean)">
+            <summary>
+            Initializes any structures needed by this instance.
+            </summary>
+            <param name="resetStaticMembers">
+            Indicates whether the static members of the CalcEngine class will be cleared.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcQuick.RegisterControlArray(System.Windows.Forms.Control[])">
+            <summary>
+            Registers an array of controls as formula objects in this CalcQuick instance.
+            </summary>
+            <param name="controls">The control array.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcQuick.RegisterControl(System.Windows.Forms.Control)">
+            <summary>
+            Used to register a control as a calculation object in this CalcQuick instance.
+            </summary>
+            <param name="c">The control to register.</param>
+            <remarks>
+            To reference this calculation object from another calculation in this CalcQuick
+            object, you use the Control.Name string. The value of this calculation object is
+            bound to the Control.Text property. 
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcQuick.CreateEngine">
+            <summary>
+            Creates the <see cref="T:Syncfusion.Calculate.CalcEngine" /> object used by this CalQuick object.
+            </summary>
+            <returns>Returns an instance of a CalcEngine object.</returns>
+            <remarks>You can override this method and return a derived CalcEngine object use
+            by the derived CalcQuick object.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcQuick.SetDirty">
+            <summary>
+            Forces all calculations to be performed the next time the CalcQuick object is
+            accessed with an indexer requesting the value.
+            </summary>
+            <remarks>
+            Each FormulaInfo object contained in the CalcQuick instance
+            has a calculation index that is checked any time the computed value is needed. If this index
+            is current, no calculation is done, and the last computed value is returned. If this index
+            is not current, the calculation is redone before the value is returned. Calling this method 
+            guarantees that no FormulaInfo object's calculation indexes will be current.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcQuick.UpdateDependencies(System.String)">
+            <summary>
+            Loops through and updates all formula items that depend
+            on the FormulaInfo object pointed to by the key.
+            </summary>
+            <param name="key">Identifies FormulaInfo object that triggered the update.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcQuick.RefreshAllCalculations">
+            <summary>
+             Recomputes any formulas stored in the CalcQuick instance.
+             </summary>
+            <remarks>
+             This method only has is used when AutoCalc is False. It loops through
+             all FormulaInfo objects stored in the CalcQuick object and recomputes 
+             any formulas.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcQuick.GetFormula(System.String)">
+            <summary>
+            Returns the formula string associated with the given key from a FormulaInfo object.
+            </summary>
+            <param name="key">The Hashtable key associated with the FormulaInfo object.</param>
+            <returns>The formula string may be the empty string if no formula is stored with this key.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcQuick.ParseAndCompute(System.String)">
+            <summary>
+            Parses and computes a well-formed algebraic expression.
+            </summary>
+            <param name="formulaText">The text of the formula.</param>
+            <returns>The computed value.</returns>
+            <remarks>You would use this method if you have a formula string which
+            contains only constants or library function references. Such formulas
+            do not depend upon other values. If you have registered a variable through
+            an indexer, then that variable can be used in a formula expression passed into this
+            method.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcQuick.GetValueRowCol(System.Int32,System.Int32)">
+            <summary>
+            For internal CalcQuick use only.
+            </summary>
+            <remarks>
+            CalcQuick does not expose a (row, col) data access model.
+            But since CalcEngine requires such a model, CalcQuick uses
+            a row, col access model internally, but only exposes the
+            formula Key model to access values.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcQuick.SetValueRowCol(System.Object,System.Int32,System.Int32)">
+            <summary>
+            For internal CalcQuick use only.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcQuick.WireParentObject">
+            <summary>
+            For internal CalcQuick use only.
+            </summary>
+        </member>
+        <member name="E:Syncfusion.Calculate.CalcQuick.ValueSet">
+            <summary>
+            Occurs when one of the FormulaInfo objects being 
+            maintained by the CalcQuick instance has changed.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcQuick.Item(System.String)">
+            <summary>
+            Gets / sets formula values for CalcQuick.
+            </summary>
+            <remarks>
+            Using an indexer on the CalcQuick instance is the primary method 
+            of setting a value to be used in a CalcQuick object. The string
+            used as the indexer is the key that you use to reference this formula
+            value in other formulas used in this CalcQuick instance.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcQuick.ThrowCircularException">
+            <summary>
+            Gets / sets whether the CalcQuick should throw an exception when a circular calculation is encountererd.
+            </summary>
+            <remarks>If this property is True, the CalcQuick will throw an exception
+            when it detects a circular calculation. If ThrowCircularException is False, then
+            no exception is thrown and the calculation will loop recursively until Engine.MaximumRecursiveCalls
+            is exceeded.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcQuick.DataStore">
+            <summary>
+            Maintains a collection of FormulaInfo objects.
+            </summary>
+            <remarks>
+             This Hashtable serves as the data store for the
+             CalcQuick instance. The keys are the strings used
+             to identify formulas and the values are FormulaInfo 
+             objects that hold the information on each formula or value.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcQuick.RowsToKeyMap">
+            <summary>
+            Maintains a mapping between the row used in a CalcSheet
+            and the string key used to identify a FormulaInfo object.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcQuick.KeyToVectors">
+            <summary>
+            Maintains a mapping between the string key and a
+            vector of numbers entered using a brace expresseion.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcQuick.KeyToRowsMap">
+            <summary>
+            Maintains a mapping between the string key and the row
+            used in a CalcSheet to identify a FormulaInfo object.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcQuick.ControlModifiedFlags">
+            <summary>
+            Maintains a set of modified flags indicating whether
+            any control has had a value changed.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcQuick.NameToControlMap">
+            <summary>
+            Maintains a mapping between the string key and the control
+            which is being used to identify a FormulaInfo object.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcQuick.Engine">
+            <summary>
+            Reference to the CalcEngine object being used by this CalcQuick instance.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcQuick.FormulaCharacter">
+            <summary>
+            Strings starting with this character are treated as 
+            formulas when indexing a CalcQuick object.
+            </summary>
+            <remarks>If you use the technique of indexing the CalcQuick object
+            to set a varaible value, then you indicate that the value should be a 
+            formula by starting the string with this character. If you do not want
+            to require your formulas to start with this character, then you will not
+            be able to use the indexing technique. Instead, you will have to call
+            ParseAndCompute directly to handle formulas not starting with this
+            character.</remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcQuick.AutoCalc">
+            <summary>
+            Gets / sets the auto calculation mode of the CalcQuick.
+            </summary>
+            <remarks>
+            By default, the CalcQuick will not update other values when you change
+            a FormulaInfo object. By default, you explicitly call SetDirty()
+            of the CalcQuick instance to force calculations to be done the next time 
+            they are required. Setting AutoCalc to True tells the CalcQuick to maintain
+            the dependency information necessary to automatically update
+            dependent formulas when values that affect these formulas change.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcQuick.CheckKeys">
+            <summary>
+            Gets or sets whether formulas should be checked for syntax during key substitutions. Default is true.
+            </summary>
+            <remarks>
+            Prior to version 4.4, no syntax checking was performed during the initial parsing process of substituting
+            for keys (variable names enclosed in square brackets). This early syntax checking support has been added to 
+            catch cases where a keys was not preceded (or followed) properly in the formula. This CheckKeys property
+            is available for backward compatibility. To maintain the exact parsing algorithm found in versions
+            prior to 4.4, set this property to false. 
+            </remarks>
+        </member>
+        <member name="E:Syncfusion.Calculate.CalcQuick.ValueChanged">
+            <summary>
+            For internal CalcQuick use only.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Calculate.QuickValueSetEventHandler">
+            <summary>
+            A handler for the ValueSet event.
+            </summary>
+            <remarks>
+            This event is raised whenever an indexer is used on the CalcQuick object to assign 
+            it a value or when a value is assigned as the result of a calculation being done.
+            </remarks>
+        </member>
+        <member name="T:Syncfusion.Calculate.QuickValueSetEventArgs">
+            <summary>
+            Event argument class for the <see cref="E:Syncfusion.Calculate.CalcQuick.ValueSet" /> event.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Calculate.QuickValueSetEventArgs.#ctor(System.String,System.String,Syncfusion.Calculate.FormulaInfoSetAction)">
+            <summary>
+            The only constructor for QuickValueSetEventArgs.
+            </summary>
+            <param name="key">This is the object that is used as the key value in the Hashtable to 
+            identify the formula information. It is also the string you use in formulas (enclosed in brackets)
+            to reference a formula from another formula.</param>
+            <param name="value">New value being assigned.</param>
+            <param name="action">Indicates the reason the event is being raised. See FormulaInfoSetAction.</param>
+        </member>
+        <member name="P:Syncfusion.Calculate.QuickValueSetEventArgs.Key">
+            <summary>
+            The Hashtable lookup object for the FormulaInfo object being changed.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.QuickValueSetEventArgs.Value">
+            <summary>
+            The new value being set.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.QuickValueSetEventArgs.Action">
+            <summary>
+            The reason the event was raised.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Calculate.FormulaInfoSetAction">
+            <summary>
+            Flags the reason that quickValueSet was raised.
+            </summary>
+            <remarks>When QuickValueSet event is raised, it passes an 
+            argument of FormulaInfoSetAction to indicate what was being assigned
+            to the CalcQuick object using an indexer. </remarks>
+        </member>
+        <member name="F:Syncfusion.Calculate.FormulaInfoSetAction.FormulaSet">
+            <summary>
+            A formula (string starting with FormulaCharacter) was assigned.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Calculate.FormulaInfoSetAction.NonFormulaSet">
+            <summary>
+            Something other than a formula was assigned.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Calculate.FormulaInfoSetAction.CalculatedValueSet">
+            <summary>
+            A calculated value was assigned.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Calculate.FormulaInfoHashtable">
+            <summary>
+            Typed Hashtable returning FormulaInfo objects.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Calculate.ValueChangedEventHandler">
+            <summary>
+            Represents the method that handles the <see cref="E:Syncfusion.Calculate.CalcSheet.ValueChanged" />
+            event.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name=" e">A <see cref="T:Syncfusion.Calculate.ValueChangedEventArgs" /> that contains the event data.</param>
+        </member>
+        <member name="T:Syncfusion.Calculate.CalcSheet">
+            <summary>
+            A class that represents a single worksheet in a workbook.
+            </summary>
+            <remarks>
+            A CalcSheet plays the role of an Excel Worksheet. It maintains its own internal data object
+            to hold FormulaInfo objects used by the CalcEngine in its calculation work. The CalcSheet accesses
+            the raw data / formulas that you want to use in the calculations via the ICalcData interface.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheet.#ctor">
+            <summary>
+            Default contructor.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheet.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructor that initializes an internal object array to
+            hold data.
+            </summary>
+            <param name="rows">Number of rows in the data object.</param>
+            <param name="cols">Number of columns in the data object.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheet.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructor used during serialization.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheet.WriteSheetToFile(System.String)">
+            <summary>
+             Writes a delimited file.
+             </summary>
+            <param name="fileName">The output file name.</param>
+            <remarks>The static Delimiter member specifies the field delimiter.
+             Rows are delimited by Environment.NewLine characters.
+             
+            This method serializes formulas instead of computed values. To 
+            write a file containing computed values, use the WriteValuesToFile method.</remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheet.WriteValuesToFile(System.String)">
+            <summary>
+             Serializes the data with computed values to a delimited
+             text file.
+             </summary>
+            <param name="fileName">The file name.</param>
+            <remarks>The static Delimiter member specifies the field delimiter.
+             Rows are delimited by Environment.NewLine characters.
+             
+            This method serializes computed values instead of formulas. To 
+            write a file containing formulas, use the WriteSheetToFile method.</remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheet.CreateSheetFromFile(System.String)">
+            <summary>
+            Creates a CalcSheet from a delimited text file
+            created by WriteSheetToFile.
+            </summary>
+            <param name="fileName">The file name.</param>
+            <returns>A CalcSheet instantiated with the file content.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheet.ReadSSS(System.IO.StreamReader)">
+            <summary>
+            Creates a CalcSheet object from the content of a StreamReader.
+            </summary>
+            <param name="sr">The StreamReader.</param>
+            <returns>The newly created CalcSheet object.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheet.WriteSSS(System.IO.StreamWriter)">
+            <summary>
+            Writes this CalcSheet object with formulas serialized to the given StreamWriter.
+            </summary>
+            <param name="sw">The StreamWriter.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheet.WriteSSS(System.IO.StreamWriter,System.Boolean)">
+            <summary>
+            Writes this CalcSheet object to the given StreamWriter.
+            </summary>
+            <param name="sw">The StreamWriter.</param>
+            <param name="valuesOnly">Indicates whether to serialize formulas (False)
+            or computed values (True).</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheet.SetValue(System.Int32,System.Int32,System.String)">
+            <summary>
+            Saves the value through the ICalcData.SetValueRowCol implementation method
+            and raises the ValueChanged event.
+            </summary>
+            <param name="row">The row index, one-based.</param>
+            <param name="col">The column index, one-based.</param>
+            <param name="val">The value.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheet.OnValueChanged(Syncfusion.Calculate.ValueChangedEventArgs)">
+            <summary>
+            Raises the ValueChanged event.
+            </summary>
+            <param name="e">Includes the row, col, and value of the change.</param>
+            <remarks>This event should be raised any time a value changes.</remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheet.WireParentObject">
+            <summary>
+            Used to handle subscribing to any base object events necessary for implementing the
+            ValueChanged event.
+            </summary>
+            <remarks>For example, when implementing ICalcData on a DataGrid-derived object,
+            you need to know when something in the DataGrid changes so you can raise the
+            required ICalcData.ValueChanged event. In WireParentObject, the DataGrid can
+            subscribe to its DataSource's change event to handle this requirement. If the
+            DataSource is a DataTable, then the DataTable.ColumnChanged event can fulfill
+            the requirement.</remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheet.GetValueRowCol(System.Int32,System.Int32)">
+            <summary>
+            Returns the value at the row and column.
+            </summary>
+            <param name="row">One-based row index.</param>
+            <param name="col">One based column index.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheet.SetValueRowCol(System.Object,System.Int32,System.Int32)">
+            <summary>
+            Sets a value at a given row and column.
+            </summary>
+            <param name="value">Value to be set.</param>
+            <param name="row">One-based row index.</param>
+            <param name="col">One-based column index.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheet.OnCalculatedValueChanged(Syncfusion.Calculate.ValueChangedEventArgs)">
+            <summary>
+            Raises the CalculatedValueChanged event.
+            </summary>
+            <param name="e">Includes the row, col, and value of the change.</param>
+            <remarks>This event should be raised any time a value changes.</remarks>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheet.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Supports serialization.
+            </summary>
+            <param name="info">Serialization parameter.</param>
+            <param name="context">Serialization parameter.</param>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcSheet.Engine">
+            <summary>
+            Gets the CalEngine object used by this CalcSheet.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcSheet.CalculationsSuspended">
+            <summary>
+            Gets / sets a flag that indicates whether to compute dependent values
+            as cells change.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcSheet.Name">
+            <summary>
+            Gets / sets the name used to refer to this sheet.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcSheet.Delimter">
+            <summary>
+            Gets / sets the field delimiter for the 
+            WriteSheetToFile method.
+            </summary>
+            <remarks>The default value is tab.</remarks>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcSheet.Item(System.Int32,System.Int32)">
+            <summary>
+            Gets / sets a value through the ICalcData.GetValueRowCol
+            and ICalcData.SetValueRowCol implementation methods.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcSheet.LockSheetChanges">
+            <summary>
+            Enables or disables saving changes within the CalcSheet.
+            </summary>
+        </member>
+        <member name="E:Syncfusion.Calculate.CalcSheet.ValueChanged">
+            <summary>
+            This event should be raised by the implementer of ICalcData whenever a value changes.
+            </summary>
+        </member>
+        <member name="E:Syncfusion.Calculate.CalcSheet.CalculatedValueChanged">
+            <summary>
+            This event is raised in SetValueRowCol.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcSheet.RowCount">
+            <summary>
+            Gets the row count.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcSheet.ColCount">
+            <summary>
+            Gets the column count.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Calculate.CalcWorkbook">
+            <summary>
+            Summary description for CalcWorkbook.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Calculate.CalcWorkbook.sheetNames">
+            <summary>
+            ArrayList of strings holding the CalcSheets names.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcWorkbook.#ctor(Syncfusion.Calculate.CalcSheet[],System.Collections.Hashtable)">
+            <summary>
+            
+            </summary>
+            <param name="calcSheets"></param>
+            <param name="namedRanges">Hashtable of key, value pairs for Namedrange values.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcWorkbook.GetSheetID(System.String)">
+            <summary>
+            Returns the integer ID of a CalcSheet.
+            </summary>
+            <param name="sheetName">The CalcSheet name.</param>
+            <returns>The integer ID.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcWorkbook.WriteSSS(System.String)">
+            <summary>
+            Writes a tab-delimited file holding the Workbook information.
+            </summary>
+            <param name="fileName">The pathname of the file to be written.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcWorkbook.ReadSSS(System.String)">
+            <summary>
+            Creates a CalcWorkbook from a file written using WriteSSS.
+            </summary>
+            <param name="fileName">Pathname of the file.</param>
+            <returns>A CalcWorkbook object.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcWorkbook.ClearFormulas(Syncfusion.Calculate.CalcSheet)">
+            <summary>
+            Removes all formulas in the given CalcSheet.
+            </summary>
+            <param name="sheet">The CalcSheet.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcWorkbook.CalculateAll">
+            <summary>
+            Calculates all formulas in this workbook.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcWorkbook.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new <see cref="T:Syncfusion.Calculate.CalcWorkbook" /> from a serialization stream.
+            </summary>
+            <param name="info">An object that holds all the data needed to serialize or deserialize this instance.</param>
+            <param name="context">Describes the source and destination of the serialized stream specified by info. </param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcWorkbook.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Implements the ISerializable interface and returns the data needed to serialize the workbook.
+            </summary>
+            <param name="info">A SerializationInfo object containing the information required to serialize the cell model.</param>
+            <param name="context">A StreamingContext object containing the source and destination of the serialized stream.</param>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcWorkbook.calcSheets">
+            <summary>
+            Array of CalcSheets objects used in this workbook.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcWorkbook.CalcSheetList">
+            <summary>
+            Gets or sets an arraylist of CalcSheet objects used in this workbook.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcWorkbook.Item(System.String)">
+            <summary>
+            Gets / sets a CalcSheet object with the given name.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcWorkbook.Item(System.Int32)">
+            <summary>
+            Gets / sets a CalcSheet object with the given index.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcWorkbook.SheetCount">
+            <summary>
+            Number of CalcSheets in this workbook.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcWorkbook.Engine">
+            <summary>
+            Gets/Sets the CalcEngine object.
+            </summary>
+            <remarks>
+            The setter only sets once, and only if InitCalcWorkbook has been called 
+            with a zero CalcSheet count.
+            </remarks>
+        </member>
+        <member name="T:Syncfusion.Calculate.CalcSheetList">
+            <summary>
+            Wrapper ArrayList that holds a collection of CalcSheets.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheetList.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheetList.#ctor(Syncfusion.Calculate.CalcSheet[],Syncfusion.Calculate.CalcWorkbook)">
+            <summary>
+            Creates an CalcSheetList instance owned by the given workbook with the given CalcSheet list. 
+            </summary>
+            <param name="list">list of CalcSheets</param>
+            <param name="parentWorkBook">The Workbook</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheetList.NameToIndex(System.String)">
+            <summary>
+            Returns the index for a CalcSheet.
+            </summary>
+            <param name="sheetName">The name of the CalcSheet.</param>
+            <returns>The index of the CalcSheet.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheetList.ToArray">
+            <summary>
+             The CalcSheets in this collection.
+            </summary>
+            <returns>Returns a CalcSheet[].</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheetList.Remove(System.Object)">
+            <summary>
+            Removes a CalcSheet.
+            </summary>
+            <param name="o">The CalcSheet to be removed.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheetList.RemoveAt(System.Int32)">
+            <summary>
+            Removes a CalcSheet.
+            </summary>
+            <param name="index">The index of the CalcSheet to be removed.</param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheetList.Add(System.Object)">
+            <summary>
+            Adds a new CalcSheet.
+            </summary>
+            <param name="o">The CalcSheet to be added.</param>
+            <returns>The index of the added CalcSheet.</returns>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheetList.Insert(System.Int32,System.Object)">
+            <summary>
+            Not supported.
+            </summary>
+            <param name="index"></param>
+            <param name="o"></param>
+        </member>
+        <member name="M:Syncfusion.Calculate.CalcSheetList.InsertRange(System.Int32,System.Collections.ICollection)">
+            <summary>
+            Not supported.
+            </summary>
+            <param name="index"></param>
+            <param name="c"></param>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcSheetList.Item(System.Int32)">
+            <summary>
+            Gets or sets the CalcSheet at the given index.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Calculate.CalcSheetList.Item(System.String)">
+            <summary>
+            Gets or sets the CalcSheet with a given name.
+            </summary>
+        </member>
+    </members>
+</doc>

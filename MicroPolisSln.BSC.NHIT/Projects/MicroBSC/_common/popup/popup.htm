@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<title>BSC</title>
+		
+<style type="text/css">
+<!--
+a:link {  font-family: "굴림", "굴림체"; font-size: 12px; color: #ffffff; text-decoration: none}
+a:hover {  font-family: "굴림", "굴림체"; font-size: 12px; color: #ffffff; text-decoration: none}
+a:active {  font-family: "굴림", "굴림체"; font-size: 12px; color: #ffffff; text-decoration: none}
+a:visited {  font-family: "굴림", "굴림체"; font-size: 12px; text-decoration: none}
+-->
+</style>
+	
+		<!-------------------- 체크박스 쿠키적용 -------------------------->
+<SCRIPT language="JavaScript">
+<!--
+
+function setCookie( name, value, expiredays )
+    {
+	var todayDate = new Date();
+	todayDate.setDate( todayDate.getDate() + expiredays );
+	document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+	}
+
+function closeWin() 
+{ 
+	if ( document.forms[0].check_box.checked ) 
+ 		setCookie( "Notice", "done" , 1); 
+
+	self.close(); 
+}
+
+function gfWinFocus()
+{
+    // 팝업창일때 처음열릴경우 뒤로 숨는부분 수정
+    if (opener)
+    {
+        var orgOpener = opener;
+        opener=self; 
+        window.focus();
+        
+        opener = orgOpener;
+    }
+}
+
+// --> 
+</SCRIPT> 
+<link href="../../_common/css/bsc.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body topmargin=0 leftmargin=0 onload="gfWinFocus();">
+<form name="form3">
+<table width="475" border="0" cellspacing="0" cellpadding="0" height=372>
+    <tr>
+        <td align="left" background="popup_back_1.jpg" height="352">
+        <pre>
+        
+    안녕하세요. MicroBSC 를 사랑해 주셔서 감사합니다.
+           
+    현재 테스트 기간입니다. 
+           
+    문제점이나 보완사항이 있으시면 언제든지 연락 부탁드리겠습니다.
+    
+    그리고 현재 아이디 및 패스워드는 통합정보시스템으로 관리됩니다.
+    
+    기존에 사용하시던 정보로 로그인하시면 사용가능합니다.
+    
+    감사합니다.
+    
+    내선 : 9536, 9523(홍보실)
+    담당 : 안상준 대리
+     
+        </pre>            
+            </td>
+    <tr>
+	<tr>
+	    <td bgcolor="#5389AF" align="center" height="20"><input type="checkbox" value=ON name=check_box onClick=closeWin(); onfocus='this.blur()'>
+	            <font color="white" size="2">오늘 하루 창열지 않음 </font><a href="#" onClick="closeWin();">
+	            <font color="white" size="2">[닫기]</font></a>
+        </td>
+    </tr>
+</table>
+</form>	
+</body>
+</html>

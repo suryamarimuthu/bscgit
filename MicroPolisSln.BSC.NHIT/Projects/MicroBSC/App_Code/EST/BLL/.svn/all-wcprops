@@ -1,0 +1,533 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL
+END
+Biz_EstDeptInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_EstDeptInfos.cs
+END
+Biz_QuestionPageStyles.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_QuestionPageStyles.cs
+END
+Biz_DeptGroupInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_DeptGroupInfos.cs
+END
+Biz_QuestionItems.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_QuestionItems.cs
+END
+Biz_JobColumnMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_JobColumnMaps.cs
+END
+Biz_QuestionSubjects.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_QuestionSubjects.cs
+END
+Biz_ButtonCommandRoleMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_ButtonCommandRoleMaps.cs
+END
+Biz_ReportItems.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_ReportItems.cs
+END
+Biz_QuestionObjects.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_QuestionObjects.cs
+END
+Biz_Status.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_Status.cs
+END
+Biz_Styles.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_Styles.cs
+END
+Biz_MapPageLinkInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_MapPageLinkInfos.cs
+END
+Biz_ScheDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_ScheDetails.cs
+END
+Biz_EmpRoleRels.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_EmpRoleRels.cs
+END
+Biz_BiasDatas.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_BiasDatas.cs
+END
+Biz_ColumnInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_ColumnInfos.cs
+END
+Biz_Scopes.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_Scopes.cs
+END
+Biz_Managers.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_Managers.cs
+END
+Biz_BoardCategories.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_BoardCategories.cs
+END
+Biz_PositionRanks.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_PositionRanks.cs
+END
+Biz_PositionGroups.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_PositionGroups.cs
+END
+Biz_KeyGens.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_KeyGens.cs
+END
+Biz_Grades.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_Grades.cs
+END
+Biz_DeptPosScales.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_DeptPosScales.cs
+END
+Biz_OuterDataProcInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_OuterDataProcInfos.cs
+END
+Biz_RoleMenuRels.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_RoleMenuRels.cs
+END
+Biz_DeptEstDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_DeptEstDetails.cs
+END
+Biz_TermSubEstMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_TermSubEstMaps.cs
+END
+Biz_MenuInfo.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_MenuInfo.cs
+END
+Biz_JobDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_JobDetails.cs
+END
+Biz_ReportDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_ReportDetails.cs
+END
+Biz_QuestionDatas.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_QuestionDatas.cs
+END
+Biz_EmpEstTargetMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_EmpEstTargetMaps.cs
+END
+Biz_ScaleInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_ScaleInfos.cs
+END
+Biz_TermSteps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_TermSteps.cs
+END
+Biz_EstMap.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_EstMap.cs
+END
+Biz_EstInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_EstInfos.cs
+END
+Biz_CtrlPointDatas.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_CtrlPointDatas.cs
+END
+Biz_BoardPopupPages.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_BoardPopupPages.cs
+END
+Biz_DeptInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_DeptInfos.cs
+END
+Biz_EstGroups.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_EstGroups.cs
+END
+Biz_EmpPositionBizMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_EmpPositionBizMaps.cs
+END
+Biz_ScopeUnits.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_ScopeUnits.cs
+END
+Biz_PositionDutys.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_PositionDutys.cs
+END
+Biz_RelGroupInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_RelGroupInfos.cs
+END
+Biz_RelGroupTgtMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_RelGroupTgtMaps.cs
+END
+Biz_CtrlEstMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_CtrlEstMaps.cs
+END
+Biz_EstDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_EstDetails.cs
+END
+Biz_PositionBizQuestionSubjectMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_PositionBizQuestionSubjectMaps.cs
+END
+Biz_CtrlDeptMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_CtrlDeptMaps.cs
+END
+Biz_BiasTypes.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_BiasTypes.cs
+END
+Biz_QuestionEstMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_QuestionEstMaps.cs
+END
+Biz_QuestionDeptEmpMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_QuestionDeptEmpMaps.cs
+END
+Biz_JobEstMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_JobEstMaps.cs
+END
+Biz_ButtonCommandInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_ButtonCommandInfos.cs
+END
+Biz_Boards.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_Boards.cs
+END
+Biz_QuestionComments.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_QuestionComments.cs
+END
+Biz_GradeCtrlDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_GradeCtrlDetails.cs
+END
+Biz_ScheInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_ScheInfos.cs
+END
+Biz_PositionClasses.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_PositionClasses.cs
+END
+Biz_RelGroupPositionInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_RelGroupPositionInfos.cs
+END
+Biz_PointCtrlDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_PointCtrlDetails.cs
+END
+Biz_Positions.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_Positions.cs
+END
+Biz_DeptOpinionTgtEmps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_DeptOpinionTgtEmps.cs
+END
+Biz_PosGrpEmps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_PosGrpEmps.cs
+END
+Biz_RelGroupDepts.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_RelGroupDepts.cs
+END
+Biz_PositionKindBizMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_PositionKindBizMaps.cs
+END
+Biz_PosRnkEmps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_PosRnkEmps.cs
+END
+Biz_RelGroupPositionDatas.cs
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_RelGroupPositionDatas.cs
+END
+Biz_CtrlInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_CtrlInfos.cs
+END
+Biz_TermSubs.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_TermSubs.cs
+END
+Biz_JobInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_JobInfos.cs
+END
+Biz_EmpInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_EmpInfos.cs
+END
+Biz_CtrlGradeDatas.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_CtrlGradeDatas.cs
+END
+Biz_DeptPosDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_DeptPosDetails.cs
+END
+Biz_StatusStyles.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_StatusStyles.cs
+END
+Biz_PosClsEmps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_PosClsEmps.cs
+END
+Biz_PositionBizs.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_PositionBizs.cs
+END
+Biz_Datas.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_Datas.cs
+END
+Biz_PositionKinds.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_PositionKinds.cs
+END
+Biz_RoleInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_RoleInfos.cs
+END
+Biz_TermStepEstMaps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_TermStepEstMaps.cs
+END
+Biz_ColumnStyles.cs
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_ColumnStyles.cs
+END
+Biz_PositionInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_PositionInfos.cs
+END
+Biz_PosDutEmps.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_PosDutEmps.cs
+END
+Biz_QuestionDefines.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_QuestionDefines.cs
+END
+Biz_ReportSumDetails.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_ReportSumDetails.cs
+END
+Biz_TermInfos.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/EST/BLL/Biz_TermInfos.cs
+END

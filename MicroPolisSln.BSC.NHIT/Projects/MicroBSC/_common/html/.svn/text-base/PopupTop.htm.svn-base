@@ -1,0 +1,11 @@
+﻿<html>
+<head id="Head1" runat="server">
+<title>BSC</title>
+<meta http-equiv="Content-Type" content="text/html;" />
+<!--META http-equiv="Page-Enter" content="blendTrans(Duration=0.3)">
+<META http-equiv="Page-Exit" content="blendTrans(Duration=0.3)"-->
+<link rel="stylesheet" href="/_common/css/bsc.css" type="text/css" />
+<script type="text/javascript" language="javascript" src="/_common/js/common.js"></script>
+
+</head>
+<body style="margin:0 0 0 0 ; background-color:#FFFFFF" onload="document.focus();">

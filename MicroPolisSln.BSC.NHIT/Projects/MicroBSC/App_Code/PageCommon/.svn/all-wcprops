@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PageCommon
+END
+AppUserControlBase.cs
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PageCommon/AppUserControlBase.cs
+END
+PageBase_NotLogin.cs
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PageCommon/PageBase_NotLogin.cs
+END
+DundasCharts.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PageCommon/DundasCharts.cs
+END
+PrjPageBase.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PageCommon/PrjPageBase.cs
+END
+MSCharts.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PageCommon/MSCharts.cs
+END
+WebCommon.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/MicroBSC_NHIT/!svn/ver/49/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PageCommon/WebCommon.cs
+END
+AppEnumTypes.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PageCommon/AppEnumTypes.cs
+END
+ExcelHandler.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PageCommon/ExcelHandler.cs
+END
+KPIThreshold.cs
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PageCommon/KPIThreshold.cs
+END
+AppPageUtility.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PageCommon/AppPageUtility.cs
+END
+DundasAnimations.cs
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PageCommon/DundasAnimations.cs
+END
+AppTypeUtility.cs
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PageCommon/AppTypeUtility.cs
+END
+PageBase.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PageCommon/PageBase.cs
+END
+EISPageBase.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PageCommon/EISPageBase.cs
+END
+AppPageBase.cs
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/MicroBSC_NHIT/!svn/ver/8/trunk/MicroPolisSln.BSC.NHIT/Projects/MicroBSC/App_Code/PageCommon/AppPageBase.cs
+END

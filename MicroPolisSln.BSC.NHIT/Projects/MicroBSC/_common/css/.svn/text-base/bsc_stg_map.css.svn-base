@@ -1,0 +1,412 @@
+﻿
+@font-face {font-family:"ttche";src:url(/_common/font/TTche.eot);}
+@font-face {font-family:"wizz";src:url(/_common/font/miniwini_ttobak.eot)}
+
+ /* 기본 텍스트 */
+ BODY
+{ font-family:"Gulim"; color:#000000; font-size: 9pt; text-decoration: none;
+scrollbar-face-color: whitesmoke;
+scrollbar-shadow-color: #ffffff;
+scrollbar-highlight-color: #ffffff;
+scrollbar-3dlight-color: #BCBCBC;
+scrollbar-darkshadow-color: #BCBCBC;
+scrollbar-arrow-color: #BCBCBC; 
+
+    left-margin:5px;top-margin:5px;
+}
+
+TABLE
+{font-family:"돋움","Arial"; font-size: 12px; color:#4B4B4B; line-height:140% }
+TR
+{font-family:"돋움","Arial"; font-size: 12px;color:#4B4B4B; line-height:140% }
+TD
+{font-family:"돋움","Arial"; font-size: 12px; color:#4B4B4B; line-height:140% }
+
+/*
+BODY
+{scrollbar-face-color: transparent; scrollbar-shadow-color: #9B9C9C; 
+scrollbar-highlight-color: #FFFFFF; scrollbar-3dlight-color: #9B9C9C; 
+scrollbar-darkshadow-color: #FFFFFF; scrollbar-track-color: #ededed; 
+scrollbar-arrow-color: #838484; margin-top:0px; margin-left:0px; margin-right:0px; margin-bottom:0px;}
+TABLE
+{font-family:"dotum","돋움"; font-size: 12px; color:#4B4B4B; line-height:140% }
+TR
+{font-family: "dotum","돋움"; font-size: 12px;color:#4B4B4B; line-height:140% }
+TD
+{font-family: "dotum","돋움"; font-size: 12px; color:#4B4B4B; line-height:140% }
+*/
+A:link {COLOR: #333232; TEXT-DECORATION: none}
+A:visited {COLOR: #333232; TEXT-DECORATION:none}
+A:hover {COLOR: #144ED1; TEXT-DECORATION: none}
+img {border:0;}
+
+ 
+/* 좌측 메뉴1 */
+.left_menu {
+	height: 20px;
+	font-family: "돋움";
+	font-size: 12px;
+	text-decoration: none;
+	color:#3D3D3D;}
+.left_menu a:link {color:#3D3D3D; text-decoration: none}
+.left_menu a:visited {color:#3D3D3D; text-decoration: none } 
+.left_menu a:hover{ font-size:9pt; text-decoration: none; color:#0575C3; }
+
+/* 좌측 메뉴2 */
+.left_menu2 {
+	height: 20px;
+	font-family: "돋움";
+	font-size: 12px;
+	text-decoration: none;
+	color:#3D3D3D;}
+.left_menu2 a:link {color:#3D3D3D; text-decoration: none}
+.left_menu2 a:visited {color:#3D3D3D; text-decoration: none } 
+.left_menu2 a:hover{ font-size:9pt; text-decoration: none; color:#0575C3; }
+
+/* 파란색 볼드  */
+.blue_bold {font-weight:bold; color:#356ABA; letter-spacing:-1px}
+.blue_bold  a:link {font-weight:bold; color:#356ABA; text-decoration: none letter-spacing:-1px}
+.blue_bold  a:visited {font-weight:bold; color:#356ABA; text-decoration: none  letter-spacing:-1px}
+.blue_bold  a:hover{font-weight:bold; font-size:9pt; text-decoration: none; color:#061BEC; letter-spacing:-1px}
+
+
+/* 작은기본폰트_black */
+.stext {letter-spacing:-1px;font-family: "돋움"; font-size:11px; color:#4B4B4B; padding-left:6px;}
+.stext a:link {font-family: "돋움"; color:#4B4B4B; text-decoration: none}
+.stext a:visited {font-family: "돋움"; color:#4B4B4B; text-decoration: none}
+.stext a:hover{font-family: "돋움";  font-size:11px; text-decoration: none; color:#0054A6;}
+
+/* 작은기본폰트_white */
+.stext_w {font-size:11px; color:#ffffff;  letter-spacing:-1px}
+.stext_w a:link {color:#ffffff; text-decoration: none}
+.stext_w a:visited {color:#ffffff; text-decoration: none}
+.stext_w a:hover{ font-size:11px; text-decoration: none; color:#ffffff; letter-spacing:-1px}
+
+/* 작은기본폰트_yellow */
+.stext_y {font-size:11px; color:#FEF380;  letter-spacing:-1px}
+.stext_y a:link {color:#FEF380; text-decoration: none}
+.stext_y a:visited {color:#FEF380; text-decoration: none}
+.stext_y a:hover{ font-size:11px; text-decoration: none; color:#FEF380; letter-spacing:-1px}
+
+
+/* 작은기본폰트_orange */
+.stext_o {font-weight:bold; font-size:11px; color:#E04B22;  letter-spacing:-1px}
+.stext_o a:link {font-weight:bold; color:#E04B22; text-decoration: none}
+.stext_o a:visited {font-weight:bold; color:#E04B22; text-decoration: none}
+.stext_o a:hover{ font-weight:bold; font-size:11px; text-decoration: none; color:#FEF380; letter-spacing:-1px}
+
+/* 작은기본폰트_orange */
+.stext_oo {font-weight:bold; font-size:11px; color:#E04B22;  letter-spacing:-1px}
+.stext_oo a:link {font-weight:bold; color:#E04B22; text-decoration: none}
+.stext_oo a:visited {font-weight:bold; color:#E04B22; text-decoration: none}
+.stext_oo a:hover{ font-weight:bold; font-size:11px; text-decoration: none; color:#FEF380; letter-spacing:-1px}
+
+
+/* 기본 볼드 화이트 */
+.basic_bold_w {font-weight:bold; color:#ffffff;}
+.basic_bold_w  {font-weight:bold; color:#ffffff;}
+.basic_bold_w  a:link {font-weight:bold; color:#ffffff; text-decoration: none}
+.basic_bold_w  a:visited {font-weight:bold; color:#ffffff; text-decoration: none } 
+.basic_bold_w   a:hover{font-weight:bold; font-size:9pt; text-decoration: none; color:#FBEC4B; }
+
+/* 전략맵추가 */
+.stext_jw {font-size:11px; color:#ffffff; letter-spacing:-1px;  padding-top:3pt; line-height:16px}
+.stext_jw a:link {color:#ffffff; text-decoration: none}
+.stext_jw a:visited {color:#ffffff; text-decoration: none}
+.stext_jw a:hover{ font-size:11px; text-decoration: none; color:#ffffff; letter-spacing:-1px}
+
+/* 테이블 */
+.table_01{background-color:#FFFFFF;color:#000000;border:1 solid #cdcdcd;}
+.table_02 {background-color:#E4EEDA; color:#5C7E3E; font-weight:bold;}
+.table_03 {background-color:#D0E4F5; color:#053966;}
+
+/* 기존테이블색상변경 */
+.tableOutBorder {background-color:#E9EBEB;padding:3px;}
+   
+.tableBorder {border-left:solid 1 #E5E5E5;border-top:solid 1 #E5E5E5;background-color:#FCFEFE; }
+
+.tdBorder {padding-left: 7px; background-color:#ffffff;border-right:solid 1 #C7C7C7;border-bottom:solid 1 #C7C7C7;}
+.tdBorder2 {padding-left: 7px; font-weight: bold;  background-color:#ffffff;border-right:solid 1 #C7C7C7;border-bottom:solid 1 #C7C7C7;}
+
+.tableTopTitle		{padding-left: 1px;padding-right: 1px;font-family:돋움체;font-weight: bold; font-size:12px; background-color:#4976B9; color:white;	padding-top:1;border-right:solid 1 #E5E5E5;border-bottom:solid 1 #E5E5E5;}
+.tableTitle			{padding-left: 7px;padding-right: 1px;font-family:돋움체;font-weight:normal;font-size:12px; background-color:#94BAC9; color:white;padding-top:1;border-right:solid 1 #E5E5E5;border-bottom:solid 1 #E5E5E5;}
+.tableTitle2		{padding-left: 7px;padding-right: 1px;font-family:돋움체;font-weight:normal;font-size:12px; background-color:#94BAC9; color:white;padding-top:1;border-right:solid 1 #E5E5E5;border-bottom:solid 1 #E5E5E5;}
+.tableTitle_green	{padding-left: 1px;padding-right: 1px;font-family:돋움체;font-weight: bold; font-size:12px; background-color:#6DB575; color:#E6FEC3;padding-top:1;border-right:solid 1 #D2D2D2;border-bottom:solid 1 #C0BFBF;}
+.tableContent		{padding-left: 5px;height:19px;font-family:돋움체; font-size:12px;background-color:#FCFEFE;border-right:solid 1 #E5E5E5;border-bottom:solid 1 #E5E5E5;}
+.tableDel			{padding-left: 5px;height:19px;font-family:돋움체; font-size:12px;background-color:#FCFEFE;border-right:solid 1 #C0BFBF;}
+ 
+.subTitle           {padding-left: 5px;height:19px;font-family:돋움체; font-size:12px;color:#408BEF;font-weight:bold;} 
+ /* 전략맵  */
+.map_title {background-color:#cbc6a3; font-size:12px; font-weight:normal; color:#3D3D3D;border-right:solid 1 #9aa29c;border-bottom:solid 1 #9aa29c;}
+.map_content {background-color:#F7F5EB; font-size:11px; font-weight:normal; color:#3D3D3D;border-right:solid 1 #C7C7C7;border-bottom:solid 1 #C7C7C7;}
+
+ 
+/* 기존테이블색상변경 */
+/*
+.tableOutBorder {background-color:#E6E6E6; padding:3px;}
+.tableBorder {border-left:solid 1 #C1C1C1;border-top:solid 1 #C1C1C1;}
+.tableTopTitle {padding-left: 5px;padding-right: 5px; height: 23px;font-family:돋움체;font-size:12px; background-color:#4976B9; color:white; padding-top:1;border-right:solid 1 #C1C1C1;border-bottom:solid 1 #C1C1C1;}
+.tableTitle    {padding-left: 5px;padding-right: 5px; height: 23px;font-family:돋움체;font-size:12px; background-color:#1D85BA; color:white; padding-top:1;border-right:solid 1 #C1C1C1;border-bottom:solid 1 #C1C1C1;}
+.tableTitle2    {padding-left: 5px;padding-right: 5px; height: 23px;font-family:돋움체;font-size:12px; background-color:#D0E4F5; color:053966; padding-top:1;border-right:solid 1 #C1C1C1;border-bottom:solid 1 #C1C1C1;}
+.tableTitle_green {padding-left: 5px;padding-right: 5px; height: 23px;font-family:돋움체;font-size:12px; background-color:#6DB575; color:E6FEC3; padding-top:1;border-right:solid 1 #C1C1C1;border-bottom:solid 1 #C1C1C1;}
+.tableContent{padding-left: 5px; height:19px;font-family:돋움체; font-size:12px;background-color:#FEFEFE;border-right:solid 1 #C1C1C1;border-bottom:solid 1 #C1C1C1;}
+.tableDel {border-right:solid 1 #C0BFBF;}
+*/
+
+.subTable {border-left:solid 1 #D2D2D2;border-top:solid 1 #D2D2D2;}
+.subtableTitle {font-family:tahoma,돋움체,wizz,ttche,tahoma,Verdana, Helvetica; font-size:9pt;background-color:#EDEDED; color:#494949; padding-top:1;border-right:solid 1 #D2D2D2;border-bottom:solid 1 #D2D2D2;}
+.subtableContent{font-family:tahoma,돋움체,wizz,tahoma;font-size:8pt;border-right:solid 1 #D2D2D2;border-bottom:solid 1 #D2D2D2;}
+
+.subsubTable {border-left:solid 1 #C1C1C1;border-top:solid 1 #C1C1C1;}
+.subsubtableTitle {font-family:ttche,돋움체,wizz,ttche,tahoma,Verdana, Helvetica; font-size:9pt;background-color:#F3F5FC; color:#494949; padding-top:1;border-right:solid 1 #C1C1C1;border-bottom:solid 1 #C1C1C1;}
+.subsubtableContent{font-family:ttche,돋움체,wizz,tahoma;font-size:9pt;border-right:solid 1 #C1C1C1;border-bottom:solid 1 #C1C1C1;}
+
+
+/* input,radio */   
+input 	{font-family:tahoma,돋움체,ttche;font-size:12px;color:#212121;border:expression( (this.type=='checkbox'||this.type=='radio'||this.type=='image') ? '':'solid 1 #ededed');}
+textarea{font-family:tahoma,돋움체,ttche;font-size:12px;color:#000000;border:solid 1 #ededed;}
+.select	{font-family:tahoma,돋움체,ttche;font-size:12px;cursor: hand;BEHAVIOR: url('/_common/css/selectBox.htc'); }
+.imgbtn {border:solid 0;}
+button	{font-family:tahoma,돋움체,ttche;font-size:12px;color:#212121;border:solid 1 #BBBBBB;}
+
+.textarea2 {
+	BACKGROUND-COLOR: #ffffff; 
+	BORDER-RIGHT: #BBBBBB 0px solid; PADDING-RIGHT:3px; 
+	BORDER-TOP: #BBBBBB 0px solid; PADDING-LEFT:2px; 
+	BORDER-LEFT: #BBBBBB 0px solid; PADDING-TOP: 0px; 
+	BORDER-BOTTOM: #BBBBBB 0px solid; 
+	}
+ 
+ 
+   
+
+/*  볼드  */
+.s_bold {font-size:12px; font-weight:bold; color:#595959; letter-spacing:-1px}
+.s_bold  a:link {font-size:11px; font-weight:bold; color:#4B4B4B; text-decoration: none letter-spacing:-1px}
+.s_bold  a:visited {font-size:11px; font-weight:bold; color:#4B4B4B; text-decoration: none  letter-spacing:-1px}
+.s_bold  a:hover{font-size:11px; font-weight:bold; font-size:9pt; text-decoration: underline; color:#061BEC; letter-spacing:-1px} 
+
+
+/* 좌측 메뉴3  추가할부분*/
+.left_menu3 {
+	height: 22px;
+	font-family: "돋움";
+	font-size: 12px;
+	text-decoration: none;
+	color:#000000;
+	padding-top:4px;
+	padding-left: 12px;}
+.left_menu3 a:link {color:#00000; text-decoration: none}
+.left_menu3 a:visited {color:#000000; text-decoration: none } 
+.left_menu3 a:hover{ font-size:9pt; text-decoration: none; color:#FF8400; }
+
+.button_4 {cursor:hand;font-family:"돋움";font-weight:normal;font-size:9pt;color:#ffffff;border-style:solid;PADDING:3 0 0 0;border-width:0;height:23;width:64px; text-align:center;background-image:url(/images/btn/bg/bg_btn4.gif);  behavior:url(/_Common/HTC/APButtonRollover.htc);}  
+.button_5 {cursor:hand;font-family:"돋움";font-weight:normal;font-size:9pt;color:#ffffff;border-style:solid; PADDING:3 0 0 0;border-width:0;height:23;width:76px; text-align:center;background-image:url(/images/btn/bg/bg_btn5.gif);  behavior:url(/_Common/HTC/APButtonRollover.htc);}  
+.button_6 {cursor:hand;font-family:"돋움";font-weight:normal;font-size:9pt;color:#ffffff;border-style:solid; PADDING:3 0 0 0;border-width:0;height:23;width:88px; text-align:center;background-image:url(/images/btn/bg/bg_btn6.gif);  behavior:url(/_Common/HTC/APButtonRollover.htc);}  
+.button_7 {cursor:hand;font-family:"돋움";font-weight:normal;font-size:9pt;color:#ffffff;border-style:solid; PADDING:3 0 0 0;border-width:0;height:23;width:100px; text-align:center;background-image:url(/images/btn/bg/bg_btn7.gif);  behavior:url(/_Common/HTC/APButtonRollover.htc);}  
+.button_8 {cursor:hand;font-family:"돋움";font-weight:normal;font-size:9pt;color:#ffffff;border-style:solid; PADDING:3 0 0 0;border-width:0;height:23;width:112px; text-align:center;background-image:url(/images/btn/bg/bg_btn8.gif);  behavior:url(/_Common/HTC/APButtonRollover.htc);}  
+.button_9 {cursor:hand;font-family:"돋움";font-weight:normal;font-size:9pt;color:#ffffff;border-style:solid; PADDING:3 0 0 0;border-width:0;height:23;width:126px; text-align:center;background-image:url(/images/btn/bg/bg_btn9.gif);  behavior:url(/_Common/HTC/APButtonRollover.htc);}  
+.button_10 {cursor:hand;font-family:"돋움";font-weight:normal;font-size:9pt;color:#ffffff;border-style:solid; PADDING:3 0 0 0;border-width:0;height:23;width:136px; text-align:center;background-image:url(/images/btn/bg/bg_btn10.gif);  behavior:url(/_Common/HTC/APButtonRollover.htc);}  
+
+.buttons_4 {cursor:hand;letter-spacing:-1;font-family:"돋움";font-weight:normal;font-size:11px;color:#4B4B4B;border-style:solid; PADDING:3 0 0 0;border-width:0;height:20;width:57px; text-align:center;background-image:url(/images/btn/bg/bg_sbtn4.gif);  behavior:url(/_Common/HTC/APButtonRollover.htc);}  
+.buttons_5 {cursor:hand;letter-spacing:-1;font-family:"돋움";font-weight:normal;font-size:11px;color:#4B4B4B;border-style:solid; PADDING:3 0 0 0;border-width:0;height:20;width:68px; text-align:center;background-image:url(/images/btn/bg/bg_sbtn5.gif);  behavior:url(/_Common/HTC/APButtonRollover.htc);}  
+.buttons_6 {cursor:hand;letter-spacing:-1;font-family:"돋움";font-weight:normal;font-size:11px;color:#4B4B4B;border-style:solid; PADDING:3 0 0 0;border-width:0;height:20;width:79px; text-align:center;background-image:url(/images/btn/bg/bg_sbtn6.gif);  behavior:url(/_Common/HTC/APButtonRollover.htc);}  
+.buttons_7 {cursor:hand;letter-spacing:-1;font-family:"돋움";font-weight:normal;font-size:11px;color:#4B4B4B;border-style:solid; PADDING:3 0 0 0;border-width:0;height:20;width:90px; text-align:center;background-image:url(/images/btn/bg/bg_sbtn7.gif);  behavior:url(/_Common/HTC/APButtonRollover.htc);}  
+.buttons_8 {cursor:hand;letter-spacing:-1;font-family:"돋움";font-weight:normal;font-size:11px;color:#4B4B4B;border-style:solid; PADDING:3 0 0 0;border-width:0;height:20;width:101px; text-align:center;background-image:url(/images/btn/bg/bg_sbtn8.gif);  behavior:url(/_Common/HTC/APButtonRollover.htc);}  
+.buttons_9 {cursor:hand;letter-spacing:-1;font-family:"돋움";font-weight:normal;font-size:11px;color:#4B4B4B;border-style:solid; PADDING:3 0 0 0;border-width:0;height:20;width:112px; text-align:center;background-image:url(/images/btn/bg/bg_sbtn9.gif);  behavior:url(/_Common/HTC/APButtonRollover.htc);}  
+.buttons_10 {cursor:hand;letter-spacing:-1;font-family:"돋움";font-weight:normal;font-size:11px;color:#4B4B4B;border-style:solid; PADDING:3 0 0 0;border-width:0;height:20;width:123px; text-align:center;background-image:url(/images/btn/bg/bg_sbtn10.gif);  behavior:url(/_Common/HTC/APButtonRollover.htc);}  
+
+
+/* 테두리1*/
+.box01 {  font-family:"Gulim"; font-size: 9pt; color:#00000; border: #BFBFBF;  border-style: solid; border-top-width: 1; border-right-width: 1; border-bottom-width: 1; border-left-width: 1}
+/* 타이틀 */
+.title_m01 {font-size: 12px; font-weight:bold; color:#0083B6; padding-left:70px; padding-top:2;}
+.box_tt01 {font-family: ""; font-size: 9pt; color:#000000; border: #C9D4DC;  border-style: solid; border-top-width: 1; border-right-width: 1; border-bottom-width: 1; border-left-width: 1}
+.box_td01 {padding-left:8; background-color:#EBF1F5}
+
+
+/* 손익계산서txt */
+.son_01 {font-size: 12px; color:#006FB6; font-weight:bold; font-weight:bold; color:#005380; border-style:none; BACKGROUND-COLOR: #FFFFFF; width:140;}
+.son_02 {font-size: 12px; color:#005380; color:#005380; BACKGROUND-COLOR: #F3F0DD; width:68;}
+.son_03 {font-size: 12px; color:#005380; color:#005380; BACKGROUND-COLOR: #E1EACE; width:68;}
+
+/* EIS 메인화면 input box */
+.eis_MainBox{font-size: 11px;  background-color:#EFEFEF; color:#006FB6; text-align:right; border-width:0px; border-color:#f7f3f7; height:100%;}
+
+/*=============================================================== Tree 관련 CSS=============================*/
+.TopGroup
+{
+  background-color:#EEEEEE; 
+  border:solid 1px gray; 
+  cursor:default; 
+}
+
+.MenuGroup
+{
+  background-image:url(images/background.gif);
+  background-color:#F9F8F7;
+  border:solid 1px #7E7E81; 
+  cursor:default; 
+}
+
+.TopMenuItem
+{
+  background-color:#DBD7D0; 
+  color:black; 
+  font-family:MS Sans Serif; 
+  font-size:12px; 
+  border:solid 1px #DBD7D0; 
+  cursor:default; 
+}
+
+.TopMenuItemHover 
+{
+  background-color:#C2C5C8; 
+  color:black; 
+  font-family:MS Sans Serif; 
+  font-size:12px; 
+  border:solid 1px #A6A8B2; 
+  cursor:default; 
+}
+
+.MenuItem
+{
+  font-family:MS Sans Serif; 
+  font-size:9px; 
+  cursor:default; 
+}
+
+.MenuItemHover 
+{
+  background-color:#C2C5C8; 
+  font-family:MS Sans Serif; 
+  font-size:9px; 
+  cursor:default; 
+}
+
+.MenuBreak
+{
+  background-image:url(images/break_bg.gif);
+  width:100%;
+  height:1px;
+}
+
+
+.TreeViewHeader
+{
+  background: url(images/treeview_headerBg.gif);
+  background-color: #737294;
+  color: #FFFFFF; 
+  border: #57566F 1px solid; 
+  border-bottom-width: 0px; 
+  font-family: tahoma; 
+  font-size: 11px;
+  font-weight: bold; 
+  padding: 5px; 
+  cursor: hand; 
+}
+
+.TreeView 
+{ 
+  background-color: #FFFFFF;
+  padding-top: 4px; 
+  padding-left: 1px; 
+  border: #57566F 1px solid; 
+  cursor: hand; 
+}
+
+.TreeViewMargin
+{ 
+  background:url(images/treeview_bg.gif);
+  background-color: #FFFFFF;
+  padding-top:4px; 
+  padding-left:1px; 
+  border: #57566F 1px solid; 
+  cursor:default; 
+}
+
+.TreeNode 
+{ 
+  font-family: tahoma; 
+  font-size: 11px; 
+  padding-top:2px;
+  padding-bottom:1px;
+  padding-left: 3px; 
+  padding-right: 3px; 
+}
+
+.GrayedTreeNode 
+{ 
+  font-family: tahoma; 
+  font-size: 11px; 
+  padding-top:2px;
+  padding-bottom:1px;
+  padding-left: 3px; 
+  padding-right: 3px; 
+  color:gray; 
+  cursor:default;
+}
+
+.HoverTreeNode 
+{ 
+  font-family: tahoma; 
+  font-size: 11px; 
+  text-decoration:underline; 
+  padding-top:2px;
+  padding-bottom:1px;
+  padding-left: 3px; 
+  padding-right: 3px; 
+  cursor: default; 
+}
+
+.SelectedTreeNode 
+{ 
+  font-family: tahoma; 
+  font-size: 11px; 
+  background-color: gray; 
+  color:white; 
+  padding-top:1px;
+  padding-bottom:0px;
+  padding-left: 2px; 
+  padding-right: 2px; 
+  cursor: default; 
+  border: 1px solid #3F3F3F;
+}
+
+.MultipleSelectedTreeNode
+{
+  font-family: tahoma; 
+  font-size: 11px; 
+  background-color: gray; 
+  color:white; 
+  padding-top:2px;
+  padding-bottom:1px;
+  padding-left: 3px; 
+  padding-right: 3px; 
+  cursor: default; 
+}
+
+.CutTreeNode
+{
+  font-family: tahoma; 
+  font-size: 11px; 
+  background-color: silver; 
+  color:white; 
+  padding-top:2px;
+  padding-bottom:1px;
+  padding-left: 3px; 
+  padding-right: 3px; 
+  cursor: default; 
+}
+
+.NodeEdit 
+{
+  border:1px gray solid;
+  font-family: tahoma; 
+  font-size: 11px;
+}
+
+.Margin
+{
+  background-color: #E6E6F0;
+}

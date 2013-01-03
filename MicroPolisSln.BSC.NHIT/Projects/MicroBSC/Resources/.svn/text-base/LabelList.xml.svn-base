@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="TEST">
+    <value>TESTTEXT3</value>
+    <history>
+      <value>2011-10-12 11:11:34 : TESTTEXT1</value>
+      <value>2011-10-12 11:11:37 : TESTTEXT2</value>
+    </history>
+  </data>
+    <data name="LBL_00001">
+        <KOR>KPI 담당자</KOR>
+        <ENG>KPI 담당자</ENG>
+        <JPN>KPI 담당자</JPN>
+    </data>
+	<data name="LBL_00002">
+		<KOR>실적측정 담당자</KOR>
+		<ENG>실적측정 담당자</ENG>
+		<JPN>실적측정 담당자</JPN>
+	</data>
+	<data name="LBL_00003">
+		<KOR>등급단계</KOR>
+		<ENG>등급단계</ENG>
+		<JPN>등급단계</JPN>
+	</data>
+    <data name="LBL_00004">
+        <KOR>커뮤니케이션</KOR>
+        <ENG>커뮤니케이션</ENG>
+        <JPN>커뮤니케이션</JPN>
+    </data>
+    <data name="LBL_00005">
+        <KOR>분석 보고서</KOR>
+        <ENG>분석 보고서</ENG>
+        <JPN>분석 보고서</JPN>
+    </data>
+    <data name="LBL_00006">
+        <KOR>결재요청</KOR>
+        <ENG>결재요청</ENG>
+        <JPN>결재요청</JPN>
+    </data>
+    <data name="LBL_00007"><!--Comment-->
+        <KOR>의견</KOR>
+        <ENG>의견</ENG>
+        <JPN>의견</JPN>
+    </data>
+    <data name="LBL_00008"><!--Feedback-->
+        <KOR>피드백</KOR>
+        <ENG>피드백</ENG>
+        <JPN>피드백</JPN>
+    </data>
+    <data name="LBL_00009">
+        <KOR>KPI 코드</KOR>
+        <ENG>KPI 코드</ENG>
+        <JPN>KPI 코드</JPN>
+    </data>
+    <data name="LBL_00010"><!--Initiative-->
+        <KOR>추진계획</KOR>
+        <ENG>추진계획</ENG>
+        <JPN>추진계획</JPN>
+    </data>
+    <data name="LBL_00011"><!--Goal-->
+      <KOR>의지목표(Goal)</KOR>
+      <ENG>의지목표(Goal)</ENG>
+      <JPN>의지목표(Goal)</JPN>
+    </data>
+    <data name="LBL_00012"><!--Target-->
+      <KOR>목표(Target)</KOR>
+      <ENG>목표(Target)</ENG>
+      <JPN>목표(Target)</JPN>
+    </data>
+    <!--<data name="LBL_00013">--><!--Target--><!--
+      <KOR>KPI 담당자</KOR>
+      <ENG>KPI 담당자</ENG>
+      <JPN>KPI 담당자</JPN>
+    </data>-->
+  <data name="LBL_00014"><!--Target-->
+    
+    <KOR>KPI 풀(POOL) 버전</KOR>
+    <ENG>KPI 풀(POOL) 버전</ENG>
+    <JPN>KPI 풀(POOL) 버전</JPN>
+  </data>
+  <data name="LBL_00015"><!--Target-->
+    
+    <KOR>KPI 풀(POOL) 버전명</KOR>
+    <ENG>KPI 풀(POOL) 버전명</ENG>
+    <JPN>KPI 풀(POOL) 버전명</JPN>
+  </data>
+  <data name="LBL_00016"><!--Target-->
+    
+    <KOR>KPI 풀(POOL) 설명</KOR>
+    <ENG>KPI 풀(POOL) 설명</ENG>
+    <JPN>KPI 풀(POOL) 설명</JPN>
+  </data>
+  <data name="LBL_00017"><!--Target-->
+    
+    <KOR>코드</KOR>
+    <ENG>코드</ENG>
+    <JPN>코드</JPN>
+  </data>
+  
+</root>
